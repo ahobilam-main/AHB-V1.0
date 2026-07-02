@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic 3D Ritual Schedule</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; font-family: 'Roboto Slab', serif; margin: 0; padding: 0; }
+
+/* CM001 - Global Theme and Flat Body */
+body { background: linear-gradient(135deg, #fff5eb 0%, #fde0c5 100%); color: #3a1100; min-height: 100vh; overflow-x: hidden; }
+
+/* CM002 - Ambient Background Glow Effect */
+.bg-glow { position: fixed; top: 50%; left: 50%; width: 100vw; height: 100vw; background: radial-gradient(circle, rgba(255,165,0,0.1) 0%, rgba(255,255,255,0) 60%); transform: translate(-50%, -50%); z-index: -1; pointer-events: none; }
+
+/* CM003 - Main Layout Container */
+#app { max-width: 1200px; margin: 0 auto; padding: 20px 10px; position: relative; z-index: 1; }
+
+/* CM004 - Flat Tabs Navigation */
+.tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 25px; flex-wrap: wrap; }
+.tab-btn { background: #ffffff; color: #a24123; padding: 10px 20px; border: 1px solid #d98f5c; border-radius: 20px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.tab-btn:hover { background: #fff0e6; color: #8a3611; border-color: #a24123; }
+.tab-btn.active { background: #d98f5c; color: #fff; border-color: #a24123; box-shadow: none; }
+
+/* CM005 - Tab Content & Animation */
+.tab-content { display: none; animation: fadeIn 0.4s ease forwards; opacity: 0; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+/* CM006 - Compact Grid Layout */
+.grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; align-items: stretch; }
+
+/* CM007 - Flat Cards Base */
+.card { background: rgba(255, 255, 255, 0.95); border-radius: 12px; border: 1px solid rgba(217, 143, 92, 0.4); padding: 15px; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.card:hover { border-color: #d98f5c; background: #ffffff; box-shadow: 0 6px 12px rgba(217,143,92,0.15); }
+
+/* CM008 - Card Headers */
+.card-header { font-size: 1.1rem; font-weight: 700; color: #8a3611; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid rgba(217, 143, 92, 0.3); padding-bottom: 8px; position: relative; }
+.card-header::after { content: ''; position: absolute; left: 0; bottom: -1px; height: 2px; width: 40px; background: #d98f5c; }
+
+/* CM009 - Schedule Rows */
+.row { display: flex; justify-content: space-between; padding: 8px 12px; margin-bottom: 6px; background: rgba(255,245,235,0.8); border-radius: 6px; border: 1px solid rgba(217,143,92,0.1); transition: all 0.2s ease; }
+.row:hover { background: rgba(255,230,204,0.9); border-color: rgba(217,143,92,0.4); }
+.time { font-weight: 700; color: #a24123; width: 45%; font-size: 0.85rem; letter-spacing: 0.5px; }
+.event { color: #3a1100; width: 55%; font-weight: 500; font-size: 0.85rem; }
+.break-row { background: rgba(230,220,210,0.5); color: #664433; justify-content: center; text-align: center; font-style: italic; font-size: 0.85rem; border-color: transparent; }
+
+/* CM010 - Special Highlights */
+.special-card { background: rgba(255, 250, 230, 0.95); border-color: rgba(234, 179, 8, 0.5); }
+.special-card:hover { border-color: rgba(234, 179, 8, 0.8); box-shadow: 0 6px 12px rgba(234, 179, 8, 0.15); }
+.special-card .card-header { color: #b45309; border-bottom-color: rgba(234, 179, 8, 0.4); }
+.special-card .card-header::after { background: #f59e0b; }
+.special-card .time { color: #b45309; }
+.highlight-text { color: #d97706; font-weight: 700; }
+
+/* CM011 - Nava Narasimha Layout */
+.nava-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding: 5px; }
+.nava-item { background: linear-gradient(135deg, #ffffff, #fff5eb); border: 1px solid rgba(217,143,92,0.4); padding: 12px; border-radius: 10px; text-align: center; color: #8a3611; font-weight: 700; font-size: 0.95rem; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; height: 60px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+.nava-item:hover { background: linear-gradient(135deg, #fff0e6, #ffe0c5); border-color: #d98f5c; color: #5a1e01; box-shadow: 0 4px 8px rgba(217,143,92,0.15); }
+.timing-box { background: rgba(255,255,255,0.9); border: 1px dashed rgba(217,143,92,0.6); border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.timing-box h3 { color: #a24123; font-size: 1.2rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+.timing-box p { color: #3a1100; font-size: 0.9rem; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- CM012 - Ambient Background -->
+<div class="bg-glow"></div>
+
+<!-- CM013 - Main App Container -->
+<div id="app">
+
+<!-- CM014 - Flat Tabs Navigation -->
+<div class="tabs">
+<button class="tab-btn active" onclick="openTab('lower', event)">Lower Ahobilam</button>
+<button class="tab-btn" onclick="openTab('upper', event)">Upper Ahobilam</button>
+<button class="tab-btn" onclick="openTab('nava', event)">Nava Narasimha Temples</button>
+</div>
+
+<!-- CM015 - Lower Ahobilam Tab Content -->
+<div id="lower" class="tab-content active">
+<div class="grid-container">
+<div class="card">
+<div class="card-header">Normal Daily Schedule</div>
+<div class="row"><div class="time">6:00 AM - 6:30 AM</div><div class="event">Suprabhata Seva</div></div>
+<div class="row"><div class="time">6:30 AM - 9:00 AM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">9:00 AM - 9:30 AM</div><div class="event">Morning Puja</div></div>
+<div class="row"><div class="time">9:30 AM - 11:30 AM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">11:30 AM - 11:45 AM</div><div class="event highlight-text">Rajabhogam</div></div>
+<div class="row"><div class="time">11:45 AM - 1:00 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row break-row">1:00 PM - 3:00 PM (Temple Closed)</div>
+<div class="row"><div class="time">3:00 PM - 6:00 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">6:00 PM - 7:00 PM</div><div class="event">Evening Puja</div></div>
+<div class="row"><div class="time">7:00 PM - 7:45 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">7:45 PM - 8:00 PM</div><div class="event highlight-text">Ekanta Seva</div></div>
+</div>
+
+<div class="card special-card">
+<div class="card-header">Swati Nakshatra</div>
+<div class="row"><div class="time">5:00 AM - 6:00 AM</div><div class="event">Suprabhata Seva</div></div>
+<div class="row"><div class="time">6:00 AM - 6:30 AM</div><div class="event">Nitya Puja</div></div>
+<div class="row"><div class="time">8:00 AM - 1:00 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">9:00 AM - 11:00 AM</div><div class="event highlight-text">Abhishekam</div></div>
+<div class="row"><div class="time">9:30 AM - 12:30 PM</div><div class="event highlight-text">Sudarshana Homam</div></div>
+<div class="row break-row">1:00 PM - 3:00 PM (Temple Closed)</div>
+<div class="row"><div class="time">5:30 PM - 6:30 PM</div><div class="event highlight-text">Panchaparva Utsavam</div></div>
+<div class="row"><div class="time">6:30 PM - 7:00 PM</div><div class="event">Nitya Puja</div></div>
+<div class="row"><div class="time">8:00 PM</div><div class="event highlight-text">Ekanta Seva</div></div>
+</div>
+
+<div class="card special-card">
+<div class="card-header">Ekadashi, Amavasya & Pournami</div>
+<div class="row"><div class="time">9:00 AM - 11:00 AM</div><div class="event highlight-text">Abhishekam (with Darshan)</div></div>
+<div class="row"><div class="time">5:30 PM - 6:30 PM</div><div class="event highlight-text">Panchaparva Utsavam</div></div>
+</div>
+</div>
+</div>
+
+<!-- CM016 - Upper Ahobilam Tab Content -->
+<div id="upper" class="tab-content">
+<div class="grid-container">
+<div class="card">
+<div class="card-header">Normal Daily Schedule</div>
+<div class="row"><div class="time">7:00 AM - 7:30 AM</div><div class="event">Suprabhata Seva</div></div>
+<div class="row"><div class="time">7:30 AM - 9:00 AM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">9:00 AM - 9:30 AM</div><div class="event">Morning Puja</div></div>
+<div class="row"><div class="time">9:30 AM - 12:00 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">12:00 PM - 12:15 PM</div><div class="event highlight-text">Rajabhogam</div></div>
+<div class="row"><div class="time">12:15 PM - 1:00 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row break-row">1:00 PM - 2:00 PM (Temple Closed)</div>
+<div class="row"><div class="time">2:00 PM - 4:30 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">4:30 PM - 5:30 PM</div><div class="event">Evening Puja</div></div>
+<div class="row"><div class="time">5:30 PM - 6:45 PM</div><div class="event">Sarva Darshan</div></div>
+<div class="row"><div class="time">6:45 PM - 7:00 PM</div><div class="event highlight-text">Ekanta Seva</div></div>
+</div>
+
+<div class="card special-card">
+<div class="card-header">Swati Nakshatra</div>
+<div class="row"><div class="time">6:00 AM</div><div class="event highlight-text">Special Abhishekam</div></div>
+<div class="row break-row">* Remaining rituals follow Normal Schedule</div>
+</div>
+</div>
+</div>
+
+<!-- CM017 - Nava Narasimha Tab Content -->
+<div id="nava" class="tab-content">
+<div class="timing-box">
+<h3>Continuous Darshan: 9:00 AM to 4:00 PM</h3>
+<p>Devotees are advised to begin the Yatra early in the morning.</p>
+</div>
+
+<div class="nava-grid">
+<div class="nava-item">Jwala Narasimha</div>
+<div class="nava-item">Malola Narasimha</div>
+<div class="nava-item">Kroda (Varaha)</div>
+<div class="nava-item">Karanja Narasimha</div>
+<div class="nava-item">Bhargava Narasimha</div>
+<div class="nava-item">Yogananda Narasimha</div>
+<div class="nava-item">Chatravata Narasimha</div>
+<div class="nava-item">Pavana Narasimha</div>
+</div>
+</div>
+
+</div>
+
+<script>
+
+// CM018 - Tab Switching Logic
+function openTab(tabName, evt) { document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active')); document.getElementById(tabName).classList.add('active'); evt.target.classList.add('active'); }
+</script>
+</body>
+</html>

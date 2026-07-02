@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM Services - Lower Ahobilam</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'roboto-slab': ['"Roboto Slab"', 'serif'],
+                },
+                colors: {
+                    'bank-blue': '#0055A5',
+                    'bank-gold': '#F2A900',
+                    'stone-light': '#F5F5DC',
+                    'stone-dark': '#8B7D6B'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    body {
+        font-family: 'Roboto Slab', serif;
+        background-color: #FAF9F6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #333;
+    }
+
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .pulse-dot {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(242, 169, 0, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(242, 169, 0, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(242, 169, 0, 0); }
+    }
+
+    .highlight-text {
+        position: relative;
+        display: inline-block;
+        z-index: 1;
+    }
+    
+    .highlight-text::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 8px;
+        background-color: rgba(242, 169, 0, 0.3);
+        z-index: -1;
+        transition: height 0.2s ease;
+    }
+
+    .highlight-text:hover::after {
+        height: 100%;
+        background-color: rgba(242, 169, 0, 0.2);
+    }
+</style>
+</head>
+<body class="bg-[url('https://placehold.co/1920x1080/e5e5e5/cccccc?text=Temple+Background')] bg-cover bg-center bg-fixed bg-no-repeat">
+    
+    <div class="absolute inset-0 bg-stone-light/80 backdrop-blur-sm z-0"></div>
+
+    <main class="w-full max-w-4xl px-4 py-12 relative z-10 flex flex-col justify-center min-h-[60vh]">
+        
+        <div class="glass-card rounded-2xl overflow-hidden shadow-2xl transition-transform duration-300 hover:shadow-bank-blue/20">
+            
+            <div class="bg-gradient-to-r from-bank-blue to-[#003366] px-8 py-6 flex items-center justify-between border-b-4 border-bank-gold relative overflow-hidden">
+                <!-- Abstract bank/temple pattern overlay -->
+                <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
+                
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-bank-gold">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-bank-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-white tracking-wide">ATM Services</h1>
+                        <p class="text-bank-gold text-sm font-medium tracking-wider uppercase mt-1">Lower Ahobilam Area</p>
+                    </div>
+                </div>
+                
+                <div class="hidden sm:flex items-center gap-2 relative z-10">
+                    <div class="w-3 h-3 rounded-full bg-green-400 pulse-dot"></div>
+                    <span class="text-white/90 text-sm font-medium uppercase tracking-wider">Available</span>
+                </div>
+            </div>
+
+            <div class="p-8 md:p-10 bg-white/60">
+                <div class="max-w-3xl mx-auto space-y-6 text-lg text-stone-800 leading-relaxed">
+                    
+                    <p class="text-xl md:text-2xl font-bold text-bank-blue mb-4 border-l-4 border-bank-gold pl-4">
+                        Please note: There is only <span class="highlight-text">one bank available</span> in the entire Lower Ahobilam region.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:shadow-md transition-shadow">
+                            <h3 class="text-bank-blue font-bold flex items-center gap-2 mb-3 text-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-bank-gold" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                                </svg>
+                                Location
+                            </h3>
+                            <p class="text-stone-600 font-medium">
+                                Left side near the <strong class="text-stone-800">Temple Office</strong>.
+                            </p>
+                            <p class="text-stone-500 text-sm mt-2">
+                                Look for the facility right at the <strong class="text-stone-800 border-b border-bank-gold/50">Lower Ahobilam temple gate entrance</strong>.
+                            </p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-sm border border-stone-200 hover:shadow-md transition-shadow">
+                            <h3 class="text-bank-blue font-bold flex items-center gap-2 mb-3 text-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-bank-gold" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+                                    <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd" />
+                                </svg>
+                                Facility Provider
+                            </h3>
+                            <p class="text-stone-600 font-medium">
+                                <strong class="text-stone-800 text-lg">Union Bank of India</strong>
+                            </p>
+                            <p class="text-stone-500 text-sm mt-2">
+                                This is the exclusive banking and ATM section serving the Lower Ahobilam area.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 bg-stone-light/50 p-4 rounded-lg text-center text-stone-700 italic border border-stone-200">
+                        "If you need any ATM services during your visit, please utilize this Union Bank facility."
+                    </div>
+
+                </div>
+            </div>
+            
+            <div class="bg-stone-100 h-2 w-full flex">
+                <div class="bg-bank-blue w-1/3"></div>
+                <div class="bg-bank-gold w-1/3"></div>
+                <div class="bg-bank-blue w-1/3"></div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

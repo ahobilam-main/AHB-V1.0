@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daily Sevas - Ahobilam Temple</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['"Roboto Slab"', 'serif'],
+                },
+                colors: {
+                    temple: {
+                        red: '#881337',
+                        gold: '#FBBF24', 
+                        bg: '#F9F8F6',
+                    }
+                }
+            }
+        }
+    }
+</script>
+<style>
+    body { font-family: 'Roboto Slab', serif; }
+    
+    .material-symbols-rounded {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-flex;
+        vertical-align: middle;
+    }
+</style>
+</head>
+<body class="text-slate-800 antialiased min-h-screen relative overflow-x-hidden">
+
+<div class="fixed inset-0 z-[-1]">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-[url('https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(9).JPG')] bg-cover bg-center bg-no-repeat"></div>
+    <!-- Vignette / Dark gradient overlay to make text pop -->
+    <div class="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-black/80 backdrop-blur-[2px]"></div>
+</div>
+
+<main class="max-w-5xl mx-auto px-4 py-8 w-full relative z-10">
+    
+    <div class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-white drop-shadow-lg inline-block relative tracking-tight">
+            Daily Sevas
+            <span class="absolute left-1/2 -bottom-2 w-16 h-1 bg-gradient-to-r from-temple-gold to-white -translate-x-1/2 rounded-full shadow-sm"></span>
+        </h1>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+
+        <!-- Card 1 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">visibility</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Vishwaroopa Seva</h3>
+                <div class="flex flex-col mt-1.5 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Lower Ahobilam</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>6:00 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">wb_twilight</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Morning Aradhana</h3>
+                <p class="text-[10px] text-gray-600 font-medium">(Naivedyam)</p>
+                <div class="flex flex-col mt-1 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>Morning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">light_mode</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Afternoon Aradhana</h3>
+                <p class="text-[10px] text-gray-600 font-medium">(Naivedyam)</p>
+                <div class="flex flex-col mt-1 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>Afternoon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">nights_stay</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Evening Aradhana</h3>
+                <p class="text-[10px] text-gray-600 font-medium">(Naivedyam)</p>
+                <div class="flex flex-col mt-1 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>After Ekanta Seva</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">local_florist</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Archana</h3>
+                <div class="flex flex-col mt-1.5 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>7:00 AM – 8:00 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">local_florist</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Archana</h3>
+                <div class="flex flex-col mt-1.5 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>10:00 AM – 12:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">local_florist</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Archana</h3>
+                <div class="flex flex-col mt-1.5 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>3:00 PM – 5:00 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">local_fire_department</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Neyyi Deepam</h3>
+                <p class="text-[10px] text-gray-600 font-medium">(Ghee Lamp)</p>
+                <div class="flex flex-col mt-1 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>Daily</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">emoji_food_beverage</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Panaka Seva</h3>
+                <div class="flex flex-col mt-1.5 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70">location_on</span>
+                        <span>Upper & Lower</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>Every Evening</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="bg-white/90 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl hover:bg-white/95 hover:-translate-y-0.5 transition-all duration-300 border border-white/40 flex items-center p-4 group cursor-default md:col-span-2 lg:col-span-1">
+            <div class="bg-temple-red/10 text-temple-red p-2.5 rounded-lg mr-4 group-hover:bg-temple-red group-hover:text-white transition-colors">
+                <span class="material-symbols-rounded text-2xl">energy_savings_leaf</span>
+            </div>
+            <div class="flex-1">
+                <h3 class="text-base font-bold text-gray-900 leading-tight">Aku Pooja</h3>
+                <div class="flex flex-col mt-1.5 space-y-0.5">
+                    <div class="text-xs text-gray-700 flex items-start gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] text-temple-red/70 mt-0.5">location_on</span>
+                        <span class="leading-tight">Sri Anjaneya Swamy<br>Lower Ahobilam</span>
+                    </div>
+                    <div class="text-xs text-amber-700 font-bold flex items-center gap-1.5">
+                        <span class="material-symbols-rounded text-[16px] opacity-80">schedule</span>
+                        <span>Daily</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

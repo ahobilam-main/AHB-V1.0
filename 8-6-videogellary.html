@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahobilam Temple Videos - Coming Soon</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Adding FontAwesome for the YouTube Icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;600&display=swap');
+    
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .temple-font {
+        font-family: 'Cinzel', serif;
+    }
+    /* Subtle pulsing background effect */
+    .bg-gradient-animate {
+        background: linear-gradient(-45deg, #fffbeb, #fef3c7, #fde68a, #fef3c7);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+    }
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+</style>
+</head>
+<body class="bg-gradient-animate min-h-screen flex items-center justify-center p-4 overflow-hidden">
+
+    <div class="max-w-xl w-full bg-white/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-2xl border-t-4 border-amber-500 text-center transform transition-all hover:scale-[1.01]">
+        
+        <!-- Icon Header -->
+        <div class="mb-6 flex justify-center">
+            <div class="relative">
+                <div class="absolute inset-0 bg-red-200 rounded-full animate-ping opacity-75"></div>
+                <div class="relative bg-red-100 text-red-600 p-4 rounded-full shadow-inner">
+                    <i class="fab fa-youtube text-4xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="temple-font text-3xl md:text-4xl font-extrabold text-gray-800 mb-4 tracking-wide">
+            Divine Videos <span class="text-amber-600">Coming Soon</span>
+        </h1>
+
+        <!-- Rewritten Text -->
+        <p class="text-base md:text-lg text-gray-700 leading-relaxed mb-8 max-w-lg mx-auto">
+            We are currently curating a majestic collection of Ahobilam Temple videos for your spiritual journey. While we prepare this sacred gallery, we warmly invite you to experience our daily darshans, utsavas, and divine chanting directly on our official YouTube channel.
+        </p>
+
+        <!-- YouTube Call to Action Button -->
+        <!-- Note: Replace the href link below with your actual YouTube channel link -->
+        <a href="https://www.youtube.com/results?search_query=ahobilam+temple" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold text-base py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-red-500/30">
+            <i class="fab fa-youtube text-xl"></i>
+            <span>Watch on YouTube</span>
+        </a>
+
+        <!-- Footer / Closing -->
+        <div class="mt-8 pt-4 border-t border-amber-200">
+            <p class="text-amber-800 font-medium tracking-widest uppercase text-xs">
+                Thank you for your patience • Om Namo Narayanaya
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

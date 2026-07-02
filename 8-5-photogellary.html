@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahobilam Temple Gallery</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+/* CM001 - Basic Reset and Body Styles */
+body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: #fcfbf8; color: #333; overflow-x: hidden; }
+
+/* CM002 - Main Layout Container */
+.main-container { display: flex; flex-direction: column; width: 100vw; min-height: 100vh; position: relative; }
+@media (min-width: 1024px) { .main-container { flex-direction: row; } }
+
+/* CM003 - Sidebar Styles for Standing Statue - Adjusted for better mobile and height */
+.sidebar { width: 100%; height: auto; position: relative; background-color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); z-index: 10; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 10px 0; }
+@media (min-width: 1024px) { .sidebar { width: 250px; min-height: 100vh; position: sticky; top: 0; flex-shrink: 0; border-right: 4px solid #eab308; box-shadow: 4px 0 15px rgba(0,0,0,0.1); padding: 20px 0; align-items: flex-start; } }
+.sidebar img { width: auto; height: auto; max-height: 40vh; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2)); border-radius: 8px; }
+@media (min-width: 1024px) { .sidebar img { width: 100%; max-height: 80vh; object-fit: contain; border-radius: 0; } }
+
+/* CM004 - Content Area Styles */
+.content-area { flex-grow: 1; padding: 20px; overflow-y: auto; width: 100%; box-sizing: border-box; }
+@media (min-width: 1024px) { .content-area { padding: 40px; width: calc(100% - 250px); } }
+
+/* CM005 - Header Logo Area */
+.logo-area { display: flex; justify-content: center; align-items: center; margin-bottom: 30px; }
+.logo-area img { max-width: 250px; height: auto; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1)); }
+
+/* CM006 - Slider Container Styles */
+.slider-container { position: relative; width: 100%; max-width: 1000px; margin: 0 auto 40px auto; aspect-ratio: 16/9; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 4px solid #fff; }
+
+/* CM007 - Individual Slide Styles */
+.slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.8s ease-in-out; z-index: 1; }
+.slide.active { opacity: 1; z-index: 2; }
+.slide img { width: 100%; height: 100%; object-fit: cover; }
+
+/* CM008 - Slider Navigation Buttons */
+.slider-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 15px 20px; cursor: pointer; z-index: 10; font-size: 24px; border-radius: 50%; transition: background 0.3s; backdrop-filter: blur(4px); }
+.slider-nav:hover { background: rgba(234, 179, 8, 0.8); }
+.slider-prev { left: 15px; }
+.slider-next { right: 15px; }
+
+/* CM009 - Slider Indicators */
+.slider-indicators { position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+.indicator { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: all 0.3s; }
+.indicator.active { background: #eab308; transform: scale(1.2); }
+
+/* CM010 - Section Title Styles */
+.section-title { text-align: center; font-size: 2rem; font-weight: bold; color: #854d0e; margin-bottom: 30px; position: relative; padding-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+.section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: #eab308; border-radius: 2px; }
+
+/* CM011 - Grid Layout for Deities */
+.deities-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 20px; max-width: 1200px; margin: 0 auto; }
+@media (min-width: 640px) { .deities-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; } }
+@media (min-width: 1024px) { .deities-grid { grid-template-columns: repeat(3, 1fr); gap: 30px; } }
+
+/* CM012 - Individual Deity Card */
+.deity-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #fef08a; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+.deity-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); border-color: #eab308; }
+
+/* CM013 - Deity Image Styles */
+.deity-image-wrapper { width: 100%; aspect-ratio: 1; overflow: hidden; border-radius: 8px; margin-bottom: 15px; background-color: #fef9c3; display: flex; justify-content: center; align-items: center; padding: 10px; }
+.deity-card img { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2)); transition: transform 0.5s ease; }
+.deity-card:hover img { transform: scale(1.05); }
+
+/* CM014 - Deity Name Styles */
+.deity-name { font-size: 1.25rem; font-weight: 600; color: #9a3412; text-align: center; margin: 0; padding: 10px 0; border-top: 2px dashed #fef08a; width: 100%; }
+</style>
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- CM015 - Sidebar with Standing Statue -->
+    <div class="sidebar">
+        <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB01-SWAMI-STADING-STACHUE-PAGE-LEFTSIDE-PIC.jpg" alt="Ahobilam Swami Standing Statue" onerror="this.onerror=null; this.src='https://placehold.co/400x1000/eab308/fff?text=Ahobilam+Swami';">
+    </div>
+
+    <!-- CM016 - Main Content Area -->
+    <div class="content-area">
+        
+        <!-- CM017 - Top Decorative Logo -->
+        <div class="logo-area">
+            <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB07-NAMAM-SANKAM-CHAKRAM.png" alt="Namam Sankam Chakram" onerror="this.onerror=null; this.style.display='none';">
+        </div>
+
+        <!-- CM018 - Main Image Slider Section -->
+        <h2 class="section-title">Temple Views</h2>
+        <div class="slider-container" id="mainSlider">
+            <!-- Slides will be inserted here by JS -->
+            <button class="slider-nav slider-prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="slider-nav slider-next" onclick="moveSlide(1)">&#10095;</button>
+            <div class="slider-indicators" id="sliderIndicators"></div>
+        </div>
+
+        <!-- CM019 - Nava Narasimha Deities Grid -->
+        <h2 class="section-title mt-16">Nava Narasimha</h2>
+        <div class="deities-grid" id="deitiesGrid">
+            <!-- Deity cards will be inserted here by JS -->
+        </div>
+
+    </div>
+</div>
+
+<script>
+// CM020 - Data Source for Slider Images
+const sliderImages = [
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(1).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(2).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(3).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(4).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(5).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(6).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(7).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(8).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(9).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(10).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(11).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(12).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(13).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(14).JPG",
+    "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(15).JPG"
+];
+
+// CM021 - Data Source for Deity Images and Names
+const deityData = [
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB11-%20AHOBILAM-SWAMY.png", name: "Ahobilam Swamy" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB12-JWALA.png", name: "Jwala Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB13-KORDA.png", name: "Kroda Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB14-MALOLA.png", name: "Malola Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB15-KARANJA.png", name: "Karanja Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB16-BHARGAVA.png", name: "Bhargava Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB17-YOGANADA.png", name: "Yogananda Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB18-KSHATRAVATA.png", name: "Kshatravata Narasimha" },
+    { url: "https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB19-PAVANA.png", name: "Pavana Narasimha" }
+];
+
+let currentSlideIndex = 0;
+let slideInterval;
+
+// CM022 - Function to initialize the slider DOM elements
+function initSlider() {
+    const sliderContainer = document.getElementById('mainSlider');
+    const indicatorsContainer = document.getElementById('sliderIndicators');
+    
+    sliderImages.forEach((src, index) => {
+        // Create slide
+        const slide = document.createElement('div');
+        slide.className = `slide ${index === 0 ? 'active' : ''}`;
+        slide.id = `slide-${index}`;
+        
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Ahobilam Temple View ${index + 1}`;
+        img.onerror = function() { this.onerror=null; this.src=`https://placehold.co/1000x562/ddd/555?text=Temple+View+${index+1}`; };
+        
+        slide.appendChild(img);
+        // Insert before navigation buttons
+        sliderContainer.insertBefore(slide, sliderContainer.querySelector('.slider-prev'));
+        
+        // Create indicator
+        const dot = document.createElement('div');
+        dot.className = `indicator ${index === 0 ? 'active' : ''}`;
+        dot.onclick = () => goToSlide(index);
+        indicatorsContainer.appendChild(dot);
+    });
+    
+    startSlideShow();
+}
+
+// CM023 - Function to change active slide
+function updateSlideDisplay() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.indicator');
+    
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    
+    document.getElementById(`slide-${currentSlideIndex}`).classList.add('active');
+    dots[currentSlideIndex].classList.add('active');
+}
+
+// CM024 - Function to navigate slides via buttons
+function moveSlide(direction) {
+    clearInterval(slideInterval);
+    currentSlideIndex = (currentSlideIndex + direction + sliderImages.length) % sliderImages.length;
+    updateSlideDisplay();
+    startSlideShow();
+}
+
+// CM025 - Function to jump to specific slide via indicators
+function goToSlide(index) {
+    clearInterval(slideInterval);
+    currentSlideIndex = index;
+    updateSlideDisplay();
+    startSlideShow();
+}
+
+// CM026 - Function to auto-play slider
+function startSlideShow() {
+    slideInterval = setInterval(() => {
+        currentSlideIndex = (currentSlideIndex + 1) % sliderImages.length;
+        updateSlideDisplay();
+    }, 4000); // Change image every 4 seconds
+}
+
+// CM027 - Function to populate the deities grid
+function renderDeities() {
+    const grid = document.getElementById('deitiesGrid');
+    
+    deityData.forEach(deity => {
+        const card = document.createElement('div');
+        card.className = 'deity-card';
+        
+        const imgWrapper = document.createElement('div');
+        imgWrapper.className = 'deity-image-wrapper';
+        
+        const img = document.createElement('img');
+        img.src = deity.url;
+        img.alt = deity.name;
+        img.onerror = function() { this.onerror=null; this.src=`https://placehold.co/400x400/fef9c3/9a3412?text=${encodeURIComponent(deity.name)}`; };
+        
+        const name = document.createElement('h3');
+        name.className = 'deity-name';
+        name.textContent = deity.name;
+        
+        imgWrapper.appendChild(img);
+        card.appendChild(imgWrapper);
+        card.appendChild(name);
+        
+        grid.appendChild(card);
+    });
+}
+
+// CM028 - Initialize everything when page loads
+window.onload = function() {
+    initSlider();
+    renderDeities();
+};
+</script>
+</body>
+</html>

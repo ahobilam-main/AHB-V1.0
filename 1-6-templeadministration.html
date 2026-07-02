@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple Administration - Ahobilam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+/* CM001 - Tailwind Configuration */
+tailwind.config={theme:{extend:{colors:{temple:{maroon:'#7A1A14',red:'#9C251C',gold:'#C5A059',lightGold:'#E8D5A5',dark:'#2A1F1D',ivory:'#FAF7F2',white:'#FFFFFF'}},fontFamily:{body:['"Times New Roman"','serif'],heading:['"Roboto Slab"','serif']},backgroundImage:{'gold-gradient':'linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C)','red-gradient':'linear-gradient(to right, #7A1A14, #9C251C, #7A1A14)'},boxShadow:{'premium':'0 20px 40px -10px rgba(122, 26, 20, 0.15), 0 0 20px rgba(197, 160, 89, 0.1)','inner-gold':'inset 0 0 0 1px rgba(197, 160, 89, 0.3)'}}}}
+</script>
+
+<style>
+/* CM002 - Base Styles */
+body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background-color:#EFEBE4;background-image:radial-gradient(#E8D5A5 1px, transparent 1px);background-size:40px 40px;}
+
+/* CM003 - Typography Styles */
+.gold-text{background:linear-gradient(to bottom, #C5A059, #AA771C);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* CM004 - Divider Styles */
+.ornamental-divider{display:flex;align-items:center;text-align:center;color:#C5A059;margin:0.5rem 0;}
+.ornamental-divider::before,.ornamental-divider::after{content:'';flex:1;border-bottom:1px solid rgba(197, 160, 89, 0.4);}
+.ornamental-divider:not(:empty)::before{margin-right:1em;}
+.ornamental-divider:not(:empty)::after{margin-left:1em;}
+
+/* CM005 - Card Styles */
+.admin-card{transition:transform 0.3s ease, box-shadow 0.3s ease;}
+.admin-card:hover{transform:translateY(-2px);box-shadow:0 15px 30px -5px rgba(122, 26, 20, 0.1), 0 0 15px rgba(197, 160, 89, 0.2);}
+</style>
+</head>
+<body class="font-body text-temple-dark min-h-screen flex items-center justify-center p-2 w-full">
+
+<!-- CM006 - Main Admin Card Box -->
+<div class="max-w-4xl w-full bg-temple-white rounded-xl shadow-premium relative overflow-hidden border border-temple-lightGold h-auto">
+
+<!-- CM007 - Top Gold Bar -->
+<div class="h-2 w-full bg-gold-gradient"></div>
+
+<!-- CM008 - Main Content Area -->
+<div class="p-4 sm:p-6 md:p-8">
+
+<!-- CM009 - Header Title Section -->
+<div class="text-center mb-4">
+<div class="inline-block p-2 rounded-full bg-temple-ivory border border-temple-lightGold mb-2 shadow-sm"><i class="fas fa-om text-2xl gold-text"></i></div>
+<h1 class="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-temple-maroon leading-tight tracking-wide uppercase">Sri Lakshmi Narasimha Swamy Devasthanam</h1>
+<p class="mt-2 font-heading text-lg sm:text-xl text-temple-gold italic tracking-wider">Administrative Command</p>
+<div class="w-24 h-1 bg-red-gradient mx-auto mt-2 rounded-full opacity-80"></div>
+</div>
+
+<!-- CM010 - Intro Text -->
+<p class="text-center text-base leading-snug text-gray-700 max-w-2xl mx-auto mb-4">The supreme administrative and spiritual authority overseeing the sacred rites, administration, and pilgrim welfare at Ahobilam.</p>
+
+<!-- CM011 - Spiritual Head Card -->
+<div class="relative bg-temple-ivory rounded-lg p-4 mb-4 shadow-inner-gold admin-card border border-temple-lightGold/50 mt-6">
+<div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-temple-white px-3 py-0.5 border border-temple-lightGold rounded-full shadow-sm flex items-center gap-1"><i class="fas fa-crown text-temple-gold text-xs"></i><span class="font-heading text-xs font-bold text-temple-maroon uppercase tracking-widest">Spiritual Head</span></div>
+<div class="text-center mt-2">
+<h2 class="font-heading text-xl sm:text-2xl font-bold text-temple-dark mb-1">His Holiness Sri Sri Sri Shatagopa Sri Ranganatha Yatheendra Mahadesikan</h2>
+<p class="text-base text-temple-red font-medium">47th Jeeyar (Peethadhipathi)</p>
+<p class="text-gray-600 mt-0 font-body italic">Sri Ahobila Matham</p>
+</div>
+</div>
+
+<!-- CM012 - Ornamental Divider -->
+<div class="ornamental-divider"><i class="fas fa-dharmachakra text-temple-lightGold text-lg animate-[spin_10s_linear_infinite]"></i></div>
+
+<!-- CM013 - Chief Administrative Officer Card -->
+<div class="relative bg-white rounded-lg p-4 mb-4 shadow-sm border-l-4 border-temple-maroon admin-card">
+<div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+<div class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-temple-maroon/5 border-2 border-temple-maroon/20"><i class="fas fa-user-tie text-xl text-temple-maroon"></i></div>
+<div class="text-center sm:text-left">
+<h3 class="font-heading text-xs font-bold text-temple-gold uppercase tracking-widest mb-0.5">Chief Administrative Officer</h3>
+<h2 class="font-heading text-xl font-bold text-temple-dark mb-1">Sri S. Partha Sarathi</h2>
+<p class="text-gray-700 leading-snug text-sm">Overseeing the daily administration, pilgrim amenities, and overall management of the Devasthanam.</p>
+</div>
+</div>
+</div>
+
+<!-- CM014 - Office Address Section -->
+<div class="bg-temple-dark rounded-xl overflow-hidden shadow-xl mt-4">
+<div class="bg-gold-gradient p-1"></div>
+<div class="p-4 sm:p-6 flex flex-col md:flex-row items-center md:items-start justify-between gap-4 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]">
+<div class="flex-1 text-center md:text-left">
+<h3 class="font-heading text-xl text-temple-gold mb-2 flex items-center justify-center md:justify-start gap-2"><i class="fas fa-map-marked-alt"></i> Office of the Devasthanam</h3>
+<div class="space-y-1 text-gray-300 font-medium text-sm sm:text-base">
+<p class="text-white font-semibold">Temple Administrative Office</p>
+<p>Sri Lakshmi Narasimha Swamy Devasthanam</p>
+<p>Lower Ahobilam (Diguva Ahobilam)</p>
+<p>Ahobilam, Nandyal District</p>
+<p class="text-temple-lightGold mt-1">Andhra Pradesh, India</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- CM015 - Bottom Gold Bar -->
+<div class="h-2 w-full bg-gold-gradient"></div>
+
+</div>
+</body>
+</html>

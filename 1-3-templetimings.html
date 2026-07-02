@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahobilam Darshan Timings - Compact</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Roboto Slab for a clean, classical, and highly readable style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Beautiful Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        slab: ['"Roboto Slab"', 'serif'],
+                    },
+                    colors: {
+                        classic: {
+                            maroon: '#6B1F1F',
+                            red: '#8A2525',
+                            gold: '#B8860B',
+                            lightgold: '#DAA520',
+                            sand: '#FDFBF7',
+                            dark: '#1A1A1A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FDFBF7;
+            /* Very subtle, faint background pattern */
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b8860b' fill-opacity='0.02' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hd-text-gradient {
+            background: linear-gradient(135deg, #6B1F1F 0%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hd-gold-gradient {
+            background: linear-gradient(to right, #B8860B, #E6C27A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .compact-border {
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+    </style>
+</head>
+<body class="antialiased text-classic-dark font-slab w-full">
+
+    <div class="w-full pt-4 pb-2 px-2 text-center">
+        <div class="flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-om text-lg text-classic-gold"></i>
+            <h1 class="text-xl md:text-2xl font-bold hd-text-gradient tracking-wide uppercase">
+                Ahobilam Darshan Timings
+            </h1>
+            <i class="fa-solid fa-om text-lg text-classic-gold"></i>
+        </div>
+        <p class="text-xs text-classic-maroon/70 mt-1 font-medium">Sacred Schedule for the Nava Narasimha Kshetras</p>
+    </div>
+
+    <section class="py-2 w-full px-2 md:px-6">
+        <div class="w-full">
+            <div class="flex items-center mb-3">
+                <i class="fa-solid fa-gopuram text-lg text-classic-maroon mr-2"></i>
+                <h2 class="text-lg font-bold text-classic-maroon border-b border-classic-gold/30 pb-0.5 pr-3 inline-block">
+                    Diguva Ahobilam <span class="text-sm font-medium text-classic-gold">(Lower Temple)</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+                <!-- Normal Days -->
+                <div class="compact-border bg-white p-3 rounded flex flex-col justify-center">
+                    <h3 class="text-sm font-bold text-classic-dark mb-2 flex items-center border-b border-gray-100 pb-1">
+                        <i class="fa-regular fa-calendar-days text-classic-gold mr-2"></i> Standard Timings
+                    </h3>
+                    <div class="flex justify-between items-center text-sm mb-1">
+                        <span class="flex items-center text-gray-700"><i class="fa-regular fa-sun text-classic-lightgold w-5"></i> Morning</span>
+                        <span class="font-semibold text-classic-maroon">6:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="flex items-center text-gray-700"><i class="fa-solid fa-moon text-indigo-400 w-5"></i> Evening</span>
+                        <span class="font-semibold text-classic-maroon">3:00 PM - 8:00 PM</span>
+                    </div>
+                </div>
+
+                <!-- Swati Nakshatra -->
+                <div class="compact-border bg-[#FDF8F8] p-3 rounded border-l-2 border-l-classic-red flex flex-col justify-center">
+                    <h3 class="text-sm font-bold text-classic-red mb-2 flex items-center border-b border-red-100 pb-1">
+                        <i class="fa-solid fa-sparkles text-classic-gold mr-2"></i> Swati Nakshatra
+                    </h3>
+                    <div class="flex justify-between items-center text-sm mb-1">
+                        <span class="flex items-center text-gray-700"><i class="fa-regular fa-sun text-classic-lightgold w-5"></i> Morning</span>
+                        <span class="font-bold text-classic-red">5:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="flex items-center text-gray-700"><i class="fa-solid fa-moon text-indigo-400 w-5"></i> Evening</span>
+                        <span class="font-bold text-classic-red">3:00 PM - 8:00 PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-xs text-right text-gray-500 mt-1.5 italic pr-2">
+                * Closed 1:00 PM - 3:00 PM for Naivedyam.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-2 w-full px-2 md:px-6">
+        <div class="w-full">
+            <div class="flex items-center mb-3">
+                <i class="fa-brands fa-fort-awesome text-lg text-classic-maroon mr-2"></i>
+                <h2 class="text-lg font-bold text-classic-maroon border-b border-classic-gold/30 pb-0.5 pr-3 inline-block">
+                    Eguva Ahobilam <span class="text-sm font-medium text-classic-gold">(Upper Cave Temple)</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-3">
+                <!-- Normal Days -->
+                <div class="compact-border bg-white p-3 rounded flex flex-col justify-center">
+                    <h3 class="text-sm font-bold text-classic-dark mb-2 flex items-center border-b border-gray-100 pb-1">
+                        <i class="fa-regular fa-calendar-days text-classic-gold mr-2"></i> Standard Timings
+                    </h3>
+                    <div class="flex justify-between items-center text-sm mb-1">
+                        <span class="flex items-center text-gray-700"><i class="fa-regular fa-sun text-classic-lightgold w-5"></i> Morning</span>
+                        <span class="font-semibold text-classic-maroon">7:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="flex items-center text-gray-700"><i class="fa-solid fa-moon text-indigo-400 w-5"></i> Evening</span>
+                        <span class="font-semibold text-classic-maroon">2:00 PM - 7:00 PM</span>
+                    </div>
+                </div>
+
+                <!-- Swati Nakshatra -->
+                <div class="compact-border bg-[#FDF8F8] p-3 rounded border-l-2 border-l-classic-red flex flex-col justify-center">
+                    <h3 class="text-sm font-bold text-classic-red mb-2 flex items-center border-b border-red-100 pb-1">
+                        <i class="fa-solid fa-sparkles text-classic-gold mr-2"></i> Swati Nakshatra
+                    </h3>
+                    <div class="flex justify-between items-center text-sm mb-1">
+                        <span class="flex items-center text-gray-700"><i class="fa-regular fa-sun text-classic-lightgold w-5"></i> Morning</span>
+                        <span class="font-bold text-classic-red">6:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <span class="flex items-center text-gray-700"><i class="fa-solid fa-moon text-indigo-400 w-5"></i> Evening</span>
+                        <span class="font-bold text-classic-red">2:00 PM - 7:00 PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-xs text-right text-gray-500 mt-1.5 italic pr-2">
+                * Closed 1:00 PM - 2:00 PM.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-2 pb-6 w-full px-2 md:px-6">
+        <div class="w-full bg-classic-dark rounded-md p-3 shadow-md border border-classic-gold/20">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-3 pb-2 border-b border-gray-700">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-tree text-classic-lightgold mr-2"></i>
+                    <h2 class="text-base font-bold hd-gold-gradient">Nava Narasimha Forest Shrines</h2>
+                </div>
+                <div class="mt-2 sm:mt-0 bg-black/40 px-3 py-1 rounded border border-gray-600 flex items-center">
+                    <i class="fa-regular fa-clock text-classic-lightgold mr-2 text-xs"></i>
+                    <span class="text-sm font-bold text-white tracking-wide">9:00 AM - 5:00 PM</span>
+                </div>
+            </div>
+
+            <!-- 8 Temples Grid - Expanded horizontally to save height -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2">
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Jwala</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Malola</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Kroda</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Karanja</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Bhargava</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Yogananda</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Chatravata</span>
+                </div>
+                <div class="flex items-center text-gray-300 bg-white/5 px-2 py-1.5 rounded">
+                    <i class="fa-solid fa-vihara text-xs text-classic-gold mr-1.5 opacity-80"></i>
+                    <span class="text-xs font-medium whitespace-nowrap">Pavana</span>
+                </div>
+            </div>
+            
+            <p class="text-[10px] text-gray-400 mt-2 text-center italic">
+                * Forest shrines close before sunset. Early start recommended.
+            </p>
+
+        </div>
+    </section>
+
+</body>
+</html>

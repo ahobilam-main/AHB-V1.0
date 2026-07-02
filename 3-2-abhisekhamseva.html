@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<base target="_top">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishekam Sevas</title>
+<!-- CM001 - External Resources -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* CM002 - Global Styles */
+body { font-family: 'Roboto Slab', serif; padding: 20px; margin: 0; background-image: url('https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(8).JPG'); background-size: cover; background-position: center; background-attachment: fixed; color: #fff; }
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: -1; }
+
+/* CM003 - Header Styles */
+.header-section { text-align: center; margin-bottom: 40px; padding-top: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.8); }
+.header-title { color: #f1c40f; font-size: 36px; margin: 0; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; }
+
+/* CM004 - Seva Cards Styles */
+.sevas-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+.seva-card { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 25px; border-radius: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); transition: transform 0.3s ease, background 0.3s ease; }
+.seva-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.15); border-color: #f1c40f; }
+.seva-name { color: #f1c40f; font-size: 22px; font-weight: 700; margin: 0 0 15px 0; display: flex; align-items: center; gap: 10px; }
+.seva-info { margin: 10px 0; color: #e0e0e0; font-size: 16px; display: flex; align-items: flex-start; gap: 10px; }
+.seva-icon { color: #e74c3c; min-width: 20px; padding-top: 3px; }
+.seva-label { font-weight: 700; color: #fff; margin-right: 5px; }
+</style>
+</head>
+<body>
+
+<!-- CM005 - Background Overlay -->
+<div class="overlay"></div>
+
+<!-- CM006 - Header Section -->
+<div class="header-section">
+<h1 class="header-title"><i class="fa-solid fa-om"></i> Abhishekam Sevas</h1>
+</div>
+
+<!-- CM007 - Sevas Container Section -->
+<div class="sevas-container">
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-moon"></i> 1. Monthly Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Every Amavasya</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-circle"></i> 2. Monthly Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Every Pournami (Full Moon)</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-leaf"></i> 3. Monthly Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Every Ekadashi (Twice every month)</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-star"></i> 4. Swathi Nakshatra Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Every Swathi Nakshatra</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-dharmachakra"></i> 5. Moolavar Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Every Swathi Nakshatra</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-hands-praying"></i> 6. Nava Narasimha Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Every Swathi Nakshatra</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> All Nine Narasimha Temples</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-gopuram"></i> 7. Dasara Navaratri Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> During 10 Days of Dasara Navaratri</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-fire-flame-curved"></i> 8. Narasimha Jayanthi Abhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> During Narasimha Jayanthi Festival (May)</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+<div class="seva-card">
+<h2 class="seva-name"><i class="fa-solid fa-bell"></i> 9. Jyeshtabhishekam</h2>
+<p class="seva-info"><i class="fa-regular fa-calendar-days seva-icon"></i> <span><span class="seva-label">Occasion / Date:</span> Annual Festival (Jyeshta Month)</span></p>
+<p class="seva-info"><i class="fa-solid fa-location-dot seva-icon"></i> <span><span class="seva-label">Location:</span> Upper & Lower Ahobilam</span></p>
+</div>
+</div>
+
+<script>
+
+// CM008 - Utilities

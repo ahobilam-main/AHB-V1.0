@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temple Guidelines</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+
+/* CM001 - Global Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Sitka Text', 'Sitka Small', 'Sitka Banner', Georgia, serif; font-weight: 600; background: linear-gradient(135deg, #ffffff 0%, #fff0d4 100%); color: #222; line-height: 1.4; display: flex; justify-content: center; padding: 15px; min-height: 100vh; }
+
+/* CM002 - Main Container */
+.main-container { width: 100%; background-color: transparent; display: flex; flex-direction: column; gap: 15px; }
+
+/* CM003 - Header Banner */
+.header-banner { background-color: #990000; color: #ffcc00; text-align: center; padding: 12px; font-size: 1.5rem; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 6px rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: center; gap: 10px; }
+
+/* CM004 - Grid Layout */
+.rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; width: 100%; }
+
+/* CM005 - Rule Cards */
+.rule-card { background: #ffffff; border-radius: 8px; padding: 15px; box-shadow: 0 4px 8px rgba(0,0,0,0.15); border-top: 5px solid #990000; display: flex; flex-direction: column; }
+.rule-card h2 { color: #990000; font-size: 1.25rem; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #ffcc00; display: flex; align-items: center; gap: 8px; }
+
+/* CM006 - Lists and Text */
+ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+li { font-size: 1rem; display: flex; align-items: flex-start; gap: 10px; }
+li i { color: #ff5500; font-size: 1.1rem; margin-top: 3px; }
+strong { color: #cc0000; font-weight: 800; }
+
+/* CM007 - Dress Code Sections */
+.dress-code-split { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 5px; }
+.dress-section { background: #fff8e1; padding: 12px; border-radius: 6px; border: 1px solid #ffcc00; }
+.dress-section h3 { color: #d84315; font-size: 1.1rem; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+
+<!-- CM008 - Main Container Start -->
+<div class="main-container">
+
+<!-- CM009 - Header Banner -->
+<div class="header-banner">
+<i class="fas fa-om"></i> Strict Temple Guidelines
+</div>
+
+<!-- CM010 - Rules Grid Start -->
+<div class="rules-grid">
+
+<!-- CM011 - Electronics Rule Card -->
+<div class="rule-card">
+<h2><i class="fas fa-mobile-slash"></i> Electronics Ban</h2>
+<ul>
+<li><i class="fas fa-circle-exclamation"></i> <span><strong>NO CELL PHONES ALLOWED.</strong> Devices are completely banned beyond the main entrance.</span></li>
+<li><i class="fas fa-camera"></i> <span>Photography and videography are strictly prohibited inside the premises.</span></li>
+<li><i class="fas fa-ban"></i> <span>Violators will face immediate device confiscation and disciplinary action.</span></li>
+</ul>
+</div>
+
+<!-- CM012 - Dress Code Rule Card -->
+<div class="rule-card">
+<h2><i class="fas fa-tshirt"></i> Mandatory Dress Code</h2>
+<div class="dress-code-split">
+<div class="dress-section">
+<h3><i class="fas fa-male"></i> Men</h3>
+<ul>
+<li><i class="fas fa-check"></i> Dhoti, Pancha, Kurta, or Formal Wear.</li>
+<li><i class="fas fa-times" style="color:#cc0000;"></i> Shorts, sleeveless shirts, and torn clothing banned.</li>
+</ul>
+</div>
+<div class="dress-section">
+<h3><i class="fas fa-female"></i> Women</h3>
+<ul>
+<li><i class="fas fa-check"></i> Saree, Half-Saree, or Chudidar with Dupatta.</li>
+<li><i class="fas fa-times" style="color:#cc0000;"></i> Western wear, short tops, and tight clothing banned.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- CM013 - General Conduct Rule Card -->
+<div class="rule-card">
+<h2><i class="fas fa-hands-praying"></i> General Conduct</h2>
+<ul>
+<li><i class="fas fa-shoe-prints"></i> <span>All footwear must be completely removed outside the temple boundaries.</span></li>
+<li><i class="fas fa-volume-xmark"></i> <span>Maintain absolute divine silence. Chanting must be done internally.</span></li>
+<li><i class="fas fa-trash-can-arrow-up"></i> <span>Keep the premises clean. Plastic covers and bags are strictly banned.</span></li>
+<li><i class="fas fa-users-line"></i> <span>Maintain queue discipline peacefully. Pushing is not tolerated.</span></li>
+</ul>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>
