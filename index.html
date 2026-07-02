@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SLNSD-Ahobilam (Official Website)</title>
+<title>SLNSD-Ahobilam</title>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1e3a8a">
@@ -28,7 +28,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@600;800;900&family=Roboto+Slab:wght@300;400;600;700;900&family=Sree+Krushnadevaraya&family=Tiro+Kannada&family=Tiro+Tamil&family=Yatra+One&display=swap" rel="stylesheet">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Tone.js/14.8.49/Tone.js"></script>
 
 <style>
 
@@ -382,10 +381,10 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <section class="w-full bg-[#f9e4b7] p-0 flex flex-col justify-center items-center relative overflow-hidden z-10">
 <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.02)_0%,transparent_75%)] pointer-events-none"></div>
 <div class="w-full flex flex-col md:flex-row items-stretch justify-center gap-0 z-10 relative overflow-hidden p-0 max-w-[1920px] mx-auto">
-<div class="w-full md:w-1/3 flex-1 min-h-[230px] md:h-[260px] shrink-0 relative overflow-hidden group border-b md:border-b-0 md:border-r border-[#D4AF37]/30 order-1 md:order-1">
+<div class="w-full md:w-1/3 flex-none h-[420px] md:h-[260px] relative overflow-hidden group border-b md:border-b-0 md:border-r border-[#D4AF37]/30 order-1 md:order-1">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB30-1-MAIN-PHOTO.png" alt="Sri Ahobila Peetadhipati" class="w-full h-full object-cover object-top m-0 p-0 block transition-transform duration-1000 ease-out group-hover:scale-105">
 </div>
-<div class="w-full md:w-1/3 flex-1 min-h-[230px] md:h-[260px] shrink-0 flex flex-col items-center justify-center p-3 relative mandala-bg bg-white border-b md:border-b-0 border-[#D4AF37]/30 order-3 md:order-2">
+<div class="w-full md:w-1/3 flex-none h-[250px] md:h-[260px] flex flex-col items-center justify-center p-3 relative mandala-bg bg-white border-b md:border-b-0 border-[#D4AF37]/30 order-2 md:order-2">
 <div class="w-full flex flex-col items-center justify-center space-y-1">
 <div class="inline-block px-4 py-1 mb-2 bg-[#fffdf7] border border-[#c9a227] rounded-md shadow-sm text-[#7a0000] text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em]" style="font-family:'Roboto Slab', serif;">Sri Ahobilam Kshetram</div>
 <div class="relative w-full max-w-[245px] h-[98px] flex items-center justify-center">
@@ -397,11 +396,12 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <span id="play-icon"><i class="fa-solid fa-play mr-0.5"></i> Play Mantra</span>
 <span id="sound-bars" class="hidden flex items-end gap-[1.5px] h-2"><span class="w-[1.5px] bg-black animate-[bounce_0.8s_infinite_0.1s]"></span><span class="w-[1.5px] bg-black animate-[bounce_0.8s_infinite_0.3s]"></span><span class="w-[1.5px] bg-black animate-[bounce_0.8s_infinite_0.2s]"></span></span>
 </button>
-<div class="text-[9px] md:text-[10px] font-bold text-[#850404] tracking-widest traditional-font text-center mt-1">"OM NAMO NARAYANAYA NAMAHA"<span id="playing-status" class="block text-[7.5px] text-[#850404]/80 font-semibold italic mt-0.5 uppercase tracking-normal">Continuous Drone Synthesizer Ready</span></div>
+<audio id="mantra-audio" src="https://ahobilam-main.github.io/AHB-V1.0/mantra.mp3" preload="auto"></audio>
+<div class="text-[9px] md:text-[10px] font-bold text-[#850404] tracking-widest traditional-font text-center mt-1">"OM NAMO NARASIMHAYA NAMAHA"<span id="playing-status" class="block text-[7.5px] text-[#850404]/80 font-semibold italic mt-0.5 uppercase tracking-normal">Mantra Ready</span></div>
 </div>
 </div>
 </div>
-<div class="w-full md:w-1/3 flex-1 min-h-[230px] md:h-[260px] shrink-0 relative bg-transparent p-0 overflow-hidden order-2 md:order-3">
+<div class="w-full md:w-1/3 flex-none h-[250px] md:h-[260px] relative bg-transparent p-0 overflow-hidden order-3 md:order-3">
 <div class="w-full h-full relative overflow-hidden shadow-inner">
 <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 pointer-events-none"></div>
 <div class="w-full h-full m-0 p-0 relative overflow-hidden" id="utsavam-slider">
@@ -430,7 +430,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </section>
 
 <!-- CM026 - Scrolling Announcement Bar -->
-<div class="marquee-container m-0 border-none">
+<div class="marquee-container m-0 border-y-4 border-double border-[#d4af37]">
 <div class="marquee-text">ॐ श्री लक्ष्मी नृसिंह परब्रह्मणे नमः • 📅 Next Swati Nakshatra: 22 July 2026 | 📢 Arjitha Sevas will not be performed at Lower Ahobilam only. • </div>
 </div>
 
@@ -534,7 +534,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 <div class="seva-list">
 <div class="seva-card">
-<h3 class="seva-name">Suprabhatam </h3>
+<h3 class="seva-name">Suprabhatam & Thomala</h3>
 <div class="seva-time"><span class="seva-label">Morning:</span><span class="seva-val">06:00 AM – 07:30 AM</span></div>
 </div>
 <div class="seva-card">
@@ -558,12 +558,12 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 
 <!-- CM028 - CAO Message Section -->
-<div class="cao-section-wrapper">
+<div class="cao-section-wrapper border-y-4 border-double border-[#d4af37]">
 <div class="cao-section">
 <div class="cao-img-box">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB43-CAO.png" alt="CAO Photo" class="cao-img">
 <div class="cao-name-wrap">
-<h3 class="cao-name">Sri S. Partha Sarathy</h3>
+<h3 class="cao-name">Sri CA S. Partha Sarathy</h3>
 <span class="cao-role">Chief Administrative Officer / GPA</span>
 <span class="cao-loc">Ahobilam</span>
 </div>
@@ -639,7 +639,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <span class="text-[11.5px] md:text-[12.5px] font-black text-[#850404] uppercase tracking-wider border-b border-[#a87c1e]/30 pb-0.5 w-full"><i class="fa-solid fa-diamond text-[7px] mr-1 text-[#850404]"></i> Pilgrim Guide</span>
 <ul class="flex flex-col gap-1 text-[11px] md:text-[12px] text-[#1a0f00]/95 font-medium">
 <li><a href="1-3-templetimings.html" class="dynamic-link hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-clock text-[7px] text-[#1a0f00]/40"></i> Temple Timings</a></li>
-<li><a href="7-5-photogallery.html" class="dynamic-link hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-image text-[7px] text-[#1a0f00]/40"></i> Photo Gallery</a></li>
+<li><a href="8-5-photogellary.html" class="dynamic-link hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-image text-[7px] text-[#1a0f00]/40"></i> Photo Gallery</a></li>
 </ul>
 </div>
 <div class="flex flex-col items-start gap-2">
@@ -682,9 +682,8 @@ const handleMultilingualText = () => { const langs = [ { lang:"telugu", sub:"శ
 // CM037 - Dropdown
 document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll('.menu-toggle').forEach(el => { el.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); const submenu = el.nextElementSibling; const isOpen = !submenu.classList.contains('hidden'); document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); if (!isOpen) { submenu.classList.remove('hidden'); el.classList.add('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white'); } }); }); document.addEventListener('click', () => { document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); }); });
 
-// CM038 - Audio Synth
-document.addEventListener("DOMContentLoaded", () => { const playBtn = document.getElementById('mantra-play-btn'); const playIcon = document.getElementById('play-icon'); const soundBars = document.getElementById('sound-bars'); const statusText = document.getElementById('playing-status'); const namamGlow = document.getElementById('namam-glow'); let audioInitialized = false; let isPlaying = false; let lowDroneSynth, midDroneSynth, bellSynth, melodySynth, mainTransportLoop; const createPolySynth = () => { const vibrato = new Tone.Vibrato(3, 0.15).toDestination(); return new Tone.PolySynth(Tone.Synth, { oscillator: { type: "triangle" }, envelope: { attack: 1.8, decay: 0.8, sustain: 0.9, release: 2.0 } }).connect(vibrato); }; const initAudio = () => { const lowpass = new Tone.Filter({ frequency: 200, type: "lowpass", Q: 1 }).toDestination(); lowDroneSynth = new Tone.PolySynth(Tone.Synth, { oscillator: { type: "sawtooth" }, envelope: { attack: 2.0, decay: 1, sustain: 1, release: 2.5 } }).connect(lowpass); lowDroneSynth.volume.value = -12; midDroneSynth = createPolySynth(); midDroneSynth.volume.value = -18; const bellDelay = new Tone.FeedbackDelay("4n", 0.6).toDestination(); bellSynth = new Tone.MetalSynth({ frequency: 160, envelope: { attack: 0.005, decay: 1.8, release: 2.0 }, harmonicity: 5.1, resonance: 3000, modulationIndex: 30 }).connect(bellDelay); bellSynth.volume.value = -10; const melodyDelay = new Tone.FeedbackDelay("8n.", 0.45).toDestination(); melodySynth = new Tone.Synth({ oscillator: { type: "sine" }, envelope: { attack: 0.5, decay: 0.4, sustain: 0.8, release: 1.5 } }).connect(melodyDelay); melodySynth.volume.value = -20; audioInitialized = true; }; const startSpiritualSoundscape = () => { Tone.start(); lowDroneSynth.triggerAttack(["C2", "G2"]); midDroneSynth.triggerAttack(["E3", "C4"]); const ragaNotes = ["C3", "E3", "G3", "A3", "C4", "E4", "G4", "A4"]; mainTransportLoop = new Tone.Loop((time) => { if (Tone.Math.random() > 0.5) bellSynth.triggerAttackRelease(time); melodySynth.triggerAttackRelease(ragaNotes[Math.floor(Math.random() * ragaNotes.length)], "4n", time); }, "4n"); mainTransportLoop.start(0); Tone.Transport.start(); }; const stopSpiritualSoundscape = () => { if (lowDroneSynth) lowDroneSynth.triggerRelease(); if (midDroneSynth) midDroneSynth.triggerRelease(); if (mainTransportLoop) { mainTransportLoop.stop(); mainTransportLoop.dispose(); } Tone.Transport.stop(); }; if(playBtn){ playBtn.addEventListener('click', async () => { if (!audioInitialized) initAudio(); if (!isPlaying) { isPlaying = true; playIcon.innerHTML = `<i class="fa-solid fa-stop mr-0.5"></i> Stop Chant`; soundBars.classList.remove('hidden'); statusText.textContent = "Chanting & Deep Drone Synthesizer Active"; statusText.classList.add('text-[#850404]'); namamGlow.classList.add('active-playing'); startSpiritualSoundscape(); } else { isPlaying = false; playIcon.innerHTML = `<i class="fa-solid fa-play mr-0.5"></i> Play Mantra`; soundBars.classList.add('hidden'); statusText.textContent = "Temple Drone Synthesizer Ready"; statusText.classList.remove('text-[#850404]'); namamGlow.classList.remove('active-playing'); stopSpiritualSoundscape(); } }); } });
-
+// CM038 - Audio MP3 Mantra
+document.addEventListener("DOMContentLoaded", () => { const playBtn=document.getElementById('mantra-play-btn'); const playIcon=document.getElementById('play-icon'); const soundBars=document.getElementById('sound-bars'); const statusText=document.getElementById('playing-status'); const namamGlow=document.getElementById('namam-glow'); const audio=document.getElementById('mantra-audio'); let isPlaying=false; if(playBtn && audio){ playBtn.addEventListener('click', async () => { if(!isPlaying){ try{ audio.currentTime=0; await audio.play(); isPlaying=true; playIcon.innerHTML='<i class="fa-solid fa-stop mr-0.5"></i> Stop Mantra'; soundBars.classList.remove('hidden'); statusText.textContent='Mantra Playing'; statusText.classList.add('text-[#850404]'); if(namamGlow){namamGlow.classList.add('active-playing');} }catch(error){ statusText.textContent='Audio file not found / browser blocked'; console.log(error); } }else{ audio.pause(); audio.currentTime=0; isPlaying=false; playIcon.innerHTML='<i class="fa-solid fa-play mr-0.5"></i> Play Mantra'; soundBars.classList.add('hidden'); statusText.textContent='Mantra Ready'; statusText.classList.remove('text-[#850404]'); if(namamGlow){namamGlow.classList.remove('active-playing');} } }); audio.addEventListener('ended', () => { isPlaying=false; playIcon.innerHTML='<i class="fa-solid fa-play mr-0.5"></i> Play Mantra'; soundBars.classList.add('hidden'); statusText.textContent='Mantra Ready'; statusText.classList.remove('text-[#850404]'); if(namamGlow){namamGlow.classList.remove('active-playing');} }); } });
 // CM039 - Seva Notice Timeline
 const computeSevaTimeline = () => { const start = new Date('2026-06-28'); const today = new Date('2026-06-29'); const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1; const banner = document.getElementById('countdown-banner'); if(banner) banner.innerText = `Day ${diff} of 40 Days Seva Period`; };
 
