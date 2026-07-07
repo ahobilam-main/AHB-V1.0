@@ -150,7 +150,6 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 @keyframes slideUpFade { 0% { opacity:0; transform:translateY(15px) scale(0.95); filter:blur(4px); } 100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); } }
 .char-slide { display:inline-block; opacity:0; animation:slideUpFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; white-space:pre-wrap; }
 #sloka-wrapper { transition:opacity 0.5s ease-in-out; }
-
 </style>
 </head>
 <body>
@@ -401,7 +400,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </section>
 
 <div class="marquee-container m-0 border-none">
-<div class="marquee-text" id="dynamic-marquee-text">Fetching latest updates...</div>
+<div class="marquee-text" id="dynamic-marquee-text">Fetching latest updates from Google Sheets...</div>
 </div>
 
 <div class="container-grid">
@@ -559,7 +558,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 <div id="dynamic-page-container" class="w-full min-h-[50vh]" style="display:none;"></div>
 
-<footer class="w-full bg-[#dfa857] border-t-4 border-[#a87c1e] py-6 px-4 md:px-8 text-[#1a0f00] relative z-20 font-['Roboto_Slab'] overflow-visible mt-auto">
+<footer id="main-footer" class="w-full bg-[#dfa857] border-t-4 border-[#a87c1e] py-6 px-4 md:px-8 text-[#1a0f00] relative z-20 font-['Roboto_Slab'] overflow-visible mt-auto">
 <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 border-b border-[#a87c1e]/20 pb-6 mb-6">
 <div class="flex flex-col items-start gap-3">
 <div class="w-[90px] h-[90px] rounded-lg border-2 border-[#a87c1e] overflow-hidden shadow-xl bg-white">
@@ -619,6 +618,66 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 </div>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'ahobilam-temple-web';
+let firebaseConfig = {};
+try {
+    firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+} catch(e) {
+    console.warn("Firebase config missing or invalid in environment");
+}
+
+if (Object.keys(firebaseConfig).length > 0) {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    async function recordVisitorAnalytics() {
+        try {
+            let user;
+            // Always authenticate FIRST per mandatory rules
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                const credential = await signInWithCustomToken(auth, __initial_auth_token);
+                user = credential.user;
+            } else {
+                const credential = await signInAnonymously(auth);
+                user = credential.user;
+            }
+            
+            if (!user) return; // Guard operation
+            
+            const userId = user.uid;
+            const visitId = 'visit_' + Date.now();
+            
+            // STRICT PATH RULE implementation: artifacts/{appId}/users/{userId}/{collectionName}
+            const visitDocRef = doc(db, 'artifacts', appId, 'users', userId, 'visits', visitId);
+            
+            const visitData = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                screenResolution: `${window.innerWidth}x${window.innerHeight}`,
+                platform: navigator.platform || 'Unknown',
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            };
+            
+            await setDoc(visitDocRef, visitData);
+            console.log("Securely recorded visitor analytics.");
+            
+        } catch (error) {
+            console.error("Failed to securely record visitor data:", error);
+        }
+    }
+    
+    // Execute tracker on load
+    recordVisitorAnalytics();
+}
+</script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => { const setupSlideshow = () => { const slides = document.querySelectorAll('.slider-img'); const indicatorContainer = document.getElementById('slide-indicators'); const captionEl = document.getElementById('slide-caption'); let currentSlide = 0; slides.forEach((_, i) => { const dot = document.createElement('div'); dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? 'bg-amber-400 w-3.5' : 'bg-white/20'}`; dot.id = `indicator-${i}`; dot.addEventListener('click', () => goToSlide(i)); indicatorContainer.appendChild(dot); }); const goToSlide = (n) => { slides[currentSlide].classList.remove('active'); currentSlide = n; slides[currentSlide].classList.add('active'); const caption = slides[currentSlide].getAttribute('data-caption'); if (caption) { captionEl.style.opacity = 0; setTimeout(() => { captionEl.textContent = caption; captionEl.style.opacity = 1; }, 250); } document.querySelectorAll('#slide-indicators div').forEach((dot, index) => { dot.className = index === currentSlide ? 'w-3.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer bg-amber-400' : 'w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer bg-white/20'; }); }; setInterval(() => goToSlide((currentSlide + 1) % slides.length), 4500); }; setupSlideshow(); });
 
@@ -658,7 +717,6 @@ const fetchMarqueeText = async () => {
         }
     } catch (error) {
         console.error("Failed to load marquee text:", error);
-        // FALLBACK: If fetch fails, show this default text so the UI never breaks
         const marqueeContainer = document.getElementById("dynamic-marquee-text");
         if (marqueeContainer) marqueeContainer.innerText = " ॐ श्री लक्ष्मी नृसिंह परब्रह्मणे नमः • 📅 Next Swati Nakshatra: 22 July 2026 | 📢 Arjitha Sevas will not be performed at Lower Ahobilam only. •";
     }
@@ -684,17 +742,18 @@ const fetchLiveDarshanStatus = async () => {
             }
             
             if (status2 && status2Wrapper) {
-                if (val2 !== null && val2 !== undefined && String(val2).trim() !== "") {
+                if (val2 && String(val2).trim() !== "") {
                     status2.innerText = String(val2).trim();
                     status2Wrapper.style.display = "flex";
                 } else {
                     status2Wrapper.style.display = "none";
                 }
             }
+        } else {
+            throw new Error("Server returned failed status.");
         }
     } catch (error) {
         console.error("Failed to load live darshan status:", error);
-        // FALLBACK: If fetch fails, show the default sample text
         const status1 = document.getElementById("live-status-1");
         const status2 = document.getElementById("live-status-2");
         const status2Wrapper = document.getElementById("live-status-2-wrapper");
@@ -774,7 +833,57 @@ document.addEventListener("DOMContentLoaded", () => { renderSloka(0); setInterva
 
 document.addEventListener("DOMContentLoaded", () => { let deferredPrompt; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; setTimeout(() => { const modal = document.getElementById('app-install-modal'); if (modal) modal.classList.remove('hidden'); }, 3000); }); const closeBtn = document.getElementById('close-install-btn'); if (closeBtn) closeBtn.addEventListener('click', () => { document.getElementById('app-install-modal').classList.add('hidden'); }); const installBtn = document.getElementById('confirm-install-btn'); if (installBtn) installBtn.addEventListener('click', async () => { document.getElementById('app-install-modal').classList.add('hidden'); if (deferredPrompt) { deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; } }); });
 
-document.addEventListener("DOMContentLoaded", () => { const homeBtn = document.getElementById('home-link-btn'); const homeContent = document.getElementById('home-main-content'); const dynamicContainer = document.getElementById('dynamic-page-container'); const loadDynamicPage = (url) => { dynamicContainer.innerHTML = `<div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white min-h-[80vh] flex flex-col"><iframe src="${url}" class="w-full flex-grow min-h-[80vh] border-none" id="content-iframe" onload="window.scrollTo(0,0);"></iframe></div>`; homeContent.style.display = 'none'; dynamicContainer.style.display = 'block'; window.scrollTo(0, 0); }; if(homeBtn) { homeBtn.addEventListener('click', (e) => { e.preventDefault(); document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); homeContent.style.display = 'block'; dynamicContainer.style.display = 'none'; dynamicContainer.innerHTML = ''; window.scrollTo(0, 0); }); } document.querySelectorAll('.dynamic-link').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); if(link.closest('.submenu')) link.classList.add('bg-[#850404]', 'text-white'); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); const parentMenu = link.closest('.group')?.querySelector('.menu-toggle'); if (parentMenu) parentMenu.classList.add('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white'); document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); loadDynamicPage(link.getAttribute('href')); }); }); });
+document.addEventListener("DOMContentLoaded", () => { 
+    const homeBtn = document.getElementById('home-link-btn'); 
+    const homeContent = document.getElementById('home-main-content'); 
+    const dynamicContainer = document.getElementById('dynamic-page-container'); 
+    const mainFooter = document.getElementById('main-footer');
+    
+    const loadDynamicPage = (url) => { 
+        dynamicContainer.innerHTML = `<div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white min-h-[80vh] flex flex-col"><iframe src="${url}" class="w-full flex-grow min-h-[80vh] border-none" id="content-iframe" onload="window.scrollTo(0,0);"></iframe></div>`; 
+        homeContent.style.display = 'none'; 
+        dynamicContainer.style.display = 'block'; 
+        
+        // Hide the footer as requested when sub pages are opened
+        if(mainFooter) mainFooter.style.display = 'none';
+        
+        window.scrollTo(0, 0); 
+    }; 
+    
+    if(homeBtn) { 
+        homeBtn.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); 
+            document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); 
+            
+            homeContent.style.display = 'block'; 
+            dynamicContainer.style.display = 'none'; 
+            dynamicContainer.innerHTML = ''; 
+            
+            // Show the footer again when back to home
+            if(mainFooter) mainFooter.style.display = '';
+            
+            window.scrollTo(0, 0); 
+        }); 
+    } 
+    
+    document.querySelectorAll('.dynamic-link').forEach(link => { 
+        link.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); 
+            if(link.closest('.submenu')) link.classList.add('bg-[#850404]', 'text-white'); 
+            
+            document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); 
+            
+            const parentMenu = link.closest('.group')?.querySelector('.menu-toggle'); 
+            if (parentMenu) parentMenu.classList.add('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white'); 
+            
+            document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); 
+            
+            loadDynamicPage(link.getAttribute('href')); 
+        }); 
+    }); 
+});
 </script>
 </body>
 </html>
