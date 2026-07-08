@@ -7,7 +7,7 @@
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SLNSD-Ahobilam</title>
+<title>SLNSD-Ahobilam (Official Website)</title>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#1e3a8a">
@@ -28,63 +28,50 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@600;800;900&family=Roboto+Slab:wght@300;400;600;700;900&family=Sree+Krushnadevaraya&family=Tiro+Kannada&family=Tiro+Tamil&family=Yatra+One&display=swap" rel="stylesheet">
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Tone.js/14.8.49/Tone.js"></script>
 
 <style>
-
-
-/* CM001 - Global Reset and Body */
 body { margin:0; padding:0; font-family:'Roboto Slab',serif; background-color:#fdfbf7; color:#2d2219; line-height:1.3; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
-
-/* CM002 - Typography and Title Gradients */
 h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible !important; }
 .traditional-font { font-family:'Cinzel',serif; }
 .hd-sub-title { color:#FFD700; text-shadow:2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(255,215,0,0.3); letter-spacing:0.5px; overflow:visible !important; padding-bottom:0px; }
 .stylish-title-gradient { color:#FFD700; text-shadow:3px 3px 6px rgba(0,0,0,0.9), 0px 5px 12px rgba(0,0,0,0.6); letter-spacing:1px; overflow:visible !important; padding-bottom:0px; padding-top:0px; }
 
-/* CM003 - Animations and Special Effects */
 @keyframes logo-spin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
 .animate-logo-spin { animation:logo-spin 12s linear infinite; }
 @keyframes marquee { 0% { transform:translate(0, 0); } 100% { transform:translate(-100%, 0); } }
 @keyframes divinePulse { 0% { transform:scale(1); opacity:0.25; filter:blur(12px); } 50% { transform:scale(1.15); opacity:0.6; filter:blur(18px); } 100% { transform:scale(1); opacity:0.25; filter:blur(12px); } }
 
-/* CM004 - Header Styling */
 #main-header { transition:all 0.3s ease-in-out; background-color:transparent; background-image:linear-gradient(rgba(10, 0, 2, 0.3), rgba(10, 0, 2, 0.6)), url('https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB20-bg-topside-templename-bgpic.png.jpeg'); background-size:cover; background-position:center; background-repeat:no-repeat; }
 
-/* CM005 - Text Splitting Layouts */
 #temple-text-wrapper { perspective:1200px; transform-style:preserve-3d; overflow:visible !important; }
 .letter { display:inline-block; transition:transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-in-out, filter 0.5s ease-in-out; transform-origin:center; white-space:pre; filter:blur(0px); }
 .scrollbar-hide::-webkit-scrollbar { display:none; }
 .scrollbar-hide { -ms-overflow-style:none; scrollbar-width:none; }
 
-/* CM006 - Marquee Container and Flow */
 .marquee-container { width:100%; overflow:hidden; white-space:nowrap; background:linear-gradient(90deg, #d4af37 0%, #f1c40f 50%, #d4af37 100%); position:relative; border-top:4px double #d4af37; border-bottom:4px double #d4af37; box-shadow:0 4px 15px rgba(0,0,0,0.2); }
 .marquee-text { display:inline-block; padding-left:100%; animation:marquee 55s linear infinite; color:#1a0f00; font-weight:bold; font-size:0.8rem; padding-top:0.25rem; padding-bottom:0.25rem; letter-spacing:0.08em; text-shadow:1px 1px 2px rgba(255,255,255,0.5); }
 .marquee-container:hover .marquee-text { animation-play-state:paused; }
 
-/* CM007 - Utsavam Slideshow */
 .slider-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.03); transition:transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 1.2s ease-in-out; z-index:0; }
 .slider-img.active { opacity:1; transform:scale(1); z-index:2; }
 
-/* CM008 - Divine Glow and Backgrounds */
 .divine-glow { animation:divinePulse 3s ease-in-out infinite; }
 .divine-glow.active-playing { animation:divinePulse 1.2s ease-in-out infinite !important; background:radial-gradient(circle, rgba(223,168,87,0.7) 0%, rgba(197,133,46,0.3) 55%, transparent 100%) !important; }
 .mandala-bg { background-image:radial-gradient(circle, rgba(223,168,87,0.18) 0%, rgba(60,0,5,0.05) 70%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0l3 12 9-9-3 12 12-3-9 9 12 3-12 3 9 9-12-3 3 12-9-9-3 12-3-12-9 9 3-12-12 3 9-9-12-3 12-3-9-9 12 3-3-12 9 9z' fill='%23a87c1e' fill-opacity='0.15'/%3E%3C/svg%3E"); background-size:auto; }
 
-/* CM009 - Grid Layout Wrapper */
 .container-grid { display:grid; grid-template-columns:1fr; gap:10px; max-width:1200px; margin:0 auto; padding:10px; box-sizing:border-box; align-items:stretch; }
 @media (min-width:1024px) { .container-grid { grid-template-columns:1fr 1fr 1fr 1fr; } }
 
-/* CM010 - Live Updates Block */
 .live-column { background:linear-gradient(to bottom,#ffffff,#f0fdf4); border:1px solid #e2e8f0; border-top:4px solid #10b981; border-radius:8px; padding:12px; box-shadow:0 6px 10px -3px rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px; box-sizing:border-box; transition:all 0.3s ease; height:100%; }
 .live-column:hover { transform:translateY(-2px); box-shadow:0 8px 15px -3px rgba(0,0,0,0.15); }
 .live-banner { background-color:#ecfdf5; border-left:4px solid #10b981; padding:8px; border-radius:6px; box-shadow:0 2px 4px rgba(0,0,0,0.05); }
 .live-label { display:flex; align-items:center; gap:6px; font-weight:700; color:#065f46; font-size:0.85rem; margin-bottom:3px; }
 .live-pulse { width:8px; height:8px; background-color:#10b981; border-radius:50%; display:inline-block; animation:pulse 1.5s infinite; }
 @keyframes pulse { 0% { transform:scale(0.95); box-shadow:0 0 0 0 rgba(16,185,129,0.7); } 70% { transform:scale(1); box-shadow:0 0 0 4px rgba(16,185,129,0); } 100% { transform:scale(0.95); box-shadow:0 0 0 0 rgba(16,185,129,0); } }
-.live-text { font-size:0.9rem; color:#047857; font-weight:700; margin:0; text-transform:uppercase; letter-spacing:0.5px; text-shadow:0 1px 2px rgba(16,185,129,0.2); }
+.live-text { font-size:0.75rem; color:#047857; font-weight:700; margin:0; text-transform:uppercase; letter-spacing:0.5px; text-shadow:0 1px 2px rgba(16,185,129,0.2); }
 
-/* CM011 - Seva Warning Panel Styles */
-.alert-card { background-color:#fffbeb; border:1px solid #fef3c7; border-left:4px solid #d97706; padding:8px; border-radius:6px; box-shadow:0 2px 3px rgba(0,0,0,0.02); display:flex; flex-direction:column; gap:4px; flex-grow:1; justify-content:flex-start; }
+.alert-card { background-color:#fffbeb; border:1px solid #fef3c7; border-left:4px solid #d97706; padding:8px; border-radius:6px; box-shadow:0 2px 3px rgba(0,0,0,0.02); display:flex; flex-direction:column; gap:4px; flex-grow:1; justify-content:flex-start; margin-top:6px; }
 .alert-heading { color:#92400e; margin-top:0; margin-bottom:2px; font-size:0.9rem; display:flex; align-items:center; gap:4px; font-weight:700; }
 .alert-meta { display:inline-block; background-color:#fef3c7; color:#b45309; padding:2px 6px; border-radius:6px; font-size:0.65rem; font-weight:700; margin-bottom:4px; border:1px solid #fde68a; width:fit-content; }
 .alert-text { margin-bottom:2px; font-size:0.75rem; color:#451a03; }
@@ -92,7 +79,6 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 .alert-list li { margin-bottom:2px; font-weight:600; font-size:0.75rem; }
 .alert-footer { font-weight:700; color:#78350f; background-color:#fef9c3; padding:6px; border-radius:4px; border:1px dashed #f59e0b; font-size:0.7rem; margin-top:auto; }
 
-/* CM012 - Swati Dates Panel */
 .calendar-panel { background:linear-gradient(to bottom,#ffffff,#fffbeb); border:1px solid #e2e8f0; border-top:4px solid #f59e0b; border-radius:8px; padding:12px; box-shadow:0 6px 10px -3px rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px; box-sizing:border-box; transition:all 0.3s ease; height:100%; }
 .calendar-panel:hover { transform:translateY(-2px); box-shadow:0 8px 15px -3px rgba(0,0,0,0.15); }
 .calendar-title { font-size:0.9rem; color:#b45309; font-weight:700; margin-top:0; margin-bottom:0; border-bottom:1px solid #fde68a; padding-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; display:flex; align-items:center; gap:4px; }
@@ -102,19 +88,16 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 .cal-date-wrap { display:flex; align-items:center; gap:4px; font-size:0.75rem; font-weight:600; color:#78350f; }
 .cal-year-badge { background-color:#f59e0b; color:#ffffff; font-size:0.65rem; font-weight:700; padding:2px 4px; border-radius:4px; }
 
-/* CM013 - Next Swati Highlight */
 .next-swati-card { background:linear-gradient(135deg,#10b981,#059669); border:none; color:#ffffff; transform:scale(1.03); margin-bottom:2px; box-shadow:0 4px 8px rgba(16,185,129,0.3); }
 .next-swati-card:hover { transform:scale(1.05); box-shadow:0 6px 12px rgba(16,185,129,0.4); border-color:transparent; background:linear-gradient(135deg,#059669,#047857); }
 .next-swati-card .cal-date-wrap { color:#ffffff; font-size:0.8rem; }
 .next-swati-card .cal-year-badge { background-color:#ffffff; color:#10b981; }
 .next-swati-label { font-size:0.65rem; background-color:#ffffff; color:#10b981; padding:2px 6px; border-radius:3px; font-weight:700; margin-right:4px; text-transform:uppercase; letter-spacing:1px; }
 
-/* CM014 - Swati Button Styles */
 .swati-btn-wrap { display:flex; flex-direction:column; margin-top:auto; padding-top:6px; border-top:1px dashed #fde68a; }
 .action-btn-yellow { background:linear-gradient(135deg,#f59e0b,#d97706); color:#ffffff; border:none; padding:6px 10px; border-radius:4px; font-weight:700; font-family:'Roboto Slab',serif; font-size:0.75rem; cursor:pointer; transition:all 0.2s ease; box-shadow:0 2px 3px rgba(217,119,6,0.2); text-transform:uppercase; letter-spacing:0.5px; }
 .action-btn-yellow:hover { background:linear-gradient(135deg,#d97706,#b45309); transform:translateY(-1px); box-shadow:0 3px 5px rgba(217,119,6,0.3); }
 
-/* CM015 - Timings Panel */
 .timings-panel { background:linear-gradient(to bottom,#ffffff,#fef2f2); border:1px solid #e2e8f0; border-top:4px solid #dc2626; border-radius:8px; padding:12px; box-shadow:0 6px 10px -3px rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px; box-sizing:border-box; transition:all 0.3s ease; height:100%; }
 .timings-panel:hover { transform:translateY(-2px); box-shadow:0 8px 15px -3px rgba(0,0,0,0.15); }
 .timings-header { display:flex; flex-direction:column; gap:6px; border-bottom:1px solid #fecaca; padding-bottom:6px; }
@@ -129,12 +112,10 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 .time-label { color:#7f1d1d; font-weight:500; }
 .time-val { font-weight:700; color:#450a0a; }
 
-/* CM016 - Timings Booking Buttons */
 .booking-btn-group { display:flex; flex-direction:column; gap:4px; margin-top:auto; padding-top:6px; border-top:1px dashed #fca5a5; }
 .action-btn-red { background:linear-gradient(135deg,#ef4444,#dc2626); color:#ffffff; border:none; padding:6px 10px; border-radius:4px; font-weight:700; font-family:'Roboto Slab',serif; font-size:0.75rem; cursor:pointer; transition:all 0.2s ease; box-shadow:0 2px 3px rgba(220,38,38,0.2); text-transform:uppercase; letter-spacing:0.5px; }
 .action-btn-red:hover { background:linear-gradient(135deg,#dc2626,#b91c1c); transform:translateY(-1px); box-shadow:0 3px 5px rgba(220,38,38,0.3); }
 
-/* CM017 - Sevas Panel */
 .sevas-panel { background:linear-gradient(to bottom,#ffffff,#eef2ff); border:1px solid #e2e8f0; border-top:4px solid #4f46e5; border-radius:8px; padding:12px; box-shadow:0 6px 10px -3px rgba(0,0,0,0.1); display:flex; flex-direction:column; gap:8px; box-sizing:border-box; transition:all 0.3s ease; height:100%; }
 .sevas-panel:hover { transform:translateY(-2px); box-shadow:0 8px 15px -3px rgba(0,0,0,0.15); }
 .sevas-header { display:flex; flex-direction:column; gap:6px; border-bottom:1px solid #e0e7ff; padding-bottom:6px; }
@@ -146,12 +127,10 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 .seva-label { color:#3730a3; font-weight:500; }
 .seva-val { font-weight:700; color:#1e1b4b; }
 
-/* CM018 - Seva Booking Button */
 .seva-btn-group { display:flex; flex-direction:column; gap:4px; margin-top:auto; padding-top:6px; border-top:1px dashed #a5b4fc; }
 .action-btn-indigo { background:linear-gradient(135deg,#6366f1,#4f46e5); color:#ffffff; border:none; padding:6px 10px; border-radius:4px; font-weight:700; font-family:'Roboto Slab',serif; font-size:0.75rem; cursor:pointer; transition:all 0.2s ease; box-shadow:0 2px 3px rgba(79,70,229,0.2); text-transform:uppercase; letter-spacing:0.5px; }
 .action-btn-indigo:hover { background:linear-gradient(135deg,#4f46e5,#4338ca); transform:translateY(-1px); box-shadow:0 3px 5px rgba(79,70,229,0.3); }
 
-/* CM019 - CAO Message Section */
 .cao-section-wrapper { width:100%; margin-top:20px; margin-bottom:20px; padding:30px 15px; background-color:#ffffff; box-sizing:border-box; box-shadow:0 4px 10px -2px rgba(0,0,0,0.05); border-top:4px double #d4af37; border-bottom:4px double #d4af37; }
 .cao-section { display:flex; align-items:center; gap:25px; max-width:1300px; margin:0 auto; }
 .cao-img-box { background-color:#fffbeb; padding:15px; border-radius:8px; border:1px solid #fde68a; display:flex; flex-direction:column; align-items:center; min-width:260px; box-shadow:0 4px 6px rgba(0,0,0,0.05); box-sizing:border-box; }
@@ -165,20 +144,16 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 .cao-right-img { width:330px; aspect-ratio:6/4; object-fit:cover; border-radius:8px; border:none; box-shadow:0 6px 12px rgba(0,0,0,0.15); flex-shrink:0; }
 @media (max-width:900px) { .cao-section { flex-direction:column; } .cao-img-box { width:100%; min-width:auto; } .cao-name-wrap { text-align:center; } .cao-name { white-space:normal; } .cao-right-img { width:100%; max-width:400px; height:auto; aspect-ratio:6/4; } }
 
-/* CM020 - Image Aspect Ratio and Fallback */
 .aspect-custom { aspect-ratio:3 / 6; }
 @supports not (aspect-ratio: 3 / 6) { .aspect-custom { padding-top:200%; position:relative; } .aspect-custom img { position:absolute; top:0; left:0; width:100%; height:100%; } }
 
-/* CM021 - Fade Animation and Sloka Classes */
 @keyframes slideUpFade { 0% { opacity:0; transform:translateY(15px) scale(0.95); filter:blur(4px); } 100% { opacity:1; transform:translateY(0) scale(1); filter:blur(0); } }
 .char-slide { display:inline-block; opacity:0; animation:slideUpFade 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; white-space:pre-wrap; }
 #sloka-wrapper { transition:opacity 0.5s ease-in-out; }
-
 </style>
 </head>
 <body>
 
-<!-- CM022 - Master Header and Logo -->
 <header id="main-header" class="relative w-full z-50 shadow-lg min-h-[130px] md:h-[155px] h-auto flex items-center justify-center border-b-2 border-white/20 py-2 md:py-0">
 <nav class="w-full px-2 md:px-6 flex flex-wrap md:flex-nowrap justify-between items-center h-full max-w-[1920px] mx-auto gap-2 md:gap-4">
 <div class="flex items-center justify-center shrink-0 w-[100px] md:w-[125px] h-[100px] md:h-[125px] ml-0 md:ml-4 order-1">
@@ -216,8 +191,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </nav>
 </header>
 
-<!-- CM023 - Navigation Dropdown Menu -->
-<div class="w-full bg-[#dfa857] border-b-4 border-[#a87c1e] shadow-xl relative z-50 font-['Roboto_Slab'] overflow-visible">
+<div class="w-full bg-[#dfa857] border-b-4 border-[#a87c1e] shadow-xl relative z-40 font-['Roboto_Slab'] overflow-visible transition-all duration-300">
 <ul class="flex flex-row items-center justify-start md:justify-center overflow-visible flex-wrap md:flex-nowrap w-full max-w-[1920px] mx-auto">
 <li class="group relative shrink-0">
 <a href="#" id="home-link-btn" class="flex items-center justify-center px-3 py-1.5 text-[#1a0f00] hover:bg-[#a87c1e] hover:text-white transition-colors cursor-pointer border-r border-[#a87c1e]/20 h-full">
@@ -266,63 +240,66 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <li><a href="3-4-swathinakshatraseva.html" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Swathi Nakshatra Seva</a></li>
 </ul>
 </li>
+
 <li class="group relative shrink-0">
 <a href="#" class="menu-toggle flex items-center justify-center gap-1 px-3 py-1.5 text-[#1a0f00] hover:bg-[#a87c1e] hover:text-white transition-colors cursor-pointer text-[10px] md:text-[11px] font-black uppercase tracking-wider border-r border-[#a87c1e]/20 h-full">
 <span>Donations</span> <i class="fa-solid fa-chevron-down text-[7px]"></i>
 </a>
 <ul class="submenu absolute left-0 top-full hidden flex-col bg-[#3c0005] border border-[#dfa857]/50 shadow-2xl min-w-[210px] z-[9999] rounded-b-md py-1">
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Annadanam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> General Annadanam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Maharaja Poshakulu</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Raja Poshakulu</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Poshakulu</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Daddojanam Donation</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Pulihora Donation</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Ven Pongal Donation</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Kesari Donation</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Renovation</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Restoration</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Construction</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Development</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> General Donation</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Corpus Fund</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Festival Donations</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Other Donations</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Annadanam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> General Annadanam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Maharaja Poshakulu</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Raja Poshakulu</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Poshakulu</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Daddojanam Donation</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Pulihora Donation</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Ven Pongal Donation</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Kesari Donation</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Renovation</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Restoration</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Construction</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Temple Development</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> General Donation</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Corpus Fund</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Festival Donations</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Other Donations</a></li>
 </ul>
 </li>
+
 <li class="group relative shrink-0">
 <a href="#" class="menu-toggle flex items-center justify-center gap-1 px-3 py-1.5 text-[#1a0f00] hover:bg-[#a87c1e] hover:text-white transition-colors cursor-pointer text-[10px] md:text-[11px] font-black uppercase tracking-wider border-r border-[#a87c1e]/20 h-full">
 <span>Booking</span> <i class="fa-solid fa-chevron-down text-[7px]"></i>
 </a>
 <ul class="submenu absolute left-0 top-full hidden flex-col bg-[#3c0005] border border-[#dfa857]/50 shadow-2xl min-w-[210px] z-[9999] rounded-b-md py-1">
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Darshan Ticket</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Sheeghra Darshan Ticket</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Talaneelalu</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Puttu Ventrukalu</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Sahasranamarchana</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Vehicle Puja (Two & Three Wheelers)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Vehicle Puja (Four Wheelers)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Marriage (Vivaha Kattadi)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Moolavar Abhishekam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Utsavar Abhishekam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Kalyanotsavam (One Day)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Sudarshana Homam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Saswata Abhishekam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Nava Narasimha Abhishekam (One Day)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Dhanurmasa Pooja (One Day)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Saswata Kalyanam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Saswata Pooja</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Paanaka Seva</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Neyyi Deepam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Narasimha Jayanthi Abhishekam</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Aaku Pooja ( Beegala Anjaneya Swamy Seva )</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Ekadashi)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Amavasya)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Pournami)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Swathi Nakshatram)</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Vahana Seva</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Darshan Ticket</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Sheeghra Darshan Ticket</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Talaneelalu</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Puttu Ventrukalu</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Sahasranamarchana</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Vehicle Puja (Two & Three Wheelers)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Vehicle Puja (Four Wheelers)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Marriage (Vivaha Kattadi)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Moolavar Abhishekam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Utsavar Abhishekam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Kalyanotsavam (One Day)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Sudarshana Homam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Saswata Abhishekam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Nava Narasimha Abhishekam (One Day)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Dhanurmasa Pooja (One Day)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Saswata Kalyanam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Saswata Pooja</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Paanaka Seva</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Neyyi Deepam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Narasimha Jayanthi Abhishekam</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Aaku Pooja ( Beegala Anjaneya Swamy Seva )</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Ekadashi)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Amavasya)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Pournami)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Panchaparva Gramotsavam (Swathi Nakshatram)</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Vahana Seva</a></li>
 </ul>
 </li>
+
 <li class="group relative shrink-0">
 <a href="#" class="menu-toggle flex items-center justify-center gap-1 px-3 py-1.5 text-[#1a0f00] hover:bg-[#a87c1e] hover:text-white transition-colors cursor-pointer text-[10px] md:text-[11px] font-black uppercase tracking-wider border-r border-[#a87c1e]/20 h-full">
 <span>Pilgrim Services</span> <i class="fa-solid fa-chevron-down text-[7px]"></i>
@@ -360,33 +337,31 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <li><a href="8-4-scialmedia.html" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Social Media</a></li>
 </ul>
 </li>
+
 <li class="group relative shrink-0">
 <a href="#" class="menu-toggle flex items-center justify-center gap-1 px-3 py-1.5 text-white bg-gradient-to-r from-[#b8321a] via-[#850404] to-[#b8321a] hover:from-[#c0392b] hover:to-[#e74c3c] transition-all duration-300 cursor-pointer text-[10px] md:text-[11px] font-extrabold uppercase tracking-wider h-full rounded-md shadow-[0_0_10px_rgba(133,4,4,0.3)] animate-pulse">
 <span>Login <i class="fa-solid fa-chevron-down text-[7px] ml-0.5"></i></span>
 </a>
 <ul class="submenu absolute right-0 top-full hidden flex-col bg-[#3c0005] border border-[#dfa857]/50 shadow-2xl min-w-[210px] z-[9999] rounded-b-md py-1">
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Devotee Login</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Staff Login</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Admin Login</a></li>
-<li><a href="#" class="block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> New Devotee Registration</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Devotee Login</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Staff Login</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Admin Login</a></li>
+<li><a href="#" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> New Devotee Registration</a></li>
 </ul>
 </li>
 </ul>
 </div>
 
-<!-- CM024 - Home Main Content Wrapper Start -->
 <div id="home-main-content" class="w-full">
-
-<!-- CM025 - Banner Hero Section -->
 <section class="w-full bg-[#f9e4b7] p-0 flex flex-col justify-center items-center relative overflow-hidden z-10">
 <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.02)_0%,transparent_75%)] pointer-events-none"></div>
 <div class="w-full flex flex-col md:flex-row items-stretch justify-center gap-0 z-10 relative overflow-hidden p-0 max-w-[1920px] mx-auto">
-<div class="w-full md:w-1/3 flex-none h-[420px] md:h-[260px] relative overflow-hidden group border-b md:border-b-0 md:border-r border-[#D4AF37]/30 order-1 md:order-1">
+<div class="w-full md:w-1/3 flex-none h-[260px] md:h-[280px] relative overflow-hidden group border-b md:border-b-0 md:border-r border-[#D4AF37]/30 order-1 md:order-1">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB30-1-MAIN-PHOTO.png" alt="Sri Ahobila Peetadhipati" class="w-full h-full object-cover object-top m-0 p-0 block transition-transform duration-1000 ease-out group-hover:scale-105">
 </div>
-<div class="w-full md:w-1/3 flex-none h-[250px] md:h-[260px] flex flex-col items-center justify-center p-3 relative mandala-bg bg-white border-b md:border-b-0 border-[#D4AF37]/30 order-2 md:order-2">
+<div class="w-full md:w-1/3 flex-none h-[260px] md:h-[280px] flex flex-col items-center justify-center p-3 relative mandala-bg bg-white border-b md:border-b-0 border-[#D4AF37]/30 order-3 md:order-2">
 <div class="w-full flex flex-col items-center justify-center space-y-1">
-<div class="inline-block px-4 py-1 mb-2 bg-[#fffdf7] border border-[#c9a227] rounded-md shadow-sm text-[#7a0000] text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em]" style="font-family:'Roboto Slab', serif;">Sri Ahobila Kshetram</div>
+<div class="inline-block px-4 py-1 mb-2 bg-[#fffdf7] border border-[#c9a227] rounded-md shadow-sm text-[#7a0000] text-[11px] md:text-[12px] font-bold uppercase tracking-[0.18em]" style="font-family:'Roboto Slab', serif;">Sri Ahobilam Kshetram</div>
 <div class="relative w-full max-w-[245px] h-[98px] flex items-center justify-center">
 <div id="namam-glow" class="absolute w-28 h-28 bg-gradient-to-r from-amber-400/50 to-orange-500/50 rounded-full divine-glow pointer-events-none blur-md"></div>
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB41-5PICS-LOGO.png" alt="Sri Ahobilam 5 Pics Logo" class="max-h-[96px] w-auto object-contain drop-shadow-[0_5px_15px_rgba(0,0,0,0.4)] transition-all duration-500 relative z-10 hover:scale-105">
@@ -396,15 +371,14 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <span id="play-icon"><i class="fa-solid fa-play mr-0.5"></i> Play Mantra</span>
 <span id="sound-bars" class="hidden flex items-end gap-[1.5px] h-2"><span class="w-[1.5px] bg-black animate-[bounce_0.8s_infinite_0.1s]"></span><span class="w-[1.5px] bg-black animate-[bounce_0.8s_infinite_0.3s]"></span><span class="w-[1.5px] bg-black animate-[bounce_0.8s_infinite_0.2s]"></span></span>
 </button>
-<audio id="mantra-audio" src="https://ahobilam-main.github.io/AHB-V1.0/mantra.mp3" preload="auto"></audio>
-<div class="text-[9px] md:text-[10px] font-bold text-[#850404] tracking-widest traditional-font text-center mt-1">"OM NAMO NARASIMHAYA NAMAHA"<span id="playing-status" class="block text-[7.5px] text-[#850404]/80 font-semibold italic mt-0.5 uppercase tracking-normal">Mantra Ready</span></div>
+<div class="text-[9px] md:text-[10px] font-bold text-[#850404] tracking-widest traditional-font text-center mt-1">"OM NAMO NARAYANAYA NAMAHA"<span id="playing-status" class="block text-[7.5px] text-[#850404]/80 font-semibold italic mt-0.5 uppercase tracking-normal">Continuous Drone Synthesizer Ready</span></div>
 </div>
 </div>
 </div>
-<div class="w-full md:w-1/3 flex-none h-[250px] md:h-[260px] relative bg-transparent p-0 overflow-hidden order-3 md:order-3">
-<div class="w-full h-full relative overflow-hidden shadow-inner">
+<div class="w-full md:w-1/3 flex-none h-[260px] md:h-[280px] relative bg-transparent p-0 overflow-hidden order-2 md:order-3">
+<div class="absolute inset-0 w-full h-full overflow-hidden shadow-inner">
 <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10 pointer-events-none"></div>
-<div class="w-full h-full m-0 p-0 relative overflow-hidden" id="utsavam-slider">
+<div class="absolute inset-0 m-0 p-0 overflow-hidden" id="utsavam-slider">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(1).JPG" class="slider-img active" alt="Utsavam 1" data-caption="Lord Lakshmi Narasimha Swamy Utsavam Shobhayatra">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(2).JPG" class="slider-img" alt="Utsavam 2" data-caption="Sacred Kalyanotsavam Rituals in Sannidhi">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(3).JPG" class="slider-img" alt="Utsavam 3" data-caption="Alankaram of Lord Narasimha Swamy">
@@ -429,25 +403,32 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 </section>
 
-<!-- CM026 - Scrolling Announcement Bar -->
-<div class="marquee-container m-0 border-y-4 border-double border-[#d4af37]">
-<div class="marquee-text">ॐ श्री लक्ष्मी नृसिंह परब्रह्मणे नमः • 📅 Next Swati Nakshatra: 22 July 2026 | 📢 Arjitha Sevas will not be performed at Lower Ahobilam only. • </div>
+<div class="marquee-container m-0 border-none">
+<div class="marquee-text" id="dynamic-marquee-text">Fetching latest updates from Google Sheets...</div>
 </div>
 
-<!-- CM027 - Main Columns Grid Wrapper -->
 <div class="container-grid">
 <div class="live-column">
-<div class="live-banner">
+<div class="live-banner flex flex-col h-full">
 <div class="live-label">
 <span class="live-pulse"></span>
 <span>TODAY LIVE STATUS:</span>
 </div>
-<p class="live-text">🌟 DIVINE DARSHAN: FREE FLOW (EST. 10 MINS WAIT) 🌟</p>
+<div id="dynamic-live-status-container" class="flex flex-col gap-2 mt-2 w-full flex-grow">
+<div class="flex items-start gap-1.5 w-full">
+<span class="text-[0.7rem] mt-[1px]">🌟</span>
+<p id="live-status-1" class="live-text m-0 w-full" style="font-size: 0.70rem; line-height: 1.4;">Fetching live updates...</p>
+</div>
+<div id="live-status-2-wrapper" class="flex items-start gap-1.5 w-full" style="display: none;">
+<span class="text-[0.7rem] mt-[1px]">🌟</span>
+<p id="live-status-2" class="live-text m-0 w-full" style="font-size: 0.70rem; line-height: 1.4;"></p>
+</div>
+</div>
 </div>
 <div class="alert-card">
 <div>
 <h2 class="alert-heading">Lower Ahobilam Notice</h2>
-<span class="alert-meta" id="countdown-banner">Active Notice</span>
+<span class="alert-meta" id="countdown-banner">Calculating Day...</span>
 <p class="alert-text">Starting from <strong>28.06.2026</strong>, for <strong>forty (40) days</strong>, the following Arjitha Sevas will not be performed at Lower Ahobilam:</p>
 <ul class="alert-list">
 <li>Prarthana Thirumanjanam</li>
@@ -458,33 +439,11 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <p class="alert-footer">💡 Note: Sevas performed at UPPER AHOBILAM instead.</p>
 </div>
 </div>
+
 <div class="calendar-panel">
 <h2 class="calendar-title">🗓️ Upcoming Swati Dates</h2>
-<div class="calendar-list">
-<div class="calendar-card next-swati-card">
-<div class="cal-date-wrap"><span class="next-swati-label">Next</span>🗓️ 22 July 2026 (Wednesday)</div>
-<span class="cal-year-badge">2026</span>
-</div>
-<div class="calendar-card">
-<div class="cal-date-wrap">🗓️ 19 August 2026 (Wednesday)</div>
-<span class="cal-year-badge">2026</span>
-</div>
-<div class="calendar-card">
-<div class="cal-date-wrap">🗓️ 15 September 2026 (Tuesday)</div>
-<span class="cal-year-badge">2026</span>
-</div>
-<div class="calendar-card">
-<div class="cal-date-wrap">🗓️ 12 October 2026 (Monday)</div>
-<span class="cal-year-badge">2026</span>
-</div>
-<div class="calendar-card">
-<div class="cal-date-wrap">🗓️ 08 November 2026 (Sunday)</div>
-<span class="cal-year-badge">2026</span>
-</div>
-<div class="calendar-card">
-<div class="cal-date-wrap">🗓️ 06 December 2026 (Sunday)</div>
-<span class="cal-year-badge">2026</span>
-</div>
+<div class="calendar-list" id="dynamic-calendar-list">
+<!-- Swati Dates will be populated dynamically via JavaScript based on the current date -->
 </div>
 <div class="swati-btn-wrap">
 <button class="action-btn-yellow">Know About Swati Nakshatra</button>
@@ -557,14 +516,13 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 </div>
 
-<!-- CM028 - CAO Message Section -->
-<div class="cao-section-wrapper border-y-4 border-double border-[#d4af37]">
+<div class="cao-section-wrapper">
 <div class="cao-section">
 <div class="cao-img-box">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB43-CAO.png" alt="CAO Photo" class="cao-img">
 <div class="cao-name-wrap">
-<h3 class="cao-name">Sri CA S. Partha Sarathy</h3>
-<span class="cao-role">Chief Administrative Officer / GPA</span>
+<h3 class="cao-name">Sri S. Partha Sarathy</h3>
+<span class="cao-role">Chief Administrative Officer</span>
 <span class="cao-loc">Ahobilam</span>
 </div>
 </div>
@@ -574,7 +532,6 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 </div>
 
-<!-- CM029 - Sloka and Temple Description Wrapper -->
 <div class="w-full flex flex-col md:flex-row items-start justify-between mb-2 mt-4">
 <div class="flex-1 p-4 md:p-6 flex flex-col justify-start items-center w-full self-start pt-2 md:pt-4 overflow-x-auto">
 <div id="sloka-wrapper" class="w-full flex flex-col items-center text-center">
@@ -598,19 +555,16 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </main>
 </div>
 
-<!-- CM030 - Official Disclaimer Note Box -->
 <div class="bg-[#FFF9E6] border border-[#D4AF37]/50 rounded-lg p-3 md:p-4 mx-4 md:mx-6 text-left text-[10px] md:text-[11px] text-[#2C1E16] shadow-sm mt-0 mb-6 flex-grow-0">
 <p class="leading-relaxed font-medium tracking-wide"><strong class="text-[#FF671F] uppercase mr-1">NOTE:</strong>This is the Official Website of Sri Ahobilam Mutt Paramparadheena Sri Lakshmi Narasimha Swamy Devasthanam, Ahobilam. All temple announcements, seva details, darshan updates, and other information published here are authentic and officially issued by the Devasthanam Administration. Devotees are requested to rely only on this website and be cautious of unofficial sources or misleading information.</p>
 </div>
 
-<!-- CM031 - Home Main Content Wrapper End -->
 </div>
 
-<!-- CM032 - Dynamic Page Container (Iframe Wrapper) -->
+<!-- Container for dynamically loaded sub-pages (iframes) -->
 <div id="dynamic-page-container" class="w-full min-h-[50vh]" style="display:none;"></div>
 
-<!-- CM033 - Multi-lingual Footer -->
-<footer class="w-full bg-[#dfa857] border-t-4 border-[#a87c1e] py-6 px-4 md:px-8 text-[#1a0f00] relative z-20 font-['Roboto_Slab'] overflow-visible mt-auto">
+<footer id="main-footer" class="w-full bg-[#dfa857] border-t-4 border-[#a87c1e] py-6 px-4 md:px-8 text-[#1a0f00] relative z-20 font-['Roboto_Slab'] overflow-visible mt-auto">
 <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 border-b border-[#a87c1e]/20 pb-6 mb-6">
 <div class="flex flex-col items-start gap-3">
 <div class="w-[90px] h-[90px] rounded-lg border-2 border-[#a87c1e] overflow-hidden shadow-xl bg-white">
@@ -630,9 +584,9 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <div class="flex flex-col items-start gap-2">
 <span class="text-[11.5px] md:text-[12.5px] font-black text-[#850404] uppercase tracking-wider border-b border-[#a87c1e]/30 pb-0.5 w-full"><i class="fa-solid fa-diamond text-[7px] mr-1 text-[#850404]"></i> Online Services</span>
 <ul class="flex flex-col gap-1 text-[11px] md:text-[12px] text-[#1a0f00]/95 font-medium">
-<li><a href="#" class="hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-calendar-check text-[7px] text-[#1a0f00]/40"></i> Darshan Booking</a></li>
-<li><a href="#" class="hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-ticket text-[7px] text-[#1a0f00]/40"></i> Seva Tickets</a></li>
-<li><a href="#" class="hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-hand-holding-dollar text-[7px] text-[#1a0f00]/40"></i> E-Hundi Donation</a></li>
+<li><a href="#" class="dynamic-link hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-calendar-check text-[7px] text-[#1a0f00]/40"></i> Darshan Booking</a></li>
+<li><a href="#" class="dynamic-link hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-ticket text-[7px] text-[#1a0f00]/40"></i> Seva Tickets</a></li>
+<li><a href="#" class="dynamic-link hover:text-[#850404] transition-colors flex items-center gap-1.5"><i class="fa-solid fa-hand-holding-dollar text-[7px] text-[#1a0f00]/40"></i> E-Hundi Donation</a></li>
 </ul>
 </div>
 <div class="flex flex-col items-start gap-2">
@@ -647,7 +601,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <div class="flex flex-col gap-2 w-full text-[11px] md:text-[12px] text-[#1a0f00]/90">
 <span class="flex gap-1.5 items-start leading-relaxed"><i class="fa-solid fa-location-dot mt-0.5 text-[#850404] text-[10px]"></i> <span>Sri Lakshmi Narasimha Swamy Devasthanam,<br>Lower Ahobilam, AP - 518543</span></span>
 <div class="w-full bg-[#1a0f00]/5 border border-[#a87c1e]/20 hover:border-[#850404] transition-all p-1.5 rounded flex items-center gap-1.5"><i class="fa-solid fa-phone text-[#850404]"></i> <span class="font-extrabold tracking-wide text-[10px]">+91 94401 20878</span></div>
-<div class="w-full bg-[#1a0f00]/5 border border-[#a87c1e]/20 hover:border-[#850404] transition-all p-1.5 rounded flex items-center gap-1.5"><i class="fa-solid fa-envelope text-[#850404]"></i> <span class="font-extrabold tracking-wide text-[10px]">ca.gpa@ahobilamtemple.org</span></div>
+<div class="w-full bg-[#1a0f00]/5 border border-[#a87c1e]/20 hover:border-[#850404] transition-all p-1.5 rounded flex items-center gap-1.5"><i class="fa-solid fa-envelope text-[#850404]"></i> <span class="font-extrabold tracking-wide text-[10px]">info@ahobilam.org</span></div>
 </div>
 </div>
 </div>
@@ -658,7 +612,6 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 </footer>
 
-<!-- CM034 - App Install Prompt Modal -->
 <div id="app-install-modal" class="fixed inset-0 bg-black/60 z-[99999] hidden flex items-center justify-center">
 <div class="bg-white p-6 rounded-xl shadow-2xl flex flex-col items-center max-w-[320px] text-center border-2 border-[#D4AF37]">
 <img src="https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/AHB04-FEVICON-ICON.png" class="w-16 h-16 mb-4 rounded-xl shadow-md">
@@ -671,46 +624,285 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 </div>
 
-<script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-// CM035 - Setup Slideshow
+const appId = typeof __app_id !== 'undefined' ? __app_id : 'ahobilam-temple-web';
+let firebaseConfig = {};
+try {
+    firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+} catch(e) {
+    console.warn("Firebase config missing or invalid in environment");
+}
+
+if (Object.keys(firebaseConfig).length > 0) {
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    async function recordVisitorAnalytics() {
+        try {
+            let user;
+            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                const credential = await signInWithCustomToken(auth, __initial_auth_token);
+                user = credential.user;
+            } else {
+                const credential = await signInAnonymously(auth);
+                user = credential.user;
+            }
+            
+            if (!user) return; 
+            
+            const userId = user.uid;
+            const visitId = 'visit_' + Date.now();
+            
+            const visitDocRef = doc(db, 'artifacts', appId, 'users', userId, 'visits', visitId);
+            
+            const visitData = {
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                screenResolution: `${window.innerWidth}x${window.innerHeight}`,
+                platform: navigator.platform || 'Unknown',
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+            };
+            
+            await setDoc(visitDocRef, visitData);
+            console.log("Securely recorded visitor analytics.");
+            
+        } catch (error) {
+            console.error("Failed to securely record visitor data:", error);
+        }
+    }
+    
+    recordVisitorAnalytics();
+}
+</script>
+
+<script>
 document.addEventListener("DOMContentLoaded", () => { const setupSlideshow = () => { const slides = document.querySelectorAll('.slider-img'); const indicatorContainer = document.getElementById('slide-indicators'); const captionEl = document.getElementById('slide-caption'); let currentSlide = 0; slides.forEach((_, i) => { const dot = document.createElement('div'); dot.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === 0 ? 'bg-amber-400 w-3.5' : 'bg-white/20'}`; dot.id = `indicator-${i}`; dot.addEventListener('click', () => goToSlide(i)); indicatorContainer.appendChild(dot); }); const goToSlide = (n) => { slides[currentSlide].classList.remove('active'); currentSlide = n; slides[currentSlide].classList.add('active'); const caption = slides[currentSlide].getAttribute('data-caption'); if (caption) { captionEl.style.opacity = 0; setTimeout(() => { captionEl.textContent = caption; captionEl.style.opacity = 1; }, 250); } document.querySelectorAll('#slide-indicators div').forEach((dot, index) => { dot.className = index === currentSlide ? 'w-3.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer bg-amber-400' : 'w-1.5 h-1.5 rounded-full transition-all duration-300 cursor-pointer bg-white/20'; }); }; setInterval(() => goToSlide((currentSlide + 1) % slides.length), 4500); }; setupSlideshow(); });
 
-// CM036 - Multilingual Text
 const handleMultilingualText = () => { const langs = [ { lang:"telugu", sub:"శ్రీ అహోబిల మఠం పరంపరాధీన", main:"శ్రీ లక్ష్మీ నరసింహ స్వామి దేవస్థానం", font:"'Sree Krushnadevaraya', serif", subSize:"text-[13px] md:text-[16px] tracking-wide", mainSize:"text-[21px] md:text-[29px] font-black" }, { lang:"english", sub:"SRI AHOBILA MUTT PARAMPARADHEENA", main:"SRI LAKSHMI NARASIMHA SWAMY DEVASTHANAM", font:"'Cinzel', serif", subSize:"text-[10px] md:text-[12px] tracking-[0.1em]", mainSize:"text-[14px] md:text-[20px] font-extrabold" }, { lang:"tamil", sub:"ஸ்ரீ அஹோபில மடம் பரம்பராதீனம்", main:"ஸ்ரீ லக்ஷ்மி நரசிம்ம சுவாமி தேவஸ்தானம்", font:"'Tiro Tamil', serif", subSize:"text-[11px] md:text-[13px] tracking-wide", mainSize:"text-[16px] md:text-[22px] font-bold" }, { lang:"kannada", sub:"ಶ್ರೀ ಅಹೋಬಿಲ ಮಠಂ ಪರಂಪರಾಧೀನ", main:"ಶ್ರೀ ಲಕ್ಷ್ಮೀ ನರಸಿಂಹ ಸ್ವಾಮಿ ದೇವಸ್ಥಾನ", font:"'Tiro Kannada', serif", subSize:"text-[12px] md:text-[15px] tracking-wide", mainSize:"text-[18px] md:text-[25px] font-bold" }, { lang:"hindi", sub:"श्री अहोबिल मठ परंपराधीन", main:"श्री लक्ष्मी नरसिंह स्वामी देवस्थानम्", font:"'Yatra One', system-ui", subSize:"text-[13px] md:text-[16px] tracking-wide", mainSize:"text-[20px] md:text-[27px] font-black" } ]; let lIdx = 0; const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' }); const wrapText = (el, text, font, sizeClasses) => { el.style.fontFamily = font; el.className = el.className.replace(/text-\[[^\]]+\]/g, '').replace(/sm:text-\[[^\]]+\]/g, '').replace(/md:text-\[[^\]]+\]/g, '').replace(/lg:text-\[[^\]]+\]/g, '').replace(/xl:text-\[[^\]]+\]/g, ''); el.className = `${el.className} ${sizeClasses}`.trim(); el.innerHTML = ''; Array.from(segmenter.segment(text)).forEach(s => { const span = document.createElement('span'); span.className = 'letter'; if (s.segment === ' ') span.innerHTML = '&nbsp;'; else span.innerText = s.segment; el.appendChild(span); }); }; const animateEl = (el, newText, font, sizeClasses) => { const letters = el.querySelectorAll('.letter'); letters.forEach((l, i) => { setTimeout(() => { l.style.transform = 'rotateY(90deg) scale(0.7)'; l.style.opacity = '0'; l.style.filter = 'blur(4px)'; }, i * 50); }); const wait = letters.length * 50 + 400; setTimeout(() => { el.style.fontFamily = font; el.className = el.className.replace(/text-\[[^\]]+\]/g, '').replace(/sm:text-\[[^\]]+\]/g, '').replace(/md:text-\[[^\]]+\]/g, '').replace(/lg:text-\[[^\]]+\]/g, '').replace(/xl:text-\[[^\]]+\]/g, ''); el.className = `${el.className} ${sizeClasses}`.trim(); el.innerHTML = ''; Array.from(segmenter.segment(newText)).forEach((s, i) => { const span = document.createElement('span'); span.className = 'letter'; span.style.transform = 'rotateY(-90deg) scale(0.7)'; span.style.opacity = '0'; span.style.filter = 'blur(4px)'; if (s.segment === ' ') span.innerHTML = '&nbsp;'; else span.innerText = s.segment; el.appendChild(span); setTimeout(() => { span.style.transform = 'rotateY(0deg) scale(1)'; span.style.opacity = '1'; span.style.filter = 'blur(0px)'; }, i * 50 + 50); }); }, wait); }; const tSub = document.getElementById('temple-sub-name'); const tMain = document.getElementById('temple-main-name'); if(tSub && tMain){ wrapText(tSub, langs[0].sub, langs[0].font, langs[0].subSize); wrapText(tMain, langs[0].main, langs[0].font, langs[0].mainSize); setInterval(() => { lIdx = (lIdx + 1) % langs.length; animateEl(tSub, langs[lIdx].sub, langs[lIdx].font, langs[lIdx].subSize); setTimeout(() => animateEl(tMain, langs[lIdx].main, langs[lIdx].font, langs[lIdx].mainSize), 150); }, 10000); } }; document.addEventListener("DOMContentLoaded", handleMultilingualText);
 
-// CM037 - Dropdown
 document.addEventListener("DOMContentLoaded", () => { document.querySelectorAll('.menu-toggle').forEach(el => { el.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); const submenu = el.nextElementSibling; const isOpen = !submenu.classList.contains('hidden'); document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); if (!isOpen) { submenu.classList.remove('hidden'); el.classList.add('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white'); } }); }); document.addEventListener('click', () => { document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); }); });
 
-// CM038 - Audio MP3 Mantra
-document.addEventListener("DOMContentLoaded", () => { const playBtn=document.getElementById('mantra-play-btn'); const playIcon=document.getElementById('play-icon'); const soundBars=document.getElementById('sound-bars'); const statusText=document.getElementById('playing-status'); const namamGlow=document.getElementById('namam-glow'); const audio=document.getElementById('mantra-audio'); let isPlaying=false; if(playBtn && audio){ playBtn.addEventListener('click', async () => { if(!isPlaying){ try{ audio.currentTime=0; await audio.play(); isPlaying=true; playIcon.innerHTML='<i class="fa-solid fa-stop mr-0.5"></i> Stop Mantra'; soundBars.classList.remove('hidden'); statusText.textContent='Mantra Playing'; statusText.classList.add('text-[#850404]'); if(namamGlow){namamGlow.classList.add('active-playing');} }catch(error){ statusText.textContent='Audio file not found / browser blocked'; console.log(error); } }else{ audio.pause(); audio.currentTime=0; isPlaying=false; playIcon.innerHTML='<i class="fa-solid fa-play mr-0.5"></i> Play Mantra'; soundBars.classList.add('hidden'); statusText.textContent='Mantra Ready'; statusText.classList.remove('text-[#850404]'); if(namamGlow){namamGlow.classList.remove('active-playing');} } }); audio.addEventListener('ended', () => { isPlaying=false; playIcon.innerHTML='<i class="fa-solid fa-play mr-0.5"></i> Play Mantra'; soundBars.classList.add('hidden'); statusText.textContent='Mantra Ready'; statusText.classList.remove('text-[#850404]'); if(namamGlow){namamGlow.classList.remove('active-playing');} }); } });
-// CM039 - Seva Notice Timeline
-const computeSevaTimeline = () => { const start = new Date('2026-06-28'); const today = new Date('2026-06-29'); const diff = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1; const banner = document.getElementById('countdown-banner'); if(banner) banner.innerText = `Day ${diff} of 40 Days Seva Period`; };
+document.addEventListener("DOMContentLoaded", () => { const playBtn = document.getElementById('mantra-play-btn'); const playIcon = document.getElementById('play-icon'); const soundBars = document.getElementById('sound-bars'); const statusText = document.getElementById('playing-status'); const namamGlow = document.getElementById('namam-glow'); let audioInitialized = false; let isPlaying = false; let lowDroneSynth, midDroneSynth, bellSynth, melodySynth, mainTransportLoop; const createPolySynth = () => { const vibrato = new Tone.Vibrato(3, 0.15).toDestination(); return new Tone.PolySynth(Tone.Synth, { oscillator: { type: "triangle" }, envelope: { attack: 1.8, decay: 0.8, sustain: 0.9, release: 2.0 } }).connect(vibrato); }; const initAudio = () => { const lowpass = new Tone.Filter({ frequency: 200, type: "lowpass", Q: 1 }).toDestination(); lowDroneSynth = new Tone.PolySynth(Tone.Synth, { oscillator: { type: "sawtooth" }, envelope: { attack: 2.0, decay: 1, sustain: 1, release: 2.5 } }).connect(lowpass); lowDroneSynth.volume.value = -12; midDroneSynth = createPolySynth(); midDroneSynth.volume.value = -18; const bellDelay = new Tone.FeedbackDelay("4n", 0.6).toDestination(); bellSynth = new Tone.MetalSynth({ frequency: 160, envelope: { attack: 0.005, decay: 1.8, release: 2.0 }, harmonicity: 5.1, resonance: 3000, modulationIndex: 30 }).connect(bellDelay); bellSynth.volume.value = -10; const melodyDelay = new Tone.FeedbackDelay("8n.", 0.45).toDestination(); melodySynth = new Tone.Synth({ oscillator: { type: "sine" }, envelope: { attack: 0.5, decay: 0.4, sustain: 0.8, release: 1.5 } }).connect(melodyDelay); melodySynth.volume.value = -20; audioInitialized = true; }; const startSpiritualSoundscape = () => { Tone.start(); lowDroneSynth.triggerAttack(["C2", "G2"]); midDroneSynth.triggerAttack(["E3", "C4"]); const ragaNotes = ["C3", "E3", "G3", "A3", "C4", "E4", "G4", "A4"]; mainTransportLoop = new Tone.Loop((time) => { if (Tone.Math.random() > 0.5) bellSynth.triggerAttackRelease(time); melodySynth.triggerAttackRelease(ragaNotes[Math.floor(Math.random() * ragaNotes.length)], "4n", time); }, "4n"); mainTransportLoop.start(0); Tone.Transport.start(); }; const stopSpiritualSoundscape = () => { if (lowDroneSynth) lowDroneSynth.triggerRelease(); if (midDroneSynth) midDroneSynth.triggerRelease(); if (mainTransportLoop) { mainTransportLoop.stop(); mainTransportLoop.dispose(); } Tone.Transport.stop(); }; if(playBtn){ playBtn.addEventListener('click', async () => { if (!audioInitialized) initAudio(); if (!isPlaying) { isPlaying = true; playIcon.innerHTML = `<i class="fa-solid fa-stop mr-0.5"></i> Stop Chant`; soundBars.classList.remove('hidden'); statusText.textContent = "Chanting & Deep Drone Synthesizer Active"; statusText.classList.add('text-[#850404]'); namamGlow.classList.add('active-playing'); startSpiritualSoundscape(); } else { isPlaying = false; playIcon.innerHTML = `<i class="fa-solid fa-play mr-0.5"></i> Play Mantra`; soundBars.classList.add('hidden'); statusText.textContent = "Temple Drone Synthesizer Ready"; statusText.classList.remove('text-[#850404]'); namamGlow.classList.remove('active-playing'); stopSpiritualSoundscape(); } }); } });
 
-// CM040 - Interactive Timings
+const computeSevaTimeline = () => { 
+    const startDate = new Date(2026, 5, 28); 
+    const today = new Date(); 
+    today.setHours(0, 0, 0, 0); 
+    const diffTime = today.getTime() - startDate.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; 
+    const banner = document.getElementById('countdown-banner');
+    if(banner) {
+        if (diffDays > 0 && diffDays <= 40) {
+            banner.innerText = `Day ${diffDays} of 40 Days Seva Period`;
+        } else if (diffDays > 40) {
+            banner.innerText = "Notice: 40 Days Seva Period Completed";
+        } else {
+            banner.innerText = "Notice: Upcoming Seva Period";
+        }
+    }
+};
+
+const fetchMarqueeText = async () => {
+    const scriptUrl = "https://script.google.com/macros/s/AKfycbwyJ-ml0TMFHIK2QKOgoQt8sI0qIKuGSGIRN8DgA9vROiodrcBDCiHU4adcPotN62mK0Q/exec";
+    try {
+        const response = await fetch(scriptUrl);
+        if (!response.ok) throw new Error("HTTP Status " + response.status);
+        const jsonData = await response.json();
+        if (jsonData.operationExecutionStatus === "success" && jsonData.fetchedScrollingTextContentString) {
+            const marqueeContainer = document.getElementById("dynamic-marquee-text");
+            if (marqueeContainer) marqueeContainer.innerText = jsonData.fetchedScrollingTextContentString;
+        }
+    } catch (error) {
+        console.warn("Using offline fallback for Marquee Text.");
+        const marqueeContainer = document.getElementById("dynamic-marquee-text");
+        if (marqueeContainer) marqueeContainer.innerText = " ॐ श्री लक्ष्मी नृसिंह परब्रह्मणे नमः • 📅 Next Swati Nakshatra: 22 July 2026 | 📢 Arjitha Sevas will not be performed at Lower Ahobilam only. •";
+    }
+};
+
+const fetchLiveDarshanStatus = async () => {
+    const darshanScriptUrl = "https://script.google.com/macros/s/AKfycbwK4Ui65EfbdyC6Xk8n9JcPVydUh6cOpcYDwPVJD9OC0mISKKQ7Cyh5p9szDIuKn2b5UQ/exec";
+    try {
+        const response = await fetch(darshanScriptUrl);
+        if (!response.ok) {
+            throw new Error("HTTP Status " + response.status);
+        }
+        const jsonData = await response.json();
+        
+        if (jsonData.operationExecutionStatus === "success") {
+            const status1 = document.getElementById("live-status-1");
+            const status2 = document.getElementById("live-status-2");
+            const status2Wrapper = document.getElementById("live-status-2-wrapper");
+            
+            const val1 = jsonData.fetchedFirstLiveDarshanStatusContentString;
+            const val2 = jsonData.fetchedSecondLiveDarshanStatusContentString;
+            
+            if (status1) {
+                status1.innerText = val1 ? val1 : "Live status unavailable.";
+            }
+            
+            if (status2 && status2Wrapper) {
+                if (val2 && String(val2).trim() !== "") {
+                    status2.innerText = String(val2).trim();
+                    status2Wrapper.style.display = "flex";
+                } else {
+                    status2Wrapper.style.display = "none";
+                }
+            }
+        } else {
+            throw new Error("Server returned failed status.");
+        }
+    } catch (error) {
+        console.warn("Using offline fallback for Live Darshan status.");
+        const status1 = document.getElementById("live-status-1");
+        const status2 = document.getElementById("live-status-2");
+        const status2Wrapper = document.getElementById("live-status-2-wrapper");
+        
+        if (status1) {
+            status1.innerText = "Upper Ahobilam • DIVINE DARSHAN • Estimated Wait: 10 Minutes";
+        }
+        if (status2 && status2Wrapper) {
+            status2.innerText = "Lower Ahobilam • DIVINE DARSHAN • Estimated Wait: 10 Minutes";
+            status2Wrapper.style.display = "flex";
+        }
+    }
+};
+
+const renderSwatiDates = () => {
+    const swatiDatesList = [
+        { dateStr: '22 July 2026', dayName: 'Wednesday', parsed: new Date(2026, 6, 22) },
+        { dateStr: '19 August 2026', dayName: 'Wednesday', parsed: new Date(2026, 7, 19) },
+        { dateStr: '15 September 2026', dayName: 'Tuesday', parsed: new Date(2026, 8, 15) },
+        { dateStr: '12 October 2026', dayName: 'Monday', parsed: new Date(2026, 9, 12) },
+        { dateStr: '08 November 2026', dayName: 'Sunday', parsed: new Date(2026, 10, 8) },
+        { dateStr: '06 December 2026', dayName: 'Sunday', parsed: new Date(2026, 11, 6) }
+    ];
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); 
+    const calendarContainer = document.getElementById('dynamic-calendar-list');
+    if(!calendarContainer) return;
+    calendarContainer.innerHTML = ''; 
+    const upcomingDates = swatiDatesList.filter(dateObj => dateObj.parsed.getTime() >= today.getTime());
+    upcomingDates.forEach((item, index) => {
+        const isToday = item.parsed.getTime() === today.getTime();
+        const isNext = (index === 0 && !isToday); 
+        const wrapperDiv = document.createElement('div');
+        if (isToday) {
+            wrapperDiv.className = "calendar-card next-swati-card";
+            wrapperDiv.style.background = "linear-gradient(135deg, #e11d48, #be123c)"; 
+            wrapperDiv.style.boxShadow = "0 4px 8px rgba(225, 29, 72, 0.3)";
+        } else if (isNext) {
+            wrapperDiv.className = "calendar-card next-swati-card"; 
+        } else {
+            wrapperDiv.className = "calendar-card"; 
+        }
+        let labelHtml = "";
+        let textClass = "";
+        let badgeClass = "cal-year-badge";
+        if (isToday) {
+            labelHtml = `<span class="next-swati-label" style="color: #e11d48;">TODAY'S SWATI</span>`;
+            textClass = "color: #ffffff; font-size: 0.8rem;";
+            badgeClass = "cal-year-badge bg-white text-rose-600";
+        } else if (isNext) {
+            labelHtml = `<span class="next-swati-label">Next</span>`;
+            textClass = "color: #ffffff; font-size: 0.8rem;";
+            badgeClass = "cal-year-badge bg-white text-emerald-600";
+        } else {
+            textClass = "color: #78350f; font-size: 0.75rem;";
+        }
+        wrapperDiv.innerHTML = `<div class="cal-date-wrap" style="${textClass}">${labelHtml}🗓️ ${item.dateStr} (${item.dayName})</div><span class="${badgeClass}">${item.parsed.getFullYear()}</span>`;
+        calendarContainer.appendChild(wrapperDiv);
+    });
+};
+
 const switchTimings = (mode) => { document.getElementById('btn-normal').className = mode === 'normal' ? 'btn-toggle active' : 'btn-toggle'; document.getElementById('btn-swati').className = mode === 'swati' ? 'btn-toggle active' : 'btn-toggle'; document.getElementById('lower-normal-times').style.display = mode === 'normal' ? 'block' : 'none'; document.getElementById('lower-swati-times').style.display = mode === 'swati' ? 'block' : 'none'; document.getElementById('upper-normal-times').style.display = mode === 'normal' ? 'block' : 'none'; document.getElementById('upper-swati-times').style.display = mode === 'swati' ? 'block' : 'none'; };
 
-// CM041 - Window Load
-window.onload = () => { computeSevaTimeline(); };
+window.onload = () => { 
+    computeSevaTimeline(); 
+    fetchMarqueeText();
+    fetchLiveDarshanStatus();
+    renderSwatiDates();
+};
 
-// CM042 - Sloka Data
 const slokas = [{lang:"Telugu",text:"ఓం ఉగ్రం వీరం మహావిష్ణుం జ్వలంతం సర్వతోముఖమ్ ।\nనృసింహం భీషణం భద్రం మృత్యోర్మృత్యుం నమామ్యహమ్ ॥",font:"'Sree Krushnadevaraya', serif"},{lang:"English",text:"Om Ugram Veeram Mahavishnum Jwalantam Sarvatomukham |\nNrisimham Bhishanam Bhadram Mrityumrityum Namamyaham ||",font:"'Cinzel', serif"},{lang:"Tamil",text:"ஓம் உக்ரம் வீரம் மகாவிஷ்ணும் ஜ்வலந்தம் ஸர்வதோமுகம் ।\nநரசிம்ஹம் பீஷணம் பத்ரம் ம்ருத்யோர் ம்ருத்யும் நமாம்யஹம் ॥",font:"'Tiro Tamil', serif"},{lang:"Kannada",text:"ಓಂ ಉಗ್ರಂ ವೀರಂ ಮಹಾವಿಷ್ಣುಂ ಜ್ವಲಂತಂ ಸರ್ವತೋಮುಖಂ ।\nನೃಸಿಂಹಂ ಭೀಷಣಂ ಭದ್ರಂ ಮೃತ್ಯೋರ್ಮೃತ್ಯುಂ ನಮಾಮ್ಯಹಂ ॥",font:"'Tiro Kannada', serif"},{lang:"Hindi",text:"ॐ उग्रं वीरं महाविष्णुम् ज्वलन्तं सर्वतोमुखम् ।\nनृसिंहं भीषणं भद्रं मृत्योर्मृत्युम् नमाम्यहम् ॥",font:"'Yatra One', display"}];
-
-// CM043 - DOM Sloka Init
 let currentIndex = 0; const slokaWrapper = document.getElementById('sloka-wrapper'); const slokaTextEl = document.getElementById('sloka-text'); const slokaSegmenter = window.Intl ? new Intl.Segmenter(undefined, {granularity: 'grapheme'}) : null;
 
-// CM044 - Sloka Render
 const renderSloka = (index) => { if(!slokaWrapper || !slokaTextEl) return; slokaWrapper.style.opacity = 0; setTimeout(() => { const currentData = slokas[index]; slokaTextEl.style.fontFamily = currentData.font; let htmlContent = ''; let delay = 0; const delayIncrement = 25; if(slokaSegmenter){ const iterator = slokaSegmenter.segment(currentData.text); for(const segment of iterator){ const char = segment.segment; if(char === '\n'){ htmlContent += `<br>`; }else if(char === '।' || char === '॥' || char === '|' || char === '||'){ htmlContent += `<span class="char-slide font-bold text-[#FF671F] mx-1" style="animation-delay: ${delay}ms">${char}</span>`; delay += delayIncrement; }else{ htmlContent += `<span class="char-slide" style="animation-delay: ${delay}ms">${char}</span>`; delay += delayIncrement; } } }else{ const chars = currentData.text.split(''); chars.forEach(char => { if(char === '\n'){ htmlContent += `<br>`; }else{ htmlContent += `<span class="char-slide" style="animation-delay: ${delay}ms">${char}</span>`; delay += delayIncrement; } }); } slokaTextEl.innerHTML = htmlContent; slokaWrapper.style.opacity = 1; }, 500); };
 
-// CM045 - Sloka Loop
 document.addEventListener("DOMContentLoaded", () => { renderSloka(0); setInterval(() => { currentIndex = (currentIndex + 1) % slokas.length; renderSloka(currentIndex); }, 5000); });
 
-// CM046 - App Install Logic
 document.addEventListener("DOMContentLoaded", () => { let deferredPrompt; window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; setTimeout(() => { const modal = document.getElementById('app-install-modal'); if (modal) modal.classList.remove('hidden'); }, 3000); }); const closeBtn = document.getElementById('close-install-btn'); if (closeBtn) closeBtn.addEventListener('click', () => { document.getElementById('app-install-modal').classList.add('hidden'); }); const installBtn = document.getElementById('confirm-install-btn'); if (installBtn) installBtn.addEventListener('click', async () => { document.getElementById('app-install-modal').classList.add('hidden'); if (deferredPrompt) { deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; } }); });
 
-// CM047 - Dynamic Page Loading (Iframe)
-document.addEventListener("DOMContentLoaded", () => { const homeBtn = document.getElementById('home-link-btn'); const homeContent = document.getElementById('home-main-content'); const dynamicContainer = document.getElementById('dynamic-page-container'); const loadDynamicPage = (url) => { dynamicContainer.innerHTML = `<div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white min-h-[80vh] flex flex-col"><iframe src="${url}" class="w-full flex-grow min-h-[80vh] border-none" id="content-iframe" onload="window.scrollTo(0,0);"></iframe></div>`; homeContent.style.display = 'none'; dynamicContainer.style.display = 'block'; window.scrollTo(0, 0); }; if(homeBtn) { homeBtn.addEventListener('click', (e) => { e.preventDefault(); document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); homeContent.style.display = 'block'; dynamicContainer.style.display = 'none'; dynamicContainer.innerHTML = ''; window.scrollTo(0, 0); }); } document.querySelectorAll('.dynamic-link').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); if(link.closest('.submenu')) link.classList.add('bg-[#850404]', 'text-white'); document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); const parentMenu = link.closest('.group')?.querySelector('.menu-toggle'); if (parentMenu) parentMenu.classList.add('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white'); document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); loadDynamicPage(link.getAttribute('href')); }); }); });
-
+document.addEventListener("DOMContentLoaded", () => { 
+    const homeBtn = document.getElementById('home-link-btn'); 
+    const homeContent = document.getElementById('home-main-content'); 
+    const dynamicContainer = document.getElementById('dynamic-page-container'); 
+    const mainFooter = document.getElementById('main-footer');
+    
+    const loadDynamicPage = (url, titleText = 'Coming Soon') => { 
+        if (url === '#' || url === '') {
+            // Generate a beautiful placeholder page for dummy links
+            dynamicContainer.innerHTML = `
+                <div class="w-full max-w-[1920px] mx-auto bg-[#fdfbf7] min-h-[65vh] flex flex-col items-center justify-center p-8 text-center border-t-2 border-[#D4AF37]/30">
+                    <i class="fa-solid fa-gopuram text-6xl text-[#dfa857] mb-6 drop-shadow-md"></i>
+                    <h2 class="text-2xl md:text-3xl font-bold text-[#850404] tracking-wider uppercase drop-shadow-sm mb-3" style="font-family:'Cinzel', serif;">Hari Om</h2>
+                    <div class="w-[60px] h-[3px] bg-[#D4AF37] mb-5"></div>
+                    <p class="text-[#2C1E16] font-extrabold text-xl mb-3">${titleText}</p>
+                    <p class="text-[#1a0f00]/70 mt-2 max-w-lg leading-relaxed text-sm md:text-base">This divine service portal is currently being updated by the Devasthanam. Please check back soon for access to online booking and donations.</p>
+                </div>`;
+        } else {
+            // Load real iframe pages
+            dynamicContainer.innerHTML = `<div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white min-h-[80vh] flex flex-col"><iframe src="${url}" class="w-full flex-grow min-h-[80vh] border-none" id="content-iframe" onload="window.scrollTo({top:0, behavior:'smooth'});"></iframe></div>`; 
+        }
+        
+        homeContent.style.display = 'none'; 
+        dynamicContainer.style.display = 'block'; 
+        
+        if(mainFooter) mainFooter.style.display = 'none';
+        
+        // Scroll instantly to the top when page loads
+        window.scrollTo({top: 0, behavior: 'smooth'}); 
+    }; 
+    
+    if(homeBtn) { 
+        homeBtn.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); 
+            document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); 
+            
+            homeContent.style.display = 'block'; 
+            dynamicContainer.style.display = 'none'; 
+            dynamicContainer.innerHTML = ''; 
+            
+            if(mainFooter) mainFooter.style.display = '';
+            
+            window.scrollTo({top: 0, behavior: 'smooth'}); 
+        }); 
+    } 
+    
+    document.querySelectorAll('.dynamic-link').forEach(link => { 
+        link.addEventListener('click', (e) => { 
+            e.preventDefault(); 
+            document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); 
+            if(link.closest('.submenu')) link.classList.add('bg-[#850404]', 'text-white'); 
+            
+            document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); 
+            
+            const parentMenu = link.closest('.group')?.querySelector('.menu-toggle'); 
+            if (parentMenu) parentMenu.classList.add('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white'); 
+            
+            document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); 
+            
+            // Pass the URL AND the text of the button to load Dynamic Page
+            loadDynamicPage(link.getAttribute('href'), link.innerText.trim()); 
+        }); 
+    }); 
+});
 </script>
 </body>
 </html>
