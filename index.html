@@ -562,7 +562,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </div>
 
 <!-- Container for dynamically loaded sub-pages (iframes) -->
-<div id="dynamic-page-container" class="w-full min-h-[50vh]" style="display:none;"></div>
+<div id="dynamic-page-container" class="w-full" style="display:none;"></div>
 
 <footer id="main-footer" class="w-full bg-[#dfa857] border-t-4 border-[#a87c1e] py-6 px-4 md:px-8 text-[#1a0f00] relative z-20 font-['Roboto_Slab'] overflow-visible mt-auto">
 <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 border-b border-[#a87c1e]/20 pb-6 mb-6">
@@ -717,9 +717,11 @@ const fetchMarqueeText = async () => {
         if (jsonData.operationExecutionStatus === "success" && jsonData.fetchedScrollingTextContentString) {
             const marqueeContainer = document.getElementById("dynamic-marquee-text");
             if (marqueeContainer) marqueeContainer.innerText = jsonData.fetchedScrollingTextContentString;
+        } else {
+            throw new Error("Invalid response format");
         }
     } catch (error) {
-        console.warn("Using offline fallback for Marquee Text.");
+        console.warn("Using offline fallback for Marquee Text:", error);
         const marqueeContainer = document.getElementById("dynamic-marquee-text");
         if (marqueeContainer) marqueeContainer.innerText = " ॐ श्री लक्ष्मी नृसिंह परब्रह्मणे नमः • 📅 Next Swati Nakshatra: 22 July 2026 | 📢 Arjitha Sevas will not be performed at Lower Ahobilam only. •";
     }
@@ -727,49 +729,59 @@ const fetchMarqueeText = async () => {
 
 const fetchLiveDarshanStatus = async () => {
     const darshanScriptUrl = "https://script.google.com/macros/s/AKfycbwK4Ui65EfbdyC6Xk8n9JcPVydUh6cOpcYDwPVJD9OC0mISKKQ7Cyh5p9szDIuKn2b5UQ/exec";
-    try {
-        const response = await fetch(darshanScriptUrl);
-        if (!response.ok) {
-            throw new Error("HTTP Status " + response.status);
-        }
-        const jsonData = await response.json();
-        
-        if (jsonData.operationExecutionStatus === "success") {
-            const status1 = document.getElementById("live-status-1");
-            const status2 = document.getElementById("live-status-2");
-            const status2Wrapper = document.getElementById("live-status-2-wrapper");
-            
-            const val1 = jsonData.fetchedFirstLiveDarshanStatusContentString;
-            const val2 = jsonData.fetchedSecondLiveDarshanStatusContentString;
-            
-            if (status1) {
-                status1.innerText = val1 ? val1 : "Live status unavailable.";
-            }
-            
-            if (status2 && status2Wrapper) {
-                if (val2 && String(val2).trim() !== "") {
-                    status2.innerText = String(val2).trim();
-                    status2Wrapper.style.display = "flex";
-                } else {
-                    status2Wrapper.style.display = "none";
-                }
-            }
-        } else {
-            throw new Error("Server returned failed status.");
-        }
-    } catch (error) {
+    
+    const applyFallback = () => {
         console.warn("Using offline fallback for Live Darshan status.");
         const status1 = document.getElementById("live-status-1");
         const status2 = document.getElementById("live-status-2");
         const status2Wrapper = document.getElementById("live-status-2-wrapper");
         
-        if (status1) {
-            status1.innerText = "Upper Ahobilam • DIVINE DARSHAN • Estimated Wait: 10 Minutes";
-        }
+        if (status1) status1.innerText = "Upper Ahobilam • DIVINE DARSHAN • Estimated Wait: 10 Minutes";
         if (status2 && status2Wrapper) {
             status2.innerText = "Lower Ahobilam • DIVINE DARSHAN • Estimated Wait: 10 Minutes";
             status2Wrapper.style.display = "flex";
         }
+    };
+    
+    try {
+        const response = await fetch(darshanScriptUrl);
+        if (!response.ok) {
+            throw new Error("HTTP Status " + response.status);
+        }
+        
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+            const jsonData = await response.json();
+            
+            if (jsonData.operationExecutionStatus === "success") {
+                const status1 = document.getElementById("live-status-1");
+                const status2 = document.getElementById("live-status-2");
+                const status2Wrapper = document.getElementById("live-status-2-wrapper");
+                
+                const val1 = jsonData.fetchedFirstLiveDarshanStatusContentString;
+                const val2 = jsonData.fetchedSecondLiveDarshanStatusContentString;
+                
+                if (status1) {
+                    status1.innerText = val1 ? val1 : "Live status unavailable.";
+                }
+                
+                if (status2 && status2Wrapper) {
+                    if (val2 && String(val2).trim() !== "") {
+                        status2.innerText = String(val2).trim();
+                        status2Wrapper.style.display = "flex";
+                    } else {
+                        status2Wrapper.style.display = "none";
+                    }
+                }
+            } else {
+                throw new Error("Server returned failed status.");
+            }
+        } else {
+            // If the server returns HTML instead of JSON, it's a Google Login Redirect error.
+            throw new Error("Google blocked the request (Permissions error).");
+        }
+    } catch (error) {
+        applyFallback();
     }
 };
 
@@ -856,16 +868,39 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="text-[#1a0f00]/70 mt-2 max-w-lg leading-relaxed text-sm md:text-base">This divine service portal is currently being updated by the Devasthanam. Please check back soon for access to online booking and donations.</p>
                 </div>`;
         } else {
-            // Load real iframe pages
-            dynamicContainer.innerHTML = `<div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white min-h-[80vh] flex flex-col"><iframe src="${url}" class="w-full flex-grow min-h-[80vh] border-none" id="content-iframe" onload="window.scrollTo({top:0, behavior:'smooth'});"></iframe></div>`; 
+            // Load real iframe pages and resize dynamically to prevent double-scrollbars
+            dynamicContainer.innerHTML = `
+                <div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white flex flex-col">
+                    <iframe 
+                        src="${url}" 
+                        class="w-full flex-grow border-none block" 
+                        style="min-height: 80vh; overflow: hidden;" 
+                        scrolling="no" 
+                        id="content-iframe" 
+                        onload="
+                            window.scrollTo({top:0, behavior:'smooth'});
+                            try {
+                                var frame = this;
+                                var resize = function() {
+                                    if(frame.contentWindow && frame.contentWindow.document && frame.contentWindow.document.documentElement) {
+                                        frame.style.height = (frame.contentWindow.document.documentElement.scrollHeight + 30) + 'px';
+                                    }
+                                };
+                                resize();
+                                setInterval(resize, 300);
+                            } catch(e) {
+                                console.log('Cross-origin resizing prevented.');
+                                frame.style.height = '2500px';
+                            }
+                        "
+                    ></iframe>
+                </div>`; 
         }
         
         homeContent.style.display = 'none'; 
         dynamicContainer.style.display = 'block'; 
-        
         if(mainFooter) mainFooter.style.display = 'none';
         
-        // Scroll instantly to the top when page loads
         window.scrollTo({top: 0, behavior: 'smooth'}); 
     }; 
     
