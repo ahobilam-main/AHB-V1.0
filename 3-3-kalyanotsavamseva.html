@@ -3,94 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kalyanotsavam</title>
+<title>Kalyanotsavam Dates - Ahobilam</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+
+// CM001 - Tailwind Configuration
+tailwind.config = { theme: { extend: { fontFamily: { 'slab': ['"Roboto Slab"', 'serif'], }, colors: { temple: { red: '#8b0000', gold: '#ffc107', dark: '#333333' } } } } }
+</script>
 <style>
-body { font-family: 'Roboto Slab', serif; font-size: 14px; margin: 0; padding: 0; background: url('https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(7).JPG') no-repeat center center fixed; background-size: cover; color: #333; }
 
-.container { max-width: 900px; margin: 40px auto; padding: 30px; background: rgba(255, 255, 255, 0.95); border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.7); }
-h1 { text-align: center; color: #8b0000; font-size: 26px; text-transform: uppercase; border-bottom: 2px solid #8b0000; padding-bottom: 15px; margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 15px; }
+/* CM002 - Body Style */
+body { font-family: 'Roboto Slab', serif; }
 
-table { width: 100%; border-collapse: collapse; margin-top: 15px; background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
-th, td { border: 1px solid #e0e0e0; padding: 12px 15px; text-align: left; vertical-align: middle; }
-th { background-color: #8b0000; color: white; font-weight: bold; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px; }
-tr:nth-child(even) { background-color: #fafafa; }
-tr:hover { background-color: #f0f0f0; transition: background-color 0.3s ease; }
-.fa-icon { color: #8b0000; margin-right: 8px; font-size: 16px; width: 20px; text-align: center; }
+/* CM003 - Background Styles */
+.bg-blurred { position: fixed; top: -5%; left: -5%; width: 110%; height: 110%; background: url('https://ahobilam-main.github.io/AHB-TEMPLE-IMAGES/SLIDER-MAIN-PAGE(7).JPG') no-repeat center center; background-size: cover; filter: blur(8px); z-index: -1; }
 
-.notes-section { background-color: #fff8e1; border-left: 5px solid #ffc107; padding: 20px; margin-top: 30px; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-.notes-section h2 { color: #d32f2f; font-size: 18px; margin: 0 0 15px 0; display: flex; align-items: center; gap: 10px; }
-ul { margin: 10px 0 10px 20px; padding: 0; }
-li { margin-bottom: 8px; display: flex; align-items: center; }
-p { margin: 5px 0; line-height: 1.6; }
-.booking-section { text-align: center; margin-top: 30px; padding: 25px; background-color: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.booking-section i { font-size: 28px; color: #2e7d32; }
-.booking-section p { margin: 0; font-weight: 700; color: #2e7d32; font-size: 15px; }
+/* CM004 - Component Styles */
+.glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.gradient-border-bottom { border-bottom: 2px solid; border-image: linear-gradient(to right, transparent, #8b0000, transparent) 1; }
+
+/* CM005 - Animation Styles */
+.loader { border: 3px solid #f3f3f3; border-top: 3px solid #8b0000; border-radius: 50%; width: 35px; height: 35px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 </style>
 </head>
-<body>
+<body class="min-h-screen text-temple-dark py-3 px-2 flex flex-col items-center justify-center relative overflow-x-hidden">
 
-<div class="container">
-<div id="header-section">
-<h1><i class="fa-solid fa-om"></i> Sri Lakshmi Narasimha Swamy Kalyanotsavam <i class="fa-solid fa-om"></i></h1>
+<!-- CM006 - Blurred Background Element -->
+<div class="bg-blurred"></div>
+
+<!-- CM007 - Main Container -->
+<div class="glass-panel w-full max-w-3xl rounded-xl overflow-hidden p-3 sm:p-5 relative">
+
+<!-- CM008 - Header -->
+<div class="text-center mb-4">
+<h1 class="text-lg sm:text-xl font-bold text-temple-red uppercase tracking-wide flex items-center justify-center gap-2 gradient-border-bottom pb-2"><i class="fa-solid fa-om text-temple-gold"></i>Upcoming Dates & Schedule<i class="fa-solid fa-om text-temple-gold"></i></h1>
+<p class="mt-2 text-gray-700 font-bold text-xs tracking-wide uppercase">This Month Kalyanotsavam Dates</p>
 </div>
 
-<div id="table-section">
-<table>
+<!-- CM009 - Loading State -->
+<div id="loading-state" class="flex flex-col items-center justify-center py-4">
+<div class="loader mb-2"></div>
+<p class="text-temple-red font-semibold animate-pulse text-xs">Fetching latest dates...</p>
+</div>
+
+<!-- CM010 - Data Container -->
+<div id="data-container" class="hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+
+<!-- CM011 - Lower Ahobilam Column -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<div class="bg-gradient-to-r from-red-900 to-temple-red py-1.5 px-2">
+<h2 class="text-sm font-bold text-white text-center flex items-center justify-center gap-1.5"><i class="fa-solid fa-mountain-sun text-xs"></i>LOWER AHOBILAM</h2>
+</div>
+<div class="p-1.5">
+<table class="w-full text-[10px] sm:text-xs border-collapse">
 <thead>
-<tr>
-<th>S. No.</th>
-<th><i class="fa-solid fa-hands-praying fa-icon" style="color: white;"></i> Seva</th>
-<th><i class="fa-solid fa-calendar-days fa-icon" style="color: white;"></i> Days</th>
-<th><i class="fa-solid fa-place-of-worship fa-icon" style="color: white;"></i> Location</th>
-<th><i class="fa-solid fa-circle-info fa-icon" style="color: white;"></i> Remarks</th>
+<tr class="bg-gray-100 text-temple-red">
+<th class="border p-1 text-center"><i class="fa-regular fa-calendar"></i> Month</th>
+<th class="border p-1 text-center"><i class="fa-solid fa-hashtag"></i> Date</th>
+<th class="border p-1 text-center"><i class="fa-regular fa-clock"></i> Day</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Sri Lakshmi Narasimha Swamy Kalyanotsavam</td>
-<td><i class="fa-solid fa-calendar-check fa-icon"></i> Every Tuesday</td>
-<td><i class="fa-solid fa-location-dot fa-icon"></i> <strong>Upper & Lower Ahobilam</strong></td>
-<td>Conducted subject to the temple festival calendar.</td>
+<tbody id="lower-table-body">
+</tbody>
+</table>
+</div>
+</div>
+
+<!-- CM012 - Upper Ahobilam Column -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+<div class="bg-gradient-to-r from-orange-600 to-yellow-600 py-1.5 px-2">
+<h2 class="text-sm font-bold text-white text-center flex items-center justify-center gap-1.5"><i class="fa-solid fa-mountain text-xs"></i>UPPER AHOBILAM</h2>
+</div>
+<div class="p-1.5">
+<table class="w-full text-[10px] sm:text-xs border-collapse">
+<thead>
+<tr class="bg-gray-100 text-orange-700">
+<th class="border p-1 text-center"><i class="fa-regular fa-calendar"></i> Month</th>
+<th class="border p-1 text-center"><i class="fa-solid fa-hashtag"></i> Date</th>
+<th class="border p-1 text-center"><i class="fa-regular fa-clock"></i> Day</th>
 </tr>
-<tr>
-<td>2</td>
-<td>Sri Lakshmi Narasimha Swamy Kalyanotsavam</td>
-<td><i class="fa-solid fa-calendar-check fa-icon"></i> Every Friday</td>
-<td><i class="fa-solid fa-location-dot fa-icon"></i> <strong>Upper & Lower Ahobilam</strong></td>
-<td>Conducted subject to the temple festival calendar.</td>
+</thead>
+<tbody id="upper-table-body">
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CM013 - Fallback Message -->
+<div id="fallback-message" class="hidden bg-red-50 border border-red-200 rounded-lg p-3 text-center mb-4 shadow-inner">
+<i class="fa-solid fa-calendar-xmark text-2xl text-temple-red mb-2"></i>
+<h3 id="fallback-text" class="text-sm font-bold text-temple-red mb-1">Coming soon</h3>
+<p class="text-gray-700 text-xs">Please contact <strong>+91 94401 20878</strong> for more information.</p>
+</div>
+
+<!-- CM014 - Standard Schedule Table -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-4">
+<div class="bg-gradient-to-r from-gray-100 to-gray-200 py-1.5 px-3 border-b border-gray-300">
+<h3 class="text-xs font-bold text-temple-red flex items-center gap-1.5"><i class="fa-solid fa-clock-rotate-left text-temple-gold"></i> Standard Kalyanotsavam Schedule</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-[9px] sm:text-[11px] border-collapse text-left">
+<thead>
+<tr class="bg-gray-50 text-gray-700">
+<th class="border-b p-1.5 font-semibold text-center w-8">S.No.</th>
+<th class="border-b p-1.5 font-semibold whitespace-nowrap">Seva</th>
+<th class="border-b p-1.5 font-semibold">Days</th>
+<th class="border-b p-1.5 font-semibold">Location</th>
+<th class="border-b p-1.5 font-semibold min-w-[120px]">Remarks</th>
 </tr>
-<tr>
-<td>3</td>
-<td>Sri Lakshmi Narasimha Swamy Kalyanotsavam</td>
-<td><i class="fa-solid fa-calendar-check fa-icon"></i> Every Sunday</td>
-<td><i class="fa-solid fa-location-dot fa-icon"></i> <strong>Upper & Lower Ahobilam</strong></td>
-<td>Conducted subject to the temple festival calendar.</td>
+</thead>
+<tbody class="text-gray-700">
+<tr class="hover:bg-red-50 transition-colors border-b">
+<td class="p-1.5 text-center font-bold">1</td>
+<td class="p-1.5 font-medium text-temple-red">Sri Lakshmi Narasimha Swamy Kalyanotsavam</td>
+<td class="p-1.5"><span class="bg-blue-100 text-blue-800 text-[9px] font-bold px-1.5 py-0.5 rounded border border-blue-200 shadow-sm whitespace-nowrap"><i class="fa-regular fa-calendar-check mr-1"></i> Every Tuesday</span></td>
+<td class="p-1.5 font-medium whitespace-nowrap">Upper & Lower Ahobilam</td>
+<td class="p-1.5 text-[9px] text-gray-500 italic">Conducted subject to the temple festival calendar.</td>
+</tr>
+<tr class="hover:bg-red-50 transition-colors border-b">
+<td class="p-1.5 text-center font-bold">2</td>
+<td class="p-1.5 font-medium text-temple-red">Sri Lakshmi Narasimha Swamy Kalyanotsavam</td>
+<td class="p-1.5"><span class="bg-green-100 text-green-800 text-[9px] font-bold px-1.5 py-0.5 rounded border border-green-200 shadow-sm whitespace-nowrap"><i class="fa-regular fa-calendar-check mr-1"></i> Every Friday</span></td>
+<td class="p-1.5 font-medium whitespace-nowrap">Upper & Lower Ahobilam</td>
+<td class="p-1.5 text-[9px] text-gray-500 italic">Conducted subject to the temple festival calendar.</td>
+</tr>
+<tr class="hover:bg-red-50 transition-colors">
+<td class="p-1.5 text-center font-bold">3</td>
+<td class="p-1.5 font-medium text-temple-red">Sri Lakshmi Narasimha Swamy Kalyanotsavam</td>
+<td class="p-1.5"><span class="bg-orange-100 text-orange-800 text-[9px] font-bold px-1.5 py-0.5 rounded border border-orange-200 shadow-sm whitespace-nowrap"><i class="fa-regular fa-calendar-check mr-1"></i> Every Sunday</span></td>
+<td class="p-1.5 font-medium whitespace-nowrap">Upper & Lower Ahobilam</td>
+<td class="p-1.5 text-[9px] text-gray-500 italic">Conducted subject to the temple festival calendar.</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
 
-<div class="notes-section">
-<h2><i class="fa-solid fa-circle-exclamation"></i> Important Note</h2>
-<p>Kalyanotsavam is <strong>not performed</strong> if any of the following falls on the scheduled day:</p>
-<ul style="list-style-type: none; padding-left: 0;">
-<li><i class="fa-solid fa-moon" style="color: #666; margin-right: 10px; width: 16px; text-align: center;"></i> Amavasya (New Moon)</li>
-<li><i class="fa-solid fa-circle" style="color: #fbc02d; margin-right: 10px; width: 16px; text-align: center;"></i> Pournami (Full Moon)</li>
-<li><i class="fa-solid fa-leaf" style="color: #4caf50; margin-right: 10px; width: 16px; text-align: center;"></i> Ekadashi</li>
-<li><i class="fa-solid fa-star" style="color: #2196f3; margin-right: 10px; width: 16px; text-align: center;"></i> Swathi Nakshatra</li>
+<!-- CM015 - Tickets and Items Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+<div class="bg-indigo-50 border border-indigo-200 rounded-lg p-3 shadow-sm flex flex-col items-center justify-center text-center">
+<i class="fa-solid fa-ticket text-xl text-indigo-600 mb-1"></i>
+<h3 class="text-sm font-bold text-indigo-900 mb-0.5">Kalyanotsavam Ticket</h3>
+<div class="text-xl font-extrabold text-indigo-700 mb-1">₹5,000</div>
+<p class="text-indigo-800 font-medium bg-indigo-100 px-2 py-0.5 rounded-full text-[10px] shadow-inner border border-indigo-200"><i class="fa-solid fa-user-group mr-1"></i> Valid for 2 Persons Only</p>
+</div>
+<div class="bg-pink-50 border border-pink-200 rounded-lg p-3 shadow-sm">
+<h3 class="text-xs font-bold text-pink-900 mb-2 border-b border-pink-200 pb-1 flex items-center gap-1.5"><i class="fa-solid fa-basket-shopping text-pink-600"></i> Required Pooja Items</h3>
+<ul class="space-y-1 text-pink-900 text-[10px] sm:text-xs">
+<li class="flex items-start gap-1.5"><i class="fa-solid fa-spa text-pink-500 mt-0.5 w-3 text-center"></i><span><strong>3 Flower Garlands</strong> <span class="text-pink-700 text-[9px]">(Poola Dandalu)</span></span></li>
+<li class="flex items-start gap-1.5"><i class="fa-brands fa-pagelines text-pink-500 mt-0.5 w-3 text-center"></i><span><strong>Loose Flowers - 20 Cubits</strong> <span class="text-pink-700 text-[9px]">(20 Mooralu Pulu)</span></span></li>
+<li class="flex items-start gap-1.5"><i class="fa-solid fa-seedling text-pink-500 mt-0.5 w-3 text-center"></i><span><strong>2 Coconuts</strong></span></li>
+<li class="flex items-start gap-1.5"><i class="fa-solid fa-bowl-rice text-pink-500 mt-0.5 w-3 text-center"></i><span><strong>Turmeric & Kumkum</strong> <span class="text-pink-700 text-[9px]">(Pasupu & Kumkuma)</span></span></li>
+<li class="flex items-start gap-1.5"><i class="fa-solid fa-leaf text-pink-500 mt-0.5 w-3 text-center"></i><span><strong>Betel Leaves & Nuts</strong> <span class="text-pink-700 text-[9px]">(Akulu & Vakkalu)</span></span></li>
 </ul>
-<p>On such occasions, the Kalyanotsavam is strictly not conducted.</p>
+</div>
 </div>
 
-<div class="booking-section">
-<i class="fa-solid fa-ticket"></i>
-<p>Please visit the Booking Page to view the monthly schedule and available dates for all Sevas, Abhishekams, Kalyanotsavams, and other temple services.</p>
+<!-- CM016 - Notes Section -->
+<div class="bg-yellow-50 border-l-4 border-yellow-500 p-3 rounded-r shadow-sm mb-4">
+<h3 class="text-red-700 font-bold text-xs mb-1.5 flex items-center gap-1.5"><i class="fa-solid fa-circle-exclamation"></i> Important Note</h3>
+<p class="mb-1.5 text-gray-700 text-[10px] sm:text-xs">Kalyanotsavam is <strong>not performed</strong> if any of the following falls on the scheduled day:</p>
+<ul class="grid grid-cols-2 gap-1.5 pl-2 text-gray-800 text-[10px] sm:text-xs">
+<li class="flex items-center gap-1.5"><i class="fa-solid fa-moon text-gray-600 w-3"></i> Amavasya (New Moon)</li>
+<li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-yellow-500 w-3"></i> Pournami (Full Moon)</li>
+<li class="flex items-center gap-1.5"><i class="fa-solid fa-leaf text-green-600 w-3"></i> Ekadashi</li>
+<li class="flex items-center gap-1.5"><i class="fa-solid fa-star text-blue-500 w-3"></i> Swathi Nakshatra</li>
+</ul>
+<p class="mt-2 text-temple-red text-[10px] font-semibold italic border-t border-yellow-200 pt-1.5">On such occasions, the Kalyanotsavam is strictly not conducted.</p>
 </div>
 
+<!-- CM017 - Booking Section -->
+<div class="bg-green-50 border border-green-200 rounded-lg p-3 text-center flex flex-col items-center justify-center gap-1.5 shadow-sm">
+<i class="fa-solid fa-ticket-simple text-lg text-green-600"></i>
+<p class="text-green-800 font-bold text-[11px] sm:text-xs">Please visit the Booking Section to book the date and take your receipt.</p>
 </div>
+</div>
+<script>
 
+// CM018 - Global JS Variables
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxJTkadDeHPyoNfgcn_3DAMWcfCyLaswQ5O_HHBPQ74BX05imnqRfPZYRyFFtzt-bDDQQ/exec'; const loadingState = document.getElementById('loading-state'); const dataContainer = document.getElementById('data-container'); const fallbackContainer = document.getElementById('fallback-message'); const fallbackText = document.getElementById('fallback-text'); const lowerTableBody = document.getElementById('lower-table-body'); const upperTableBody = document.getElementById('upper-table-body');
+
+// CM019 - Render Table Function
+function renderTable(dataArray, tbodyElement, themeColor) { if (!dataArray || dataArray.length === 0) { tbodyElement.innerHTML = `<tr><td colspan="3" class="text-center py-2 text-gray-500 text-[10px] italic bg-gray-50">No dates scheduled currently.</td></tr>`; return; } tbodyElement.innerHTML = dataArray.map((row, index) => { const bgClass = index % 2 === 0 ? 'bg-white' : 'bg-gray-50'; const hoverClass = themeColor === 'red' ? 'hover:bg-red-50' : 'hover:bg-orange-50'; const textHighlight = themeColor === 'red' ? 'text-temple-red' : 'text-orange-700'; return `<tr class="${bgClass} ${hoverClass} transition-colors duration-200 border-b"><td class="border-x border-gray-200 px-1 py-1 text-center font-medium">${row.kMonth}</td><td class="border-x border-gray-200 px-1 py-1 text-center text-[11px] font-bold ${textHighlight}">${row.kDate}</td><td class="border-x border-gray-200 px-1 py-1 text-center capitalize text-gray-700">${row.kDay}</td></tr>`; }).join(''); }
+
+// CM020 - Fetch Kalyanam Dates Function
+async function fetchKalyanamDates() { try { const response = await fetch(SCRIPT_URL); const resultData = await response.json(); loadingState.classList.add('hidden'); const hasLowerDates = resultData.lowerTempleDates && resultData.lowerTempleDates.length > 0; const hasUpperDates = resultData.upperTempleDates && resultData.upperTempleDates.length > 0; if (resultData.noticeMessage || (!hasLowerDates && !hasUpperDates)) { fallbackContainer.classList.remove('hidden'); if (resultData.noticeMessage) fallbackText.innerHTML = resultData.noticeMessage.replace('+91 94401 20878', '<strong>+91 94401 20878</strong>'); } else { dataContainer.classList.remove('hidden'); renderTable(resultData.lowerTempleDates, lowerTableBody, 'red'); renderTable(resultData.upperTempleDates, upperTableBody, 'orange'); } } catch (error) { console.error("Error fetching data: ", error); loadingState.classList.add('hidden'); fallbackContainer.classList.remove('hidden'); fallbackText.innerText = "Unable to connect to temple registry."; } }
+
+// CM021 - Window Load Trigger
+window.onload = fetchKalyanamDates;
+</script>
 </body>
 </html>
