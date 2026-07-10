@@ -31,7 +31,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Tone.js/14.8.49/Tone.js"></script>
 
 <style>
-body { margin:0; padding:0; font-family:'Roboto Slab',serif; background-color:#fdfbf7; color:#2d2219; line-height:1.3; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+body { margin:0; padding:0; font-family:'Roboto Slab',serif; background-color:#fdfbf7; color:#2d2219; line-height:1.3; overflow-x:hidden; -webkit-font-smoothing:antialiased; min-height: 100vh; display: flex; flex-direction: column; }
 h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible !important; }
 .traditional-font { font-family:'Cinzel',serif; }
 .hd-sub-title { color:#FFD700; text-shadow:2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(255,215,0,0.3); letter-spacing:0.5px; overflow:visible !important; padding-bottom:0px; }
@@ -234,7 +234,6 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 <span>Sevas</span> <i class="fa-solid fa-chevron-down text-[7px]"></i>
 </a>
 <ul class="submenu absolute left-0 top-full hidden flex-col bg-[#3c0005] border border-[#dfa857]/50 shadow-2xl min-w-[210px] z-[9999] rounded-b-md py-1">
-
 <li><a href="3-1-dailysevas.html" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Daily Sevas</a></li>
 <li><a href="3-2-abhisekhamseva.html" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Abhishekam Seva</a></li>
 <li><a href="3-3-kalyanotsavamseva.html" class="dynamic-link block px-3 py-1.5 text-xs text-[#f9e4b7] hover:bg-[#a87c1e] hover:text-white transition-colors w-full"><i class="fa-solid fa-chevron-right text-[8px] mr-1 text-[#dfa857]"></i> Kalyanotsavam Seva</a></li>
@@ -341,7 +340,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </ul>
 </div>
 
-<div id="home-main-content" class="w-full">
+<div id="home-main-content" class="w-full flex-grow">
 <section class="w-full bg-[#f9e4b7] p-0 flex flex-col justify-center items-center relative overflow-hidden z-10">
 <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.02)_0%,transparent_75%)] pointer-events-none"></div>
 <div class="w-full flex flex-col md:flex-row items-stretch justify-center gap-0 z-10 relative overflow-hidden p-0 max-w-[1920px] mx-auto">
@@ -393,7 +392,7 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </section>
 
 <div class="marquee-container m-0 border-none">
-<div class="marquee-text" id="dynamic-marquee-text">Fetching latest updates from Google Sheets...</div>
+<div class="marquee-text" id="dynamic-marquee-text">Fetching latest updates...</div>
 </div>
 
 <div class="container-grid">
@@ -544,14 +543,19 @@ h2 { display:inline-block; margin-bottom:0; white-space:nowrap; overflow:visible
 </main>
 </div>
 
-<div class="bg-[#FFF9E6] border border-[#D4AF37]/50 rounded-lg p-3 md:p-4 mx-4 md:mx-6 text-left text-[10px] md:text-[11px] text-[#2C1E16] shadow-sm mt-0 mb-6 flex-grow-0">
-<p class="leading-relaxed font-medium tracking-wide"><strong class="text-[#FF671F] uppercase mr-1">NOTE:</strong>This is the Official Website of Sri Ahobilam Mutt Paramparadheena Sri Lakshmi Narasimha Swamy Devasthanam, Ahobilam. All temple announcements, seva details, darshan updates, and other information published here are authentic and officially issued by the Devasthanam Administration. Devotees are requested to rely only on this website and be cautious of unofficial sources or misleading information.</p>
 </div>
+<!-- End of home main content -->
 
+<!-- Container for dynamically loaded sub-pages (iframes or placeholders) -->
+<!-- Designed to fit seamlessly into the document flow when active, replacing the home content above it -->
+<div id="dynamic-page-container" class="w-full flex-grow relative" style="display:none;"></div>
+
+<!-- Note section (Now strictly outside the home content so it always displays at the bottom, right above footer) -->
+<div class="w-full max-w-[1920px] mx-auto px-4 md:px-6 mt-6 mb-6">
+    <div class="bg-[#FFF9E6] border border-[#D4AF37]/50 rounded-lg p-3 md:p-4 text-left text-[10px] md:text-[11px] text-[#2C1E16] shadow-sm flex-grow-0">
+        <p class="leading-relaxed font-medium tracking-wide"><strong class="text-[#FF671F] uppercase mr-1">NOTE:</strong>This is the Official Website of Sri Ahobilam Mutt Paramparadheena Sri Lakshmi Narasimha Swamy Devasthanam, Ahobilam. All temple announcements, seva details, darshan updates, and other information published here are authentic and officially issued by the Devasthanam Administration. Devotees are requested to rely only on this website and be cautious of unofficial sources or misleading information.</p>
+    </div>
 </div>
-
-<!-- Container for dynamically loaded sub-pages (iframes) -->
-<div id="dynamic-page-container" class="w-full" style="display:none;"></div>
 
 <footer id="main-footer" class="w-full bg-[#dfa857] border-t-4 border-[#a87c1e] py-6 px-4 md:px-8 text-[#1a0f00] relative z-20 font-['Roboto_Slab'] overflow-visible mt-auto">
 <div class="max-w-[1920px] mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 border-b border-[#a87c1e]/20 pb-6 mb-6">
@@ -766,7 +770,6 @@ const fetchLiveDarshanStatus = async () => {
                 throw new Error("Server returned failed status.");
             }
         } else {
-            // If the server returns HTML instead of JSON, it's a Google Login Redirect error.
             throw new Error("Google blocked the request (Permissions error).");
         }
     } catch (error) {
@@ -843,13 +846,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const homeBtn = document.getElementById('home-link-btn'); 
     const homeContent = document.getElementById('home-main-content'); 
     const dynamicContainer = document.getElementById('dynamic-page-container'); 
-    const mainFooter = document.getElementById('main-footer');
     
+    // Function that seamlessly replaces the main content with the sub-page
     const loadDynamicPage = (url, titleText = 'Coming Soon') => { 
         if (url === '#' || url === '') {
-            // Generate a beautiful placeholder page for dummy links
+            // Display a beautiful mockup for unfinished pages
             dynamicContainer.innerHTML = `
-                <div class="w-full max-w-[1920px] mx-auto bg-[#fdfbf7] min-h-[65vh] flex flex-col items-center justify-center p-8 text-center border-t-2 border-[#D4AF37]/30">
+                <div class="w-full max-w-[1920px] mx-auto bg-transparent min-h-[50vh] flex flex-col items-center justify-center p-8 text-center mt-6">
                     <i class="fa-solid fa-gopuram text-6xl text-[#dfa857] mb-6 drop-shadow-md"></i>
                     <h2 class="text-2xl md:text-3xl font-bold text-[#850404] tracking-wider uppercase drop-shadow-sm mb-3" style="font-family:'Cinzel', serif;">Hari Om</h2>
                     <div class="w-[60px] h-[3px] bg-[#D4AF37] mb-5"></div>
@@ -857,58 +860,62 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="text-[#1a0f00]/70 mt-2 max-w-lg leading-relaxed text-sm md:text-base">This divine service portal is currently being updated by the Devasthanam. Please check back soon for access to online booking and donations.</p>
                 </div>`;
         } else {
-            // Load real iframe pages and resize dynamically to prevent double-scrollbars
+            // Load real pages without borders, handling CORS silently so no errors pop up locally
             dynamicContainer.innerHTML = `
-                <div class="w-full max-w-[1920px] mx-auto shadow-[0_0_20px_rgba(0,0,0,0.15)] bg-white flex flex-col">
+                <div class="w-full max-w-[1920px] mx-auto bg-transparent flex flex-col items-center">
                     <iframe 
                         src="${url}" 
-                        class="w-full flex-grow border-none block" 
-                        style="min-height: 80vh; overflow: hidden;" 
+                        class="w-full flex-grow border-none block bg-transparent" 
+                        style="min-height: 100vh; overflow: hidden;" 
                         scrolling="no" 
-                        id="content-iframe" 
+                        id="content-iframe"
                         onload="
-                            window.scrollTo({top:0, behavior:'smooth'});
-                            try {
-                                var frame = this;
-                                var resize = function() {
-                                    if(frame.contentWindow && frame.contentWindow.document && frame.contentWindow.document.documentElement) {
-                                        frame.style.height = (frame.contentWindow.document.documentElement.scrollHeight + 30) + 'px';
+                            var frame = this;
+                            var attemptResize = function() {
+                                try {
+                                    // This try-catch completely prevents local file CORS red errors
+                                    if(frame.contentWindow && frame.contentWindow.document && frame.contentWindow.document.body) {
+                                        var height = frame.contentWindow.document.documentElement.scrollHeight;
+                                        if (height > 0) {
+                                            frame.style.height = height + 'px';
+                                        }
                                     }
-                                };
-                                resize();
-                                setInterval(resize, 300);
-                            } catch(e) {
-                                console.log('Cross-origin resizing prevented.');
-                                frame.style.height = '2500px';
-                            }
+                                } catch(e) {
+                                    // Fail silently if running locally, rely on min-height
+                                }
+                            };
+                            attemptResize();
+                            setInterval(attemptResize, 600);
                         "
                     ></iframe>
                 </div>`; 
         }
         
+        // Hide homepage images and sections, show the dynamic container
         homeContent.style.display = 'none'; 
         dynamicContainer.style.display = 'block'; 
-        if(mainFooter) mainFooter.style.display = 'none';
         
+        // Scroll perfectly to the top (header remains visible and scrolling is standard)
         window.scrollTo({top: 0, behavior: 'smooth'}); 
     }; 
     
+    // When the Home icon is clicked, bring everything back to normal
     if(homeBtn) { 
         homeBtn.addEventListener('click', (e) => { 
             e.preventDefault(); 
             document.querySelectorAll('.submenu .dynamic-link').forEach(l => l.classList.remove('bg-[#850404]', 'text-white')); 
             document.querySelectorAll('.menu-toggle').forEach(m => m.classList.remove('bg-[#a87c1e]', 'border', 'border-[#850404]', 'rounded-t-md', 'text-white')); 
             
+            // Show the main homepage, hide the sub-page
             homeContent.style.display = 'block'; 
             dynamicContainer.style.display = 'none'; 
             dynamicContainer.innerHTML = ''; 
-            
-            if(mainFooter) mainFooter.style.display = '';
             
             window.scrollTo({top: 0, behavior: 'smooth'}); 
         }); 
     } 
     
+    // Attach click events to all sub-menu links
     document.querySelectorAll('.dynamic-link').forEach(link => { 
         link.addEventListener('click', (e) => { 
             e.preventDefault(); 
@@ -922,7 +929,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             document.querySelectorAll('.submenu').forEach(s => s.classList.add('hidden')); 
             
-            // Pass the URL AND the text of the button to load Dynamic Page
+            // Load the actual page
             loadDynamicPage(link.getAttribute('href'), link.innerText.trim()); 
         }); 
     }); 
