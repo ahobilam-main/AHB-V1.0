@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#5b0710">
+<title>SLNSD Ahobilam Devotee Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+/* CM001 - CSS Variables */
+:root{--maroon:#620b14;--maroon2:#930f1d;--gold:#d99a2b;--gold2:#f2c866;--ink:#221b1b;--muted:#73696a;--line:#eadfda;--paper:#fffdfa;--soft:#f8f2ed;--success:#167a55;--shadow:0 26px 70px rgba(37,7,10,.30);--radius:24px}
+
+/* CM002 - Global Resets */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;font-family:'Roboto Slab',serif;color:var(--ink);background:#21070a url('https://ahobilam-main.github.io/AHB-IMG/SLIDER-MAIN-PAGE(7)_compressed.webp') center/cover fixed no-repeat;overflow-x:hidden}
+button,input{font:inherit}
+button{border:0;cursor:pointer}
+img{display:block;max-width:100%}
+
+/* CM003 - Application Background */
+.app-bg{position:fixed;inset:0;z-index:-2;background:linear-gradient(125deg,rgba(20,3,5,.92),rgba(76,5,13,.75) 48%,rgba(22,5,7,.90))}
+.app-bg:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 14%,rgba(242,200,102,.18),transparent 32%),radial-gradient(circle at 85% 84%,rgba(217,154,43,.13),transparent 30%)}
+
+/* CM004 - Screen Transitions */
+.screen{display:none;min-height:100vh;padding:18px;animation:screenIn .32s ease}
+.screen.active{display:flex}
+@keyframes screenIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* CM005 - Auth Screen Layout */
+.auth-screen{align-items:center;justify-content:center}
+.auth-shell{width:min(920px,100%);min-height:540px;display:grid;grid-template-columns:1.06fr .94fr;background:rgba(255,253,250,.97);border:1px solid rgba(255,255,255,.55);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(22px)}
+
+/* CM006 - Auth Brand Aside */
+.auth-brand{position:relative;padding:34px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:linear-gradient(145deg,rgba(81,5,13,.94),rgba(139,12,27,.88)),url('https://ahobilam-main.github.io/AHB-IMG/SLIDER-MAIN-PAGE(7)_compressed.webp') center/cover}
+.auth-brand:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 12%,rgba(255,225,154,.20),transparent 30%),linear-gradient(180deg,transparent,rgba(30,1,5,.28))}
+.brand-top,.brand-center,.brand-bottom{position:relative;z-index:1}
+.brand-top{display:flex;align-items:center;gap:12px}
+.brand-mark{width:50px;height:50px;border-radius:16px;padding:8px;background:rgba(255,255,255,.95);box-shadow:0 10px 25px rgba(0,0,0,.18)}
+.brand-title{font-family:'Roboto Slab',serif;font-size:18px;line-height:1.05;letter-spacing:.1px}
+.brand-sub{margin-top:4px;font-size:10px;text-transform:uppercase;letter-spacing:1.7px;color:#f6d995;font-weight:700}
+.brand-center{max-width:360px}
+.brand-kicker{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid rgba(255,226,159,.35);border-radius:99px;background:rgba(255,255,255,.09);font-size:10px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#ffe4a4}
+.brand-center h1{font-family:'Roboto Slab',serif;font-size:38px;line-height:1.08;margin:17px 0 12px}
+.brand-center p{font-size:13px;line-height:1.7;color:rgba(255,255,255,.80);max-width:330px}
+.brand-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:23px}
+.brand-stat{padding:11px 9px;border-radius:14px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.10);text-align:center}
+.brand-stat strong{display:block;font-size:15px;color:#ffe091}
+.brand-stat span{font-size:9px;color:rgba(255,255,255,.72)}
+.brand-bottom{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.66)}
+.live-dot{display:inline-flex;align-items:center;gap:6px}
+.live-dot:before{content:"";width:7px;height:7px;border-radius:50%;background:#65e2a5;box-shadow:0 0 0 4px rgba(101,226,165,.12)}
+
+/* CM007 - Auth Form Container */
+.auth-panel{padding:26px 30px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(180deg,#fffdfa,#fbf7f3)}
+.mobile-logo{display:none}
+.auth-head{margin-bottom:18px}
+.auth-head h2{font-family:'Roboto Slab',serif;font-size:27px;color:var(--maroon);line-height:1.1}
+.auth-head p{font-size:12px;color:var(--muted);margin-top:6px}
+.form-view{display:none}
+.form-view.active{display:block;animation:formIn .25s ease}
+@keyframes formIn{from{opacity:0;transform:translateX(7px)}to{opacity:1;transform:none}}
+.field{position:relative;margin-bottom:12px}
+.field>i{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;color:#ad9a93;pointer-events:none}
+.field input{width:100%;height:47px;padding:0 43px 0 40px;border:1.5px solid #e8dcd7;border-radius:14px;background:#fff;font-size:13px;font-weight:600;color:var(--ink);outline:none;transition:.2s}
+.field input::placeholder{color:#a99d99;font-weight:500}
+.field input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(217,154,43,.12);background:#fff}
+.field .eye{position:absolute;right:7px;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:10px;background:transparent;color:#998a85}
+.field .eye:hover{background:var(--soft);color:var(--maroon)}
+.form-row{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 16px}
+.remember{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:700;color:#756a67}
+.remember input{accent-color:var(--maroon)}
+.text-btn{background:transparent;color:var(--maroon2);font-size:10px;font-weight:800}
+.text-btn:hover{color:var(--gold)}
+.primary-btn{width:100%;height:47px;border-radius:14px;color:#fff;font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;background:linear-gradient(135deg,var(--maroon),var(--maroon2));box-shadow:0 13px 24px rgba(111,10,21,.22);transition:.2s}
+.primary-btn:hover{transform:translateY(-2px);box-shadow:0 16px 28px rgba(111,10,21,.28)}
+.primary-btn:active{transform:none}
+.secondary-btn{width:100%;height:44px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--maroon);font-size:11px;font-weight:800;transition:.2s}
+.secondary-btn:hover{border-color:#d8b66d;background:#fffaf0}
+.auth-switch{margin-top:15px;padding-top:14px;border-top:1px solid var(--line);text-align:center;font-size:10px;color:#817572}
+.auth-switch button{background:none;color:var(--maroon2);font-weight:800;margin-left:4px}
+.form-note{display:flex;align-items:flex-start;gap:9px;padding:10px 11px;border-radius:12px;background:#fff7e7;border:1px solid #f1ddb1;color:#7c5e21;font-size:9px;line-height:1.5;margin-bottom:13px}
+.form-note i{margin-top:2px;color:#c98815}
+.back-btn{display:inline-flex;align-items:center;gap:7px;background:none;color:#786d69;font-size:10px;font-weight:800;margin-top:14px}
+.back-btn:hover{color:var(--maroon)}
+
+/* CM008 - Dashboard Full Screen Layout Configuration */
+.dashboard-screen{align-items:flex-start;justify-content:center;padding:0}
+.dashboard-shell{width:100%;min-height:100vh;display:grid;grid-template-columns:210px 1fr;background:rgba(252,248,244,.97);backdrop-filter:blur(20px)}
+
+/* CM009 - Dashboard Sidebar */
+.sidebar{padding:20px 14px;background:linear-gradient(180deg,#5a0710,#7f0b18 58%,#50060d);color:#fff;display:flex;flex-direction:column}
+.side-brand{display:flex;align-items:center;gap:10px;padding:2px 6px 20px}
+.side-brand img{width:39px;height:39px;object-fit:contain;background:#fff;border-radius:12px;padding:5px}
+.side-brand strong{font-family:'Roboto Slab',serif;font-size:14px;line-height:1.1}
+.side-brand small{display:block;margin-top:3px;font-size:8px;color:#f1ce7f;letter-spacing:1px;text-transform:uppercase}
+.side-menu{display:grid;gap:5px}
+.nav-btn{display:flex;align-items:center;gap:11px;width:100%;height:42px;padding:0 12px;border-radius:12px;background:transparent;color:rgba(255,255,255,.72);font-size:10px;font-weight:700;text-align:left;transition:.2s}
+.nav-btn i{width:18px;text-align:center;font-size:13px}
+.nav-btn:hover,.nav-btn.active{color:#fff;background:rgba(255,255,255,.13)}
+.nav-btn.active{box-shadow:inset 3px 0 0 var(--gold2)}
+.side-help{margin-top:auto;padding:14px;border-radius:16px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10)}
+.side-help i{font-size:18px;color:#ffdd8d}
+.side-help strong{display:block;font-size:10px;margin:7px 0 3px}
+.side-help p{font-size:8px;color:rgba(255,255,255,.64);line-height:1.45}
+.side-help button{margin-top:9px;width:100%;height:30px;border-radius:9px;background:#fff;color:var(--maroon);font-size:9px;font-weight:800}
+
+/* CM010 - Dashboard Main Content & Topbar */
+.main{min-width:0;display:flex;flex-direction:column}
+.topbar{height:70px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(255,255,255,.70)}
+.top-left h2{font-family:'Roboto Slab',serif;font-size:21px;color:var(--maroon)}
+.top-left p{font-size:9px;color:var(--muted);margin-top:3px}
+.top-actions{display:flex;align-items:center;gap:9px}
+.icon-btn{position:relative;width:38px;height:38px;border-radius:12px;background:#fff;border:1px solid var(--line);color:#776b67}
+.icon-btn:hover{color:var(--maroon);border-color:#d9b56b}
+.notification-dot{position:absolute;top:8px;right:9px;width:6px;height:6px;border-radius:50%;background:#d71c39;border:1px solid #fff}
+.profile-btn{display:flex;align-items:center;gap:9px;padding:5px 7px 5px 5px;border-radius:13px;background:#fff;border:1px solid var(--line);color:var(--ink)}
+.avatar{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--maroon),var(--gold));font-size:11px;font-weight:800}
+.profile-copy{text-align:left}
+.profile-copy strong{display:block;font-size:9px}
+.profile-copy span{display:block;font-size:7px;color:var(--muted);margin-top:2px}
+.dashboard-content{padding:18px 20px 82px;overflow:auto}
+
+/* CM011 - Dashboard Hero Banner */
+.hero{position:relative;overflow:hidden;min-height:148px;border-radius:20px;padding:22px;color:#fff;background:linear-gradient(118deg,#620b14,#9b1424 70%,#bd6d20)}
+.hero:before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-65px;top:-90px;border:45px solid rgba(255,255,255,.07)}
+.hero:after{content:"ॐ";position:absolute;right:34px;bottom:-20px;font-family:'Roboto Slab',serif;font-size:130px;color:rgba(255,255,255,.08);line-height:1}
+.hero-copy{position:relative;z-index:1;max-width:570px}
+.hero-label{font-size:8px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:#ffd98d}
+.hero h1{font-family:'Roboto Slab',serif;font-size:26px;margin:7px 0 7px}
+.hero p{font-size:10px;line-height:1.6;color:rgba(255,255,255,.76);max-width:500px}
+.hero-actions{display:flex;gap:8px;margin-top:14px}
+.hero-btn{height:34px;padding:0 13px;border-radius:10px;font-size:9px;font-weight:800}
+.hero-btn.light{background:#fff;color:var(--maroon)}
+.hero-btn.glass{background:rgba(255,255,255,.11);color:#fff;border:1px solid rgba(255,255,255,.18)}
+
+/* CM012 - Dashboard Quick Services */
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:18px 2px 10px}
+.section-head h3{font-size:12px;color:#3d3030}
+.section-head button{background:none;color:var(--maroon2);font-size:8px;font-weight:800}
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.service{min-width:0;padding:13px;border-radius:16px;background:#fff;border:1px solid var(--line);transition:.2s;text-align:left}
+.service:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(72,28,20,.08);border-color:#dcb768}
+.service-icon{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;margin-bottom:11px;font-size:14px}
+.service:nth-child(1) .service-icon{color:#a84d00;background:#fff0dc}
+.service:nth-child(2) .service-icon{color:#a02754;background:#ffe7ef}
+.service:nth-child(3) .service-icon{color:#1d7558;background:#e5f6ef}
+.service:nth-child(4) .service-icon{color:#7651a6;background:#f0e9fb}
+.service strong{display:block;font-size:10px;color:#352828;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.service span{display:block;margin-top:4px;font-size:8px;color:var(--muted);line-height:1.4}
+.service-arrow{float:right;margin-top:-15px;color:#c4b7b1;font-size:9px}
+
+/* CM013 - Dashboard Activity & Booking Panels */
+.dashboard-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:12px;margin-top:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.panel-head h3{font-size:11px}
+.status{padding:4px 8px;border-radius:99px;background:#e6f6ef;color:var(--success);font-size:7px;font-weight:800;text-transform:uppercase}
+.booking{display:grid;grid-template-columns:54px 1fr auto;gap:12px;align-items:center;padding:11px;border-radius:14px;background:var(--soft)}
+.date-box{text-align:center;padding:8px 5px;border-radius:11px;background:#fff;border:1px solid var(--line)}
+.date-box strong{display:block;font-size:16px;color:var(--maroon)}
+.date-box span{font-size:7px;font-weight:800;color:var(--muted);text-transform:uppercase}
+.booking-info strong{font-size:10px}
+.booking-info p{margin-top:4px;font-size:8px;color:var(--muted)}
+.booking-info p i{width:13px;color:var(--gold)}
+.qr{width:39px;height:39px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);color:var(--maroon);font-size:19px}
+.quick-list{display:grid;gap:7px}
+.quick-item{display:flex;align-items:center;gap:9px;padding:9px;border-radius:12px;background:var(--soft)}
+.quick-item i{width:29px;height:29px;border-radius:9px;display:grid;place-items:center;background:#fff;color:var(--maroon);font-size:11px}
+.quick-item strong{display:block;font-size:9px}
+.quick-item span{display:block;font-size:7px;color:var(--muted);margin-top:2px}
+.quick-item .go{margin-left:auto;width:auto;height:auto;background:none;color:#baa9a2;font-size:8px}
+
+/* CM014 - Bottom Nav & Toast Overlay */
+.bottom-nav{display:none}
+.toast{position:fixed;left:50%;bottom:22px;z-index:100;transform:translate(-50%,20px);opacity:0;pointer-events:none;display:flex;align-items:center;gap:9px;padding:11px 14px;border-radius:12px;background:#251b1b;color:#fff;box-shadow:0 15px 35px rgba(0,0,0,.24);font-size:10px;font-weight:700;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast i{color:#65d99e}
+
+/* CM015 - Mobile Breakpoint Core Adjustments */
+@media(max-width:900px){
+.auth-shell{width:min(760px,100%);grid-template-columns:.9fr 1.1fr}
+.brand-center h1{font-size:31px}
+.dashboard-shell{grid-template-columns:74px 1fr}
+.side-brand{justify-content:center;padding-bottom:18px}
+.side-brand div,.nav-btn span,.side-help{display:none}
+.side-brand img{width:40px;height:40px}
+.nav-btn{justify-content:center;padding:0}
+.nav-btn i{font-size:14px}
+.services{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* CM016 - Mobile Breakpoint Small Adjustments */
+@media(max-width:680px){
+body{background-attachment:scroll}
+.screen{padding:10px}
+.auth-screen{align-items:flex-start;padding-top:max(12px,env(safe-area-inset-top))}
+.auth-shell{display:block;min-height:0;width:100%;max-width:420px;border-radius:22px}
+.auth-brand{display:none}
+.auth-panel{padding:20px 18px 18px}
+.mobile-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px}
+.mobile-logo img{width:47px;height:47px;border-radius:14px;background:#fff;padding:6px;box-shadow:0 8px 20px rgba(98,11,20,.12)}
+.mobile-logo strong{font-family:'Roboto Slab',serif;color:var(--maroon);font-size:15px;line-height:1.05}
+.mobile-logo span{display:block;margin-top:3px;color:var(--gold);font-size:8px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.auth-head{text-align:center;margin-bottom:16px}
+.auth-head h2{font-size:24px}
+.field input{height:45px}
+.dashboard-screen{padding:0}
+.dashboard-shell{display:block;min-height:100vh;border-radius:0;border:0}
+.sidebar{display:none}
+.topbar{height:62px;padding:0 13px;position:sticky;top:0;z-index:30}
+.top-left h2{font-size:17px}
+.top-left p{font-size:7px}
+.profile-copy,.profile-btn>i{display:none}
+.profile-btn{padding:4px}
+.dashboard-content{padding:12px 12px 82px}
+.hero{min-height:160px;padding:18px;border-radius:17px}
+.hero h1{font-size:22px;max-width:250px}
+.hero p{font-size:9px;max-width:260px}
+.hero:after{right:7px;font-size:100px}
+.services{gap:8px}
+.service{padding:11px}
+.dashboard-grid{grid-template-columns:1fr}
+.panel{padding:13px}
+.bottom-nav{position:fixed;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));z-index:40;height:61px;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding:5px;border-radius:18px;background:rgba(91,7,16,.96);box-shadow:0 15px 35px rgba(44,4,8,.33);backdrop-filter:blur(15px)}
+.bottom-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:50px;border-radius:13px;background:transparent;color:rgba(255,255,255,.60);font-size:7px;font-weight:700}
+.bottom-nav button i{font-size:13px}
+.bottom-nav button.active{background:rgba(255,255,255,.13);color:#fff}
+.toast{bottom:82px;max-width:calc(100% - 24px);white-space:nowrap}
+}
+
+/* CM017 - Extra Small Devices */
+@media(max-width:390px){
+.screen{padding:7px}
+.auth-panel{padding:17px 14px 15px}
+.mobile-logo{margin-bottom:14px}
+.auth-head h2{font-size:22px}
+.auth-head p{font-size:10px}
+.field{margin-bottom:10px}
+.services{grid-template-columns:repeat(2,minmax(0,1fr))}
+.service strong{font-size:9px}
+.booking{grid-template-columns:48px 1fr auto;gap:8px}
+.qr{width:34px;height:34px}
+.hero-actions{gap:6px}
+.hero-btn{padding:0 10px}
+}
+
+/* CM018 - Short Screens Adjustment */
+@media(max-height:650px) and (min-width:681px){
+.auth-shell{min-height:500px}
+.auth-brand{padding:25px}
+.brand-center h1{font-size:31px}
+.brand-stats{margin-top:14px}
+.auth-panel{padding:20px 26px}
+.field input,.primary-btn{height:43px}
+.dashboard-content{padding-top:13px}
+.hero{min-height:132px;padding:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- CM019 - App Background Filter -->
+<div class="app-bg"></div>
+
+<!-- CM020 - Authentication Screen Main Shell -->
+<section id="authScreen" class="screen auth-screen active">
+<div class="auth-shell">
+
+<!-- CM021 - Auth Branding Side Panel -->
+<aside class="auth-brand">
+<div class="brand-top">
+<img class="brand-mark" src="https://ahobilam-main.github.io/AHB-IMG/AHB42-NAMAM_compressed.webp" alt="Temple Namam">
+<div><div class="brand-title">SLNSD Ahobilam</div><div class="brand-sub">Official Devotee Portal</div></div>
+</div>
+<div class="brand-center">
+<div class="brand-kicker"><i class="fa-solid fa-om"></i> Divine Digital Services</div>
+<h1>Devotion made simple, secure and seamless.</h1>
+<p>Book darshan, participate in sevas, contribute to annadanam and manage every temple service from one trusted portal.</p>
+<div class="brand-stats">
+<div class="brand-stat"><strong>9</strong><span>Narasimha Kshetras</span></div>
+<div class="brand-stat"><strong>24×7</strong><span>Online Services</span></div>
+<div class="brand-stat"><strong>100%</strong><span>Secure Access</span></div>
+</div>
+</div>
+<div class="brand-bottom"><span class="live-dot">Portal Online</span><span>Ahobilam, Andhra Pradesh</span></div>
+</aside>
+
+<!-- CM022 - Auth Forms Panel -->
+<main class="auth-panel">
+<div class="mobile-logo">
+<img src="https://ahobilam-main.github.io/AHB-IMG/AHB42-NAMAM_compressed.webp" alt="Temple Namam">
+<div><strong>SLNSD Ahobilam</strong><span>Devotee Portal</span></div>
+</div>
+<div id="loginForm" class="form-view active">
+<div class="auth-head"><h2>Welcome Back</h2><p>Sign in to continue your divine journey.</p></div>
+<form onsubmit="login(event)">
+<div class="field"><i class="fa-solid fa-user"></i><input id="memberId" type="text" autocomplete="username" placeholder="Member ID or Mobile Number" value="DEV-98234" required></div>
+<div class="field"><i class="fa-solid fa-lock"></i><input id="password" type="password" autocomplete="current-password" placeholder="Password or OTP" value="123456" required><button class="eye" type="button" onclick="togglePassword('password',this)" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
+<div class="form-row"><label class="remember"><input type="checkbox" checked> Remember me</label><button class="text-btn" type="button" onclick="showForm('forgotForm')">Forgot password?</button></div>
+<button class="primary-btn" type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i>&nbsp;&nbsp;Sign In Securely</button>
+</form>
+<div class="auth-switch">New devotee?<button type="button" onclick="showForm('registerForm')">Create account</button></div>
+</div>
+<div id="registerForm" class="form-view">
+<div class="auth-head"><h2>Create Account</h2><p>Register once to access all devotee services.</p></div>
+<form onsubmit="register(event)">
+<div class="field"><i class="fa-solid fa-user-pen"></i><input id="fullName" type="text" placeholder="Full Name" required></div>
+<div class="field"><i class="fa-solid fa-om"></i><input id="gothram" type="text" placeholder="Gothram" required></div>
+<div class="field"><i class="fa-solid fa-mobile-screen"></i><input id="mobile" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit Mobile Number" required></div>
+<div class="field"><i class="fa-solid fa-lock"></i><input id="newPassword" type="password" minlength="6" placeholder="Create Password" required><button class="eye" type="button" onclick="togglePassword('newPassword',this)" aria-label="Show password"><i class="fa-regular fa-eye"></i></button></div>
+<button class="primary-btn" type="submit"><i class="fa-solid fa-user-plus"></i>&nbsp;&nbsp;Register & Continue</button>
+</form>
+<button class="back-btn" type="button" onclick="showForm('loginForm')"><i class="fa-solid fa-arrow-left"></i> Back to sign in</button>
+</div>
+<div id="forgotForm" class="form-view">
+<div class="auth-head"><h2>Reset Access</h2><p>We will send a secure OTP to your mobile.</p></div>
+<div class="form-note"><i class="fa-solid fa-shield-halved"></i><span>Your account remains protected. Never share your OTP with anyone.</span></div>
+<form onsubmit="sendOtp(event)">
+<div class="field"><i class="fa-solid fa-mobile-screen-button"></i><input id="resetMobile" type="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="Registered Mobile Number" required></div>
+<button class="primary-btn" type="submit"><i class="fa-solid fa-paper-plane"></i>&nbsp;&nbsp;Send OTP</button>
+</form>
+<button class="back-btn" type="button" onclick="showForm('loginForm')"><i class="fa-solid fa-arrow-left"></i> Back to sign in</button>
+</div>
+</main>
+</div>
+</section>
+
+<!-- CM023 - Dashboard Main Interactive Area -->
+<section id="dashboardScreen" class="screen dashboard-screen">
+<div class="dashboard-shell">
+
+<!-- CM024 - Dashboard Sidebar Menu -->
+<aside class="sidebar">
+<div class="side-brand"><img src="https://ahobilam-main.github.io/AHB-IMG/AHB42-NAMAM_compressed.webp" alt="Namam"><div><strong>SLNSD<br>Ahobilam</strong><small>Devotee Portal</small></div></div>
+<nav class="side-menu">
+<button class="nav-btn active" onclick="selectNav(this,'Dashboard')"><i class="fa-solid fa-grid-2"></i><span>Dashboard</span></button>
+<button class="nav-btn" onclick="selectNav(this,'My Bookings')"><i class="fa-solid fa-ticket"></i><span>My Bookings</span></button>
+<button class="nav-btn" onclick="selectNav(this,'Seva Services')"><i class="fa-solid fa-fire-flame-curved"></i><span>Seva Services</span></button>
+<button class="nav-btn" onclick="selectNav(this,'Donations')"><i class="fa-solid fa-hand-holding-heart"></i><span>Donations</span></button>
+<button class="nav-btn" onclick="selectNav(this,'Receipts')"><i class="fa-solid fa-receipt"></i><span>Receipts</span></button>
+<button class="nav-btn" onclick="selectNav(this,'Profile')"><i class="fa-solid fa-user-gear"></i><span>Profile</span></button>
+</nav>
+<div class="side-help"><i class="fa-solid fa-headset"></i><strong>Need Assistance?</strong><p>Temple support is available for booking and payment help.</p><button onclick="showToast('Support request opened')">Contact Support</button></div>
+</aside>
+
+<!-- CM025 - Dashboard Content Area -->
+<main class="main">
+<header class="topbar">
+<div class="top-left"><h2 id="pageTitle">Dashboard</h2><p>Friday, 10 July 2026 · Ahobilam</p></div>
+<div class="top-actions">
+<button class="icon-btn" onclick="showToast('No new notifications')" aria-label="Notifications"><i class="fa-regular fa-bell"></i><span class="notification-dot"></span></button>
+<button class="profile-btn" onclick="showToast('Profile menu')"><span id="avatarText" class="avatar">SS</span><span class="profile-copy"><strong id="topName">Srikanth Sharma</strong><span>DEV-98234</span></span><i class="fa-solid fa-chevron-down" style="font-size:8px;color:#a89791"></i></button>
+<button class="icon-btn" onclick="logout()" aria-label="Logout"><i class="fa-solid fa-power-off"></i></button>
+</div>
+</header>
+<div class="dashboard-content">
+<section class="hero">
+<div class="hero-copy">
+<span class="hero-label">Sri Lakshmi Narasimha Swamy Blessings</span>
+<h1>Namaskaram, <span id="welcomeName">Srikanth</span></h1>
+<p>Your darshan, seva, donation and receipt services are ready in one secure and easy-to-use dashboard.</p>
+<div class="hero-actions"><button class="hero-btn light" onclick="showToast('Darshan booking opened')"><i class="fa-solid fa-ticket"></i>&nbsp; Book Darshan</button><button class="hero-btn glass" onclick="showToast('Seva services opened')"><i class="fa-solid fa-fire-flame-curved"></i>&nbsp; Explore Sevas</button></div>
+</div>
+</section>
+<div class="section-head"><h3>Quick Services</h3><button onclick="showToast('All services opened')">VIEW ALL <i class="fa-solid fa-arrow-right"></i></button></div>
+<section class="services">
+<button class="service" onclick="showToast('Special Darshan selected')"><span class="service-icon"><i class="fa-solid fa-ticket"></i></span><strong>Special Darshan</strong><span>Choose date and time</span><i class="service-arrow fa-solid fa-chevron-right"></i></button>
+<button class="service" onclick="showToast('Kalyanotsavam selected')"><span class="service-icon"><i class="fa-solid fa-fire"></i></span><strong>Kalyanotsavam</strong><span>Book sacred seva</span><i class="service-arrow fa-solid fa-chevron-right"></i></button>
+<button class="service" onclick="showToast('Annadanam selected')"><span class="service-icon"><i class="fa-solid fa-bowl-rice"></i></span><strong>Annadanam</strong><span>Offer free meals</span><i class="service-arrow fa-solid fa-chevron-right"></i></button>
+<button class="service" onclick="showToast('Donation selected')"><span class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></span><strong>e-Hundi</strong><span>Secure contribution</span><i class="service-arrow fa-solid fa-chevron-right"></i></button>
+</section>
+<section class="dashboard-grid">
+<div class="panel">
+<div class="panel-head"><h3>Upcoming Darshan</h3><span class="status">Confirmed</span></div>
+<div class="booking">
+<div class="date-box"><strong>15</strong><span>Aug 2026</span></div>
+<div class="booking-info"><strong>Special Entry Darshan</strong><p><i class="fa-regular fa-clock"></i> 10:00 AM &nbsp; <i class="fa-solid fa-user-group"></i> 2 Devotees</p><p><i class="fa-solid fa-location-dot"></i> Lower Ahobilam Temple</p></div>
+<button class="qr" onclick="showToast('QR ticket opened')" aria-label="Open QR ticket"><i class="fa-solid fa-qrcode"></i></button>
+</div>
+</div>
+<div class="panel">
+<div class="panel-head"><h3>My Activity</h3><button class="text-btn" onclick="showToast('Activity history opened')">History</button></div>
+<div class="quick-list">
+<button class="quick-item" onclick="showToast('Receipt downloaded')"><i class="fa-solid fa-file-arrow-down"></i><span><strong>Donation Receipt</strong><span>₹5,000 · 10 Jul</span></span><i class="go fa-solid fa-chevron-right"></i></button>
+<button class="quick-item" onclick="showToast('Profile opened')"><i class="fa-solid fa-id-card"></i><span><strong>Devotee Profile</strong><span>Details verified</span></span><i class="go fa-solid fa-chevron-right"></i></button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+
+<!-- CM026 - Bottom Mobile Navigation -->
+<nav class="bottom-nav">
+<button class="active" onclick="selectBottom(this,'Dashboard')"><i class="fa-solid fa-house"></i><span>Home</span></button>
+<button onclick="selectBottom(this,'My Bookings')"><i class="fa-solid fa-ticket"></i><span>Bookings</span></button>
+<button onclick="selectBottom(this,'Seva Services')"><i class="fa-solid fa-fire-flame-curved"></i><span>Sevas</span></button>
+<button onclick="selectBottom(this,'Donations')"><i class="fa-solid fa-heart"></i><span>Donate</span></button>
+<button onclick="selectBottom(this,'Profile')"><i class="fa-solid fa-user"></i><span>Profile</span></button>
+</nav>
+</section>
+
+<!-- CM027 - Global Action Toast Notification -->
+<div id="toast" class="toast"><i class="fa-solid fa-circle-check"></i><span id="toastText">Done</span></div>
+
+<script>
+/* CM028 - DOM Initialization */
+const authScreen=document.getElementById('authScreen'),dashboardScreen=document.getElementById('dashboardScreen');
+
+/* CM029 - UI Toggle Functions */
+function showForm(id){document.querySelectorAll('.form-view').forEach(form=>form.classList.remove('active'));document.getElementById(id).classList.add('active');}
+function togglePassword(id,button){const input=document.getElementById(id),icon=button.querySelector('i'),show=input.type==='password';input.type=show?'text':'password';icon.className=show?'fa-regular fa-eye-slash':'fa-regular fa-eye';}
+function setUser(name,id='DEV-98234'){const safeName=(name||'Srikanth Sharma').trim(),parts=safeName.split(/\s+/),initials=parts.slice(0,2).map(part=>part[0]?.toUpperCase()||'').join('');document.getElementById('topName').textContent=safeName;document.getElementById('welcomeName').textContent=parts[0];document.getElementById('avatarText').textContent=initials||'DS';document.querySelector('.profile-copy span').textContent=id;}
+function showToast(message){const toast=document.getElementById('toast');document.getElementById('toastText').textContent=message;toast.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);}
+
+/* CM030 - App Routing Functions */
+function openDashboard(){authScreen.classList.remove('active');dashboardScreen.classList.add('active');window.scrollTo(0,0);}
+function login(event){event.preventDefault();const value=document.getElementById('memberId').value.trim();const displayName=value && !/^DEV-/i.test(value) && !/^\d+$/.test(value)?value:'Srikanth Sharma';setUser(displayName,/^DEV-/i.test(value)?value.toUpperCase():'DEV-98234');openDashboard();showToast('Welcome to the devotee portal');}
+function register(event){event.preventDefault();const name=document.getElementById('fullName').value.trim();setUser(name,'DEV-'+Math.floor(10000+Math.random()*89999));openDashboard();showToast('Registration completed successfully');}
+function sendOtp(event){event.preventDefault();showToast('OTP sent successfully');setTimeout(()=>showForm('loginForm'),550);}
+function logout(){dashboardScreen.classList.remove('active');authScreen.classList.add('active');showForm('loginForm');window.scrollTo(0,0);showToast('Signed out securely');}
+
+/* CM031 - Navigation Interactions */
+function selectNav(button,title){document.querySelectorAll('.nav-btn').forEach(item=>item.classList.remove('active'));button.classList.add('active');document.getElementById('pageTitle').textContent=title;showToast(title+' opened');}
+function selectBottom(button,title){document.querySelectorAll('.bottom-nav button').forEach(item=>item.classList.remove('active'));button.classList.add('active');document.getElementById('pageTitle').textContent=title;showToast(title+' opened');}
+</script>
+</body>
+</html>
